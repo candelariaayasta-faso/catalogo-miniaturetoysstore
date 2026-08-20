@@ -1,1303 +1,788 @@
 <!DOCTYPE html>
 <html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Miniature Toys Store</title>
+
 <style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-
-    background:
-        radial-gradient(circle at 20% 20%, rgba(0, 100, 255, 0.25), transparent 30%),
-        radial-gradient(circle at 80% 30%, rgba(255, 0, 50, 0.20), transparent 30%),
-        linear-gradient(135deg, #020617, #06152b, #020617);
-
-    background-attachment: fixed;
-    color: white;
+* {
+    box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    color: #222;
+    overflow-x: hidden;
+}
+
+/* ===== ENCABEZADO ===== */
+
 header {
+    background: #111;
+    color: white;
     text-align: center;
-    padding: 45px 20px 30px;
+    padding: 28px 15px;
 }
 
 header h1 {
-    font-size: 42px;
-    margin: 0 0 12px;
-    font-weight: bold;
+    margin: 0;
+    font-size: 30px;
 }
 
 header p {
-    font-size: 18px;
-    margin: 8px 0;
+    margin: 8px 0 0;
+    font-size: 14px;
 }
 
-    .productos {
-    padding: 60px 30px;
-    max-width: 1200px;
-    margin: 30px auto;
-    background: rgba(15, 23, 42, 0.55);
-    border-radius: 30px;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
-}
+/* ===== CATEGORÍAS ===== */
 
-    .productos h2 {
-        text-align: center;
-        font-size: 36px;
-        margin-bottom: 35px;
-    }
-
- .tarjetas {
-    display: grid;
-    grid-template-columns: repeat(3, 340px);
-    gap: 25px;
-    justify-content: center;
-    align-items: start;
-}
-
-#carritos-escala .tarjetas {
-    grid-template-columns: 340px;
-    justify-content: center;
-}
-#hotwheels .tarjetas {
-    display: grid !important;
-    grid-template-columns: repeat(4, 220px) !important;
-    gap: 15px !important;
-    justify-content: center !important;
-}
-
-#hotwheels .tarjeta {
-    width: 220px !important;
-    padding: 12px !important;
-    margin: 0 !important;
-}
-.tarjeta {
-    background: linear-gradient(145deg, #1c2433, #111722);
-    border-radius: 20px;
-    padding: 22px;
-    width: 340px;
-    box-sizing: border-box;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
-    border: 1px solid rgba(255,255,255,0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-#carritos-hotwheels .tarjetas {
-    display: grid !important;
-    grid-template-columns: repeat(4, 210px) !important;
-    gap: 20px !important;
-    justify-content: center !important;
-    align-items: start !important;
-}
-
-#carritos-hotwheels .tarjeta {
-    width: 210px !important;
-    padding: 10px !important;
-    margin: 0 !important;
-}
-#carritos-hotwheels .tarjeta h3 {
-    margin-top: 5px !important;
-    margin-bottom: 10px !important;
-}
-.tarjeta:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 18px 40px rgba(0,0,0,0.5);
-}
-.tarjeta img {
-    width: 100%;
-    height: 340px;
-    object-fit: contain;
-    border-radius: 14px;
-    margin-bottom: 15px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-#carritos-hotwheels .tarjeta img {
-    width: 190px !important;
-    height: 250px !important;
-    object-fit: contain !important;
-    margin: 0 auto !important;
-    display: block !important;
-}
-#carritos-hotwheels .tarjeta h3 {
-    margin-top: 8px !important;
-    margin-bottom: 10px !important;
-}
-.tarjeta img:hover {
-    transform: scale(1.03);
-}
-.fotos-producto {
+.categorias {
     display: flex;
-    gap: 8px;
-    justify-content: center;
     flex-wrap: wrap;
-}
-
-.fotos-producto img {
-    width: 31%;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 10px;
-}
-   .tarjeta h3 {
-    font-size: 21px;
-    margin: 12px 0 8px;
-    font-weight: bold;
-    color: #ffffff;
-}
-
-    .tarjeta .precio {
-    font-size: 28px;
-    font-weight: bold;
-    color: #5cff8a;
-    margin: 12px 0;
-    text-shadow: 0 0 10px rgba(92, 255, 138, 0.25);
-}
-
-    .tarjeta p {
-    color: #5cff8a;
-    font-size: 15px;
-    font-weight: bold;
-    display: inline-block;
-    background: rgba(37, 211, 102, 0.12);
-    border: 1px solid rgba(37, 211, 102, 0.35);
-    padding: 5px 12px;
-    border-radius: 20px;
-    margin: 5px 0 15px;
-}
-
-    .tarjeta button {
-    background: linear-gradient(135deg, #25d366, #16b957);
-    color: white;
-    border: none;
-    padding: 13px 22px;
-    border-radius: 12px;
-    cursor: pointer;
-    font-size: 15px;
-    font-weight: bold;
-    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.25);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.tarjeta button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
-}
-    .categoria {
-        display: inline-block;
-        text-decoration: none;
-        color: white;
-    }
-   #carritos-escala .tarjetas {
-    display: flex;
     justify-content: center;
+    gap: 8px;
+    padding: 15px 10px;
+    background: white;
+}
+
+.categoria {
+    display: block;
+    text-decoration: none;
+    color: #111;
+    background: #eeeeee;
+    padding: 10px 13px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* ===== BIENVENIDA ===== */
+
+.bienvenida {
+    text-align: center;
+    padding: 22px 15px;
+    background: white;
+}
+
+.bienvenida h2 {
+    margin: 0 0 8px;
+    font-size: 23px;
+}
+
+.bienvenida p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/* ===== SECCIONES ===== */
+
+.productos {
+    width: calc(100% - 20px);
+    margin: 15px auto;
+    padding: 20px 10px;
+    background: white;
+    border-radius: 18px;
+}
+
+.productos h2 {
+    text-align: center;
+    font-size: 23px;
+    margin: 0 0 18px;
+}
+
+/* ===== TARJETAS ===== */
+
+.tarjetas {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
     width: 100%;
 }
 
-#carritos-escala .tarjeta {
-    margin: 0 auto;
+.tarjeta {
+    min-width: 0;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 8px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
 }
-</style>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Miniature Toys Store</title>
+.tarjeta img {
+    display: block;
+    width: 100%;
+    height: 155px;
+    object-fit: contain;
+    margin: 0 auto 8px;
+}
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #0f1117;
-            color: white;
-        }
+.tarjeta h3 {
+    font-size: 13px;
+    line-height: 1.2;
+    margin: 6px 0;
+}
 
-        header {
-            text-align: center;
-            padding: 50px 20px;
-            background: linear-gradient(135deg, #111827, #1f2937);
-        }
+.precio {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 6px 0;
+}
 
-        header h1 {
-            font-size: 42px;
-            margin-bottom: 10px;
-        }
+.disponible {
+    display: inline-block;
+    font-size: 10px;
+    padding: 4px 7px;
+    border-radius: 10px;
+    background: #e8f5e9;
+    color: #218838;
+    margin-bottom: 7px;
+}
 
-        header p {
-            font-size: 18px;
-            color: #d1d5db;
-        }
+/* ===== BOTÓN ===== */
 
-        .categorias {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            padding: 30px 20px;
-        }
+.btn-whatsapp {
+    display: block;
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    padding: 9px 3px;
+    background: #25D366;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
 
-        .categoria {
-            background: #1f2937;
-            color: white;
-            border: none;
-            padding: 15px 22px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-size: 16px;
-        }
+/* ===== CARRUSEL ===== */
 
-        .categoria:hover {
-            background: #22c55e;
-        }
-
-        .bienvenida {
-            text-align: center;
-            padding: 30px 20px;
-
-       .carousel {
+.carousel {
     position: relative;
-    width: 280px;
-    height: 340px;
-    margin: 0 auto;
-    display: flex;
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.carousel img {
+    width: 100%;
+    height: 180px;
+    object-fit: contain;
+}
+
+/* ===== VISTA SOLO CELULAR ===== */
+
+@media (min-width: 601px) {
+    body {
+        max-width: 600px;
+        margin: auto;
+    }
+}
+
+/* ===== VISOR DE IMAGEN ===== */
+
+#visor {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.88);
+    z-index: 9999;
     align-items: center;
     justify-content: center;
+    padding: 20px;
 }
 
-.foto-carrusel {
-    width: 220px;
-    height: 340px;
+#visor img {
+    max-width: 95%;
+    max-height: 90%;
     object-fit: contain;
-    border-radius: 14px;
-}
-#carritos-escala {
-    width: 100%;
-    max-width: 1200px;
-    margin: 30px auto;
-    display: block;
-    clear: both;
-    text-align: center;
-}
-#carritos-escala .tarjetas {
-    display: grid;
-    grid-template-columns: 340px;
-    justify-content: center;
-    width: 100%;
 }
 
-#carritos-escala .tarjeta {
-    width: 340px;
-    margin: 0;
+#visor .cerrar {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: white;
+    font-size: 35px;
+    cursor: pointer;
 }
 
-#carritos-escala .carousel {
-    width: 280px;
-    height: 280px;
-    margin: 0 auto;
-}
-/* ================================
-   DISEÑO EXCLUSIVO PARA CELULAR
-   ================================ */
+/* ===== AJUSTES DE CELULAR ===== */
 
 @media (max-width: 600px) {
 
-    body {
-        width: 100%;
-        margin: 0;
-        padding: 0;
-        overflow-x: hidden;
-    }
-
-    header {
-        width: 100%;
-        box-sizing: border-box;
-        padding: 30px 15px;
-    }
-
     header h1 {
-        font-size: 30px !important;
-        line-height: 1.2;
+        font-size: 28px;
     }
-
-    header p {
-        font-size: 14px !important;
-        line-height: 1.4;
-    }
-
-    /* BOTONES DE CATEGORÍAS */
-
-    .categorias {
-        width: 100%;
-        box-sizing: border-box;
-        padding: 15px 10px;
-        gap: 10px;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .categoria {
-        font-size: 13px !important;
-        padding: 12px 15px !important;
-        white-space: nowrap;
-    }
-
-    /* TEXTO DE BIENVENIDA */
-
-    .bienvenida {
-        width: 100%;
-        box-sizing: border-box;
-        padding: 25px 15px;
-        text-align: center;
-    }
-
-    /* SECCIÓN DE PRODUCTOS */
 
     .productos {
-        width: calc(100% - 20px) !important;
-        max-width: none !important;
-        box-sizing: border-box !important;
-        margin: 20px 10px !important;
-        padding: 25px 10px !important;
+        width: calc(100% - 16px);
+        padding: 18px 8px;
     }
 
     .productos h2 {
-        font-size: 25px !important;
-        line-height: 1.2;
-        margin-bottom: 25px;
-        text-align: center;
+        font-size: 21px;
     }
-
-    /* TODAS LAS TARJETAS */
 
     .tarjetas {
-        display: grid !important;
-        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-        gap: 10px !important;
-        width: 100% !important;
-        box-sizing: border-box;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
     }
 
-    .tarjeta,
-    #hotwheels .tarjeta,
-    #carritos-hotwheels .tarjeta {
-        width: 100% !important;
-        max-width: none !important;
-        min-width: 0 !important;
-        margin: 0 !important;
-        padding: 8px !important;
-        box-sizing: border-box !important;
+    .tarjeta {
+        padding: 7px;
     }
 
-    /* FOTOS DE LOS PRODUCTOS */
-
-    .tarjeta img,
-    #hotwheels .tarjeta img,
-    #carritos-hotwheels .tarjeta img {
-        display: block;
-        width: 100% !important;
-        height: 190px !important;
-        object-fit: contain !important;
-        box-sizing: border-box;
+    .tarjeta img {
+        height: 145px;
     }
-
-    /* NOMBRE DEL PRODUCTO */
 
     .tarjeta h3 {
-        font-size: 14px !important;
-        line-height: 1.2 !important;
-        text-align: center;
-        margin: 10px 0;
+        font-size: 12px;
     }
 
-    /* PRECIO */
-
-    .tarjeta .precio {
-        font-size: 20px !important;
-        text-align: center;
-    }
-
-    /* BOTÓN WHATSAPP */
-
-    .tarjeta button {
-        width: 100% !important;
-        box-sizing: border-box !important;
-        font-size: 11px !important;
-        padding: 10px 4px !important;
-    }
-
-    /* MOTOS A ESCALA */
-
-    #carritos-escala .tarjetas {
-        display: grid !important;
-        grid-template-columns: 1fr !important;
-        gap: 15px !important;
-    }
-
-    #carritos-escala .tarjeta {
-        width: 100% !important;
-        max-width: none !important;
-        margin: 0 !important;
-    }
-
-    #carritos-escala .carousel {
-        width: 100% !important;
-        max-width: none !important;
-        margin: 0 auto !important;
-    }
-
-    .foto-carrusel {
-        width: 100% !important;
-        max-width: 100% !important;
-        height: 230px !important;
-        object-fit: contain !important;
+    .precio {
+        font-size: 17px;
     }
 }
-    </style>
+</style>
 </head>
 
 <body>
 
-    <header>
-    <h1>🏁 Miniature Toys Store 🏁</h1>
-    <p>✨ Colecciona. Descubre. Disfruta. ✨</p>
-    <p>Carritos Hot Wheels 🚗 | Motos a escala 🏍️ | Premium ⭐ | Funkos 🎁</p>
+<header>
+    <h1>Miniature Toys Store</h1>
+    <p>✨ Coleccionables, Hot Wheels y modelos a escala ✨</p>
 </header>
 
-    <section class="categorias">
+<nav class="categorias">
+    <a href="#motos-hotwheels" class="categoria">🏍️ Motos Hot Wheels</a>
+    <a href="#motos-escala" class="categoria">🏍️ Motos a escala</a>
+    <a href="#carritos-escala" class="categoria">🚗 Carritos a escala</a>
+    <a href="#carritos-hotwheels" class="categoria">🚘 Hot Wheels</a>
+    <a href="#premium" class="categoria">⭐ Premium</a>
+    <a href="#funkos" class="categoria">🎁 Funkos</a>
+</nav>
 
-       <a href="#carritos-hotwheels" class="categoria">🚘 Carritos Hot Wheels</a>
-        <a href="#motos-hotwheels" class="categoria">🏍️ Motos Hot Wheels</a>
+<section class="bienvenida">
+    <h2>¡Bienvenidos! 🎉</h2>
+    <p>Encuentra modelos para coleccionar, regalar o simplemente darte un gusto.</p>
+</section>
 
-      <a href="#motos-escala" class="categoria">🏍️ Motos a escala</a>
+<!-- ==========================================
+     MOTOS HOT WHEELS
+========================================== -->
 
-      <a href="#carritos-escala" class="categoria">🚗 Carritos a escala</a>
-
-       <a href="#hot-wheels-premium" class="categoria">⭐ Hot Wheels Premium</a>
-
-<a href="#funkos" class="categoria">🎁 Funkos</a>
-    </section>
-
-    <section class="bienvenida">
-
-        <h2>Bienvenidos a nuestro catálogo</h2>
-
-        <p>
-            Encuentra modelos para colección, regalos y amantes de los autos y las motos.
-        </p>
-
-    </section>
 <section id="motos-hotwheels" class="productos">
 
     <h2>🏍️ Motos Hot Wheels</h2>
 
     <div class="tarjetas">
 
-        <div class="tarjeta">
-    <img src="fotos/hotwheels/honda motocompo roja.jpeg" alt="Honda Motocompo roja">
-    <h3>Honda Motocompo roja</h3>
-    <p class="precio">S/12</p>
-    <p>Disponible</p>
-    <button onclick="window.open('https://wa.me/51921797846?text=Hola%2C%20estoy%20interesado%20en%20la%20Honda%20Motocompo%20roja%20de%20S%2F12.%20%C2%BFEst%C3%A1%20disponible%3F', '_blank')">
-    Consultar por WhatsApp
-</button>
-</div>
+        <article class="tarjeta">
+            <img src="fotos/hotwheels/motos/honda cbr 600rr roja.png"
+                 alt="Honda CBR 600RR roja"
+                 onclick="verImagen(this.src)">
+            <h3>Honda CBR 600RR Roja</h3>
+            <div class="precio">S/ 9</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Honda CBR 600RR Roja',9)">
+                Consultar por WhatsApp
+            </button>
+        </article>
 
-        <div class="tarjeta">
-            <img src="fotos/hotwheels/honda motocompo amarilla.jpeg" alt="Honda Motocompo amarilla">
-            <h3>Honda Motocompo amarilla</h3>
-            <p class="precio">S/12</p>
-            <p>Disponible</p>
-            <button onclick="window.open('https://wa.me/51921797846?text=Hola%2C%20estoy%20interesado%20en%20la%20Honda%20Motocompo%20amarilla%20de%20S%2F12.%20%C2%BFEst%C3%A1%20disponible%3F', '_blank')">
-    Consultar por WhatsApp
-</button>
-        </div>
+        <article class="tarjeta">
+            <img src="fotos/hotwheels/motos/honda cbr 600rr amarilla.png"
+                 alt="Honda CBR 600RR amarilla"
+                 onclick="verImagen(this.src)">
+            <h3>Honda CBR 600RR Amarilla</h3>
+            <div class="precio">S/ 9</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Honda CBR 600RR Amarilla',9)">
+                Consultar por WhatsApp
+            </button>
+        </article>
 
-        <div class="tarjeta">
-    <img src="fotos/hotwheels/honda cb750 cafe rojo.jpeg" alt="Honda CB750 Café roja">
-    <h3>Honda CB750 Café Roja</h3>
-    <p class="precio">S/25</p>
-    <p>Disponible</p>
-    <button onclick="window.open('https://wa.me/51921797846?text=Hola%2C%20estoy%20interesado%20en%20la%20Honda%20CB750%20Caf%C3%A9%20Roja%20de%20S%2F25.%20%C2%BFEst%C3%A1%20disponible%3F', '_blank')">
-    Consultar por WhatsApp
-</button>
-</div>
+        <article class="tarjeta">
+            <img src="fotos/hotwheels/motos/honda cb750 roja.png"
+                 alt="Honda CB750 roja"
+                 onclick="verImagen(this.src)">
+            <h3>Honda CB750 Roja</h3>
+            <div class="precio">S/ 9</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Honda CB750 Roja',9)">
+                Consultar por WhatsApp
+            </button>
+        </article>
 
-        <div class="tarjeta">
-    <img src="fotos/hotwheels/honda cb750 cafe azul.jpeg" alt="Honda CB750 Café celeste">
-    <h3>Honda CB750 Café Celeste</h3>
-    <p class="precio">S/25</p>
-    <p>Disponible</p>
-   <button onclick="window.open('https://wa.me/51921797846?text=Hola%2C%20estoy%20interesado%20en%20la%20Honda%20CB750%20Caf%C3%A9%20Roja%20de%20S%2F25.%20%C2%BFEst%C3%A1%20disponible%3F', '_blank')">
-    Consultar por WhatsApp
-</button>
-</div>
+        <article class="tarjeta">
+            <img src="fotos/hotwheels/motos/honda cb750 celeste.png"
+                 alt="Honda CB750 celeste"
+                 onclick="verImagen(this.src)">
+            <h3>Honda CB750 Celeste</h3>
+            <div class="precio">S/ 9</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Honda CB750 Celeste',9)">
+                Consultar por WhatsApp
+            </button>
+        </article>
 
-        <div class="tarjeta">
-    <img src="fotos/hotwheels/1966 triumph tiger 100.jpeg" alt="1966 Triumph Tiger 100">
-    <h3>1966 Triumph Tiger 100</h3>
-    <p class="precio">S/30</p>
-    <p>Disponible</p>
-    <button onclick="window.open('https://wa.me/51921797846?text=Hola%2C%20estoy%20interesado%20en%20la%20Honda%20CB750%20Caf%C3%A9%20Roja%20de%20S%2F25.%20%C2%BFEst%C3%A1%20disponible%3F', '_blank')">
-    Consultar por WhatsApp
-</button>
-</div>
+        <article class="tarjeta">
+            <img src="fotos/hotwheels/motos/triumph street triple rs.png"
+                 alt="Triumph Street Triple RS"
+                 onclick="verImagen(this.src)">
+            <h3>Triumph Street Triple RS</h3>
+            <div class="precio">S/ 9</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Triumph Street Triple RS',9)">
+                Consultar por WhatsApp
+            </button>
+        </article>
 
-        <div class="tarjeta">
-    <img src="fotos/hotwheels/honda vfr750r rc30.jpeg" alt="Honda VFR750R RC30">
-    <h3>Honda VFR750R RC30</h3>
-    <p class="precio">S/30</p>
-    <p>Disponible</p>
-    <button onclick="window.open('https://wa.me/51921797846?text=Hola%2C%20estoy%20interesado%20en%20la%20Honda%20CB750%20Caf%C3%A9%20Roja%20de%20S%2F25.%20%C2%BFEst%C3%A1%20disponible%3F', '_blank')">
-    Consultar por WhatsApp
-</button>
-</div>
+        <article class="tarjeta">
+            <img src="fotos/hotwheels/motos/honda vfr750r.png"
+                 alt="Honda VFR750R"
+                 onclick="verImagen(this.src)">
+            <h3>Honda VFR750R</h3>
+            <div class="precio">S/ 9</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Honda VFR750R',9)">
+                Consultar por WhatsApp
+            </button>
+        </article>
 
     </div>
-
 </section>
 
+<!-- ==========================================
+     MOTOS A ESCALA
+========================================== -->
+
+<section id="motos-escala" class="productos">
 
     <h2>🏍️ Motos a escala</h2>
-    <section id="motos-escala" class="productos">
 
     <div class="tarjetas">
 
-        <div class="tarjeta">
-    <div class="carrusel">
-
-        <button class="flecha izquierda" onclick="cambiarFoto(this, -1)">❮</button>
-
-        <img 
-            class="foto-carrusel"
-            src="fotos/escala/yamaha 2.png"
-            alt="Yamaha R1 escala 1:9"
-            data-fotos='[
-                "fotos/escala/yamaha1.png",
-                "fotos/escala/yamaha 2.png"
-            ]'
-        >
-
-        <button class="flecha derecha" onclick="cambiarFoto(this, 1)">❯</button>
-
-        <div class="indicadores">
-            <span class="punto activo"></span>
-            <span class="punto"></span>
-        </div>
-
-    </div>
-
-    <h3>Yamaha R1 escala 1:9</h3>
-
-    <p class="precio">S/110</p>
-
-    <p>Disponible</p>
-
-    <button onclick="window.open('https://wa.me/51921797846?text=Hola%2C%20estoy%20interesado%20en%20la%20Yamaha%20R1%20escala%201%3A9')">
-        Consultar por WhatsApp
-    </button>
-
-        </div>
-   
-        <div class="tarjeta">
-
-            <div class="carrusel">
-
-    <button class="flecha izquierda" onclick="cambiarFoto(this, -1)">❮</button>
-
-    <img class="foto-carrusel"
-src="fotos/escala/kawasaki lado 2.png"
-alt="Kawasaki H2R 1:9"
-data-fotos='["fotos/escala/kawasaki lado 2.png","fotos/escala/kawasaki lado 1.png","fotos/escala/kawasaki lado 3.png"]'>
-    <button class="flecha derecha" onclick="cambiarFoto(this, 1)">❯</button>
-
-    <div class="indicadores">
-        <span class="punto activo"></span>
-        <span class="punto"></span>
-        <span class="punto"></span>
-    </div>
-
-</div>
-
-            <h3>Kawasaki H2R escala 1:9</h3>
-
-            <p class="precio">S/110</p>
-
-            <p>Disponible</p>
-
-            <button onclick="window.open('https://wa.me/51921797846?text=Hola%2C%20estoy%20interesado%20en%20la%20Kawasaki%20H2R%20escala%201%3A9', '_blank')">
+        <article class="tarjeta">
+            <img src="fotos/escala/yamaha r1 1 12.png"
+                 alt="Yamaha R1 escala 1:12"
+                 onclick="verImagen(this.src)">
+            <h3>Yamaha R1 escala 1:12</h3>
+            <div class="precio">S/ 55</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Yamaha R1 escala 1:12',55)">
                 Consultar por WhatsApp
             </button>
+        </article>
+
+        <article class="tarjeta">
+            <img src="fotos/escala/honda cbr 1000 rr 1 12.png"
+                 alt="Honda CBR 1000 RR escala 1:12"
+                 onclick="verImagen(this.src)">
+            <h3>Honda CBR 1000 RR escala 1:12</h3>
+            <div class="precio">S/ 55</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Honda CBR 1000 RR escala 1:12',55)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+        <article class="tarjeta">
+            <img src="fotos/escala/dukati escala 1 12.png"
+                 alt="Ducati escala 1:12"
+                 onclick="verImagen(this.src)">
+            <h3>Ducati escala 1:12</h3>
+            <div class="precio">S/ 55</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Ducati escala 1:12',55)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+        <article class="tarjeta">
+            <img src="fotos/escala/kawasaki ninja zx10r 1 12.png"
+                 alt="Kawasaki Ninja ZX10R escala 1:12"
+                 onclick="verImagen(this.src)">
+            <h3>Kawasaki Ninja ZX10R escala 1:12</h3>
+            <div class="precio">S/ 55</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Kawasaki Ninja ZX10R escala 1:12',55)">
+                Consultar por WhatsApp
+            </button>
+        </article>
 
     </div>
-
-<div class="tarjeta">
-
-    <div class="carousel">
-
-        <img
-      class="foto-carrusel"
-      src="fotos/escala/dukati escala 1 12.png"
-      alt="Ducati escala 1:12"
->
-        >
-
-    </div>
-
-    <h3>Ducati escala 1:12</h3>
-
-    <p class="precio">S/25</p>
-
-    <p>Disponible</p>
-
-    <button onclick="window.open('https://wa.me/51921797846?text=Hola%2C%20estoy%20interesado%20en%20la%20Ducati%20escala%201%3A10')">
-        Consultar por WhatsApp
-    </button>
-
-</div>
-<div class="tarjeta">
-
-    <div class="carousel">
-
-        <img
-            class="foto-carrusel"
-            src="fotos/escala/biker.jpeg"
-            alt="Moto simulación Kawasaki con muñeco Biker"
-        >
-
-    </div>
-
-    <h3>Moto simulación Kawasaki con muñeco Biker</h3>
-
-    <p class="precio">S/45</p>
-
-    <p>Disponible</p>
-
-    <button onclick="window.open('https://wa.me/51921797846?text=Hola%2C%20estoy%20interesado%20en%20la%20moto%20simulación%20Kawasaki%20con%20muñeco%20Biker')">
-        Consultar por WhatsApp
-    </button>
-
-</div>
-<div class="tarjeta">
-
-    <div class="carousel">
-
-        <img
-            class="foto-carrusel"
-            src="fotos/escala/BMW.jpeg"
-            alt="BMW escala"
-        >
-
-    </div>
-
-    <h3>BMW escala</h3>
-
-    <p class="precio">S/30</p>
-
-    <p>Disponible</p>
-
-    <button onclick="window.open('https://wa.me/51921797846?text=Hola%2C%20estoy%20interesado%20en%20la%20BMW%20escala')">
-        Consultar por WhatsApp
-    </button>
-
-</div>
-<div class="tarjeta">
-
-    <div class="carousel">
-
-        <img
-            class="foto-carrusel"
-            src="fotos/escala/ducati.jpeg"
-            alt="Ducati escala"
-
-    </div>
-
-    <h3>Ducati escala</h3>
-
-    <p class="precio">S/30</p>
-
-    <p>Disponible</p>
-
-    <button onclick="window.open('https://wa.me/51921797846?text=Hola%2C%20estoy%20interesado%20en%20la%20Ducati%20escala')">
-        Consultar por WhatsApp
-    </button>
-
-</div>
-<div class="tarjeta">
-
-    <div class="carousel">
-
-        <img
-            class="foto-carrusel"
-            src="fotos/escala/kawasaki.jpeg"
-            alt="Kawasaki escala"
-            data-fotos='[
-                "fotos/escala/kawasaki.jpeg",
-                "fotos/escala/kawasaki blanca.jpeg"
-            ]'
-        >
-
-    </div>
-
-    <h3>Kawasaki escala</h3>
-
-    <p class="precio">S/30</p>
-
-    <p>Disponible</p>
-
-    <button onclick="window.open('https://wa.me/51921797846?text=Hola%2C%20estoy%20interesado%20en%20la%20Kawasaki%20escala')">
-        Consultar por WhatsApp
-    </button>
-
-</div>
-</div>
 </section>
+
+<!-- ==========================================
+     CARRITOS A ESCALA
+========================================== -->
+
 <section id="carritos-escala" class="productos">
 
     <h2>🚗 Carritos a escala</h2>
 
     <div class="tarjetas">
 
-        <div class="tarjeta">
-
-            <div class="carousel">
-
-                <button class="flecha izquierda" onclick="cambiarFoto(this, -1)">‹</button>
-
-                <img
-                    class="foto-carrusel"
-                    src="fotos/carritos/lado 1.png"
-                    alt="Carrito Die-Cast escala 1:32"
-                    data-fotos='[
-                        "fotos/carritos/lado 1.png",
-                        "fotos/carritos/lado 2.png",
-                        "fotos/carritos/lado 3.png"
-                    ]'
-                >
-
-                <button class="flecha derecha" onclick="cambiarFoto(this, 1)">›</button>
-
-                <div class="indicadores">
-                    <span class="punto activo"></span>
-                    <span class="punto"></span>
-                    <span class="punto"></span>
-                </div>
-
-            </div>
-
-            <h3>Carrito Die-Cast escala 1:32</h3>
-
-            <p class="precio">S/50</p>
-
-            <p>Disponible</p>
-
-            <button onclick="window.open('https://wa.me/51921797846?text=Hola%2C%20estoy%20interesado%20en%20el%20carrito%20Die-Cast%20escala%201%3A32')">
+        <article class="tarjeta">
+            <img src="fotos/escala/ferrari laferrari 1 18.png"
+                 alt="Ferrari LaFerrari escala"
+                 onclick="verImagen(this.src)">
+            <h3>Ferrari LaFerrari</h3>
+            <div class="precio">S/ 75</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Ferrari LaFerrari',75)">
                 Consultar por WhatsApp
             </button>
+        </article>
 
-        </div>
+        <article class="tarjeta">
+            <img src="fotos/escala/lamborghini sian 1 18.png"
+                 alt="Lamborghini Sian escala"
+                 onclick="verImagen(this.src)">
+            <h3>Lamborghini Sian</h3>
+            <div class="precio">S/ 75</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Lamborghini Sian',75)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+        <article class="tarjeta">
+            <img src="fotos/escala/porsche 911 gt3 rs 1 18.png"
+                 alt="Porsche 911 GT3 RS escala"
+                 onclick="verImagen(this.src)">
+            <h3>Porsche 911 GT3 RS</h3>
+            <div class="precio">S/ 75</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Porsche 911 GT3 RS',75)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+        <article class="tarjeta">
+            <img src="fotos/escala/mercedes amg gt 1 18.png"
+                 alt="Mercedes AMG GT escala"
+                 onclick="verImagen(this.src)">
+            <h3>Mercedes AMG GT</h3>
+            <div class="precio">S/ 75</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Mercedes AMG GT',75)">
+                Consultar por WhatsApp
+            </button>
+        </article>
 
     </div>
-    </section>
+</section>
+<!-- ==========================================
+     CARRITOS HOT WHEELS - S/ 9
+========================================== -->
 
 <section id="carritos-hotwheels" class="productos">
 
-    <h2>🚘 Carritos Hot Wheels</h2>
+    <h2>🚗 Hot Wheels Básicos — S/ 9</h2>
 
     <div class="tarjetas">
 
-        <div class="tarjeta">
-
-            <img src="fotos/carritos9soles/8 crate.png" alt="8 Crate Hot Wheels">
-
+        <article class="tarjeta">
+            <img src="fotos/hotwheels/carritos/8 Crate.png"
+                 alt="8 Crate"
+                 onclick="verImagen(this.src)">
             <h3>8 Crate</h3>
-
-            <p class="precio">S/9</p>
-
-            <p>Disponible</p>
-
-            <button onclick="window.open('https://wa.me/51921797846?text=Hola%20estoy%20interesado%20en%20el%208%20Crate%20Hot%20Wheels')">
+            <div class="precio">S/ 9</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('8 Crate',9)">
                 Consultar por WhatsApp
             </button>
+        </article>
 
-        </div>
+        <article class="tarjeta">
+            <img src="fotos/hotwheels/carritos/20 Dodge Charger Hellcat.png"
+                 alt="20 Dodge Charger Hellcat"
+                 onclick="verImagen(this.src)">
+            <h3>20 Dodge Charger Hellcat</h3>
+            <div class="precio">S/ 9</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('20 Dodge Charger Hellcat',9)">
+                Consultar por WhatsApp
+            </button>
+        </article>
 
-    <div class="tarjeta">
-    <img src="fotos/carritos9soles/20 dodge charger hellcat.png" alt="20 Dodge Charger Hellcat">
-    <h3>20 Dodge Charger Hellcat</h3>
-    <p class="precio">S/9</p>
-    <p>Disponible</p>
-    <button onclick="window.open('https://wa.me/51921797846?text=Hola%20estoy%20interesado%20en%20el%20Hot%20Wheels%2020%20Dodge%20Charger%20Hellcat')">
-        Consultar por WhatsApp
-    </button>
-</div>
+        <article class="tarjeta">
+            <img src="fotos/hotwheels/carritos/33 Ford Lo Boy.png"
+                 alt="33 Ford Lo Boy"
+                 onclick="verImagen(this.src)">
+            <h3>33 Ford Lo Boy</h3>
+            <div class="precio">S/ 9</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('33 Ford Lo Boy',9)">
+                Consultar por WhatsApp
+            </button>
+        </article>
 
-<div class="tarjeta">
-    <img src="fotos/carritos9soles/33 ford lo boy.png" alt="33 Ford Lo Boy">
-    <h3>33 Ford Lo Boy</h3>
-    <p class="precio">S/9</p>
-    <p>Disponible</p>
-    <button onclick="window.open('https://wa.me/51921797846?text=Hola%20estoy%20interesado%20en%20el%20Hot%20Wheels%2033%20Ford%20Lo%20Boy')">
-        Consultar por WhatsApp
-    </button>
-</div>
+        <article class="tarjeta">
+            <img src="fotos/hotwheels/carritos/83 Chevy Silverado.png"
+                 alt="83 Chevy Silverado"
+                 onclick="verImagen(this.src)">
+            <h3>83 Chevy Silverado</h3>
+            <div class="precio">S/ 9</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('83 Chevy Silverado',9)">
+                Consultar por WhatsApp
+            </button>
+        </article>
 
-<div class="tarjeta">
-    <img src="fotos/carritos9soles/83 chevy silverado black widow.png" alt="83 Chevy Silverado Black Widow">
-    <h3>83 Chevy Silverado Black Widow</h3>
-    <p class="precio">S/9</p>
-    <p>Disponible</p>
-    <button onclick="window.open('https://wa.me/51921797846?text=Hola%20estoy%20interesado%20en%20el%20Hot%20Wheels%2083%20Chevy%20Silverado%20Black%20Widow')">
-        Consultar por WhatsApp
-    </button>
-</div>
+        <article class="tarjeta">
+            <img src="fotos/hotwheels/carritos/BMW 2002.png"
+                 alt="BMW 2002"
+                 onclick="verImagen(this.src)">
+            <h3>BMW 2002</h3>
+            <div class="precio">S/ 9</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('BMW 2002',9)">
+                Consultar por WhatsApp
+            </button>
+        </article>
 
-<div class="tarjeta">
-    <img src="fotos/carritos9soles/83 chevy silverado celeste.png" alt="83 Chevy Silverado Celeste">
-    <h3>83 Chevy Silverado Celeste</h3>
-    <p class="precio">S/9</p>
-    <p>Disponible</p>
-    <button onclick="window.open('https://wa.me/51921797846?text=Hola%20estoy%20interesado%20en%20el%20Hot%20Wheels%2083%20Chevy%20Silverado%20Celeste')">
-        Consultar por WhatsApp
-    </button>
-</div>
+        <article class="tarjeta">
+            <img src="fotos/hotwheels/carritos/Bone Shaker.png"
+                 alt="Bone Shaker"
+                 onclick="verImagen(this.src)">
+            <h3>Bone Shaker</h3>
+            <div class="precio">S/ 9</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Bone Shaker',9)">
+                Consultar por WhatsApp
+            </button>
+        </article>
 
-<div class="tarjeta">
-    <img src="fotos/carritos9soles/83 chevy silverado negro.png" alt="83 Chevy Silverado Negro">
-    <h3>83 Chevy Silverado Negro</h3>
-    <p class="precio">S/9</p>
-    <p>Disponible</p>
-    <button onclick="window.open('https://wa.me/51921797846?text=Hola%20estoy%20interesado%20en%20el%20Hot%20Wheels%2083%20Chevy%20Silverado%20Negro')">
-        Consultar por WhatsApp
-    </button>
-</div>
+        <article class="tarjeta">
+            <img src="fotos/hotwheels/carritos/Ford Model A Custom 31.png"
+                 alt="Ford Model A Custom 31"
+                 onclick="verImagen(this.src)">
+            <h3>Ford Model A Custom 31</h3>
+            <div class="precio">S/ 9</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Ford Model A Custom 31',9)">
+                Consultar por WhatsApp
+            </button>
+        </article>
 
-<div class="tarjeta">
-    <img src="fotos/carritos9soles/bmw 2002.png" alt="BMW 2002">
-    <h3>BMW 2002</h3>
-    <p class="precio">S/9</p>
-    <p>Disponible</p>
-    <button onclick="window.open('https://wa.me/51921797846?text=Hola%20estoy%20interesado%20en%20el%20Hot%20Wheels%20BMW%202002')">
-        Consultar por WhatsApp
-    </button>
-</div>
-<div class="tarjeta">
-    <img src="fotos/carritos9soles/bone shaker.png" alt="Bone Shaker">
-    <h3>Bone Shaker</h3>
-    <p class="precio">S/9</p>
-    <p>Disponible</p>
-    <button onclick="window.open('https://wa.me/51921797846?text=Hola%20estoy%20interesado%20en%20el%20Hot%20Wheels%20BMW%202002')">
-        Consultar por WhatsApp
-    </button>
-</div>
-<div class="tarjeta">
-    <img src="fotos/carritos9soles/bounce´n bass.png" alt="Bounce´n Bass">
-    <h3>Bounce´n Bass</h3>
-    <p class="precio">S/9</p>
-    <p>Disponible</p>
-    <button onclick="window.open('https://wa.me/51921797846?text=Hola%20estoy%20interesado%20en%20el%20Hot%20Wheels%20BMW%202002')">
-        Consultar por WhatsApp
-    </button>
-</div>
-<div class="tarjeta">
-    <img src="fotos/carritos9soles/buns of steel.png" alt="Buns Of Steel">
-    <h3>Buns Of Steel</h3>
-    <p class="precio">S/9</p>
-    <p>Disponible</p>
-    <button onclick="window.open('https://wa.me/51921797846?text=Hola%20estoy%20interesado%20en%20el%20Hot%20Wheels%20BMW%202002')">
-        Consultar por WhatsApp
-    </button>
+        <article class="tarjeta">
+            <img src="fotos/hotwheels/carritos/Instant Boost.png"
+                 alt="Instant Boost"
+                 onclick="verImagen(this.src)">
+            <h3>Instant Boost</h3>
+            <div class="precio">S/ 9</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Instant Boost',9)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+        <article class="tarjeta">
+            <img src="fotos/hotwheels/carritos/La Troca.png"
+                 alt="La Troca"
+                 onclick="verImagen(this.src)">
+            <h3>La Troca</h3>
+            <div class="precio">S/ 9</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('La Troca',9)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+        <article class="tarjeta">
+            <img src="fotos/hotwheels/carritos/Mazda Repu.png"
+                 alt="Mazda Repu"
+                 onclick="verImagen(this.src)">
+            <h3>Mazda Repu</h3>
+            <div class="precio">S/ 9</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Mazda Repu',9)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
     </div>
-<div class="tarjeta">
-    <img src="fotos/carritos9soles/decifely go.png" alt="Decidely Go">
-    <h3>Decidely Go</h3>
-    <p class="precio">S/9</p>
-    <p>Disponible</p>
-    <button onclick="window.open('https://wa.me/51921797846?text=Hola%20estoy%20interesado%20en%20el%20Hot%20Wheels%20BMW%202002')">
-        Consultar por WhatsApp
-    </button>
-</div>
-<div class="tarjeta">
-    <img src="fotos/carritos9soles/deora ii.png" alt="Deora II">
-    <h3>Deora II</h3>
-    <p class="precio">S/9</p>
-    <p>Disponible</p>
-    <button onclick="window.open('https://wa.me/51921797846?text=Hola%20estoy%20interesado%20en%20el%20Hot%20Wheels%20BMW%202002')">
-        Consultar por WhatsApp
-    </button>
-</div>
-<div class="tarjeta">
-    <img src="fotos/carritos9soles/deora too´nd.png" alt="Deora Too´HD">
-    <h3>Deora Too´Hd</h3>
-    <p class="precio">S/9</p>
-    <p>Disponible</p>
-    <button onclick="window.open('https://wa.me/51921797846?text=Hola%20estoy%20interesado%20en%20el%20Hot%20Wheels%20BMW%202002')">
-        Consultar por WhatsApp
-    </button>
-</div>
-<div class="tarjeta">
-    <img src="fotos/carritos9soles/fiat beast of turin.png" alt="Fiat Beast Of Turin">
-    <h3>Fiat Beast Of Turin</h3>
-    <p class="precio">S/9</p>
-    <p>Disponible</p>
-    <button onclick="window.open('https://wa.me/51921797846?text=Hola%20estoy%20interesado%20en%20el%20Hot%20Wheels%20BMW%202002')">
-        Consultar por WhatsApp
-    </button>
-</div>
-<div class="tarjeta">
-    <img src="fotos/carritos9soles/ford model a custom 31.png" alt="Ford Model a Custom 31">
-    <h3>Ford Model a Custom 31</h3>
-    <p class="precio">S/9</p>
-    <p>Disponible</p>
-    <button onclick="window.open('https://wa.me/51921797846?text=Hola%20estoy%20interesado%20en%20el%20Hot%20Wheels%20BMW%202002')">
-        Consultar por WhatsApp
-    </button>
-</div>
-<div class="tarjeta">
-
-    <img src="fotos/carritos9soles/instant boost.png" alt="Instant Boost Hot Wheels">
-
-    <h3>Instant Boost</h3>
-
-    <p class="precio">S/9</p>
-
-    <p>Disponible</p>
-
-    <button onclick="window.open('https://wa.me/51921797846?text=Hola%2C%20estoy%20interesado%20en%20el%20Instant%20Boost')">
-        Consultar por WhatsApp
-    </button>
-
-</div>
-
-<div class="tarjeta">
-
-    <img src="fotos/carritos9soles/la troca.png" alt="La Troca Hot Wheels">
-
-    <h3>La Troca</h3>
-
-    <p class="precio">S/9</p>
-
-    <p>Disponible</p>
-
-    <button onclick="window.open('https://wa.me/51921797846?text=Hola%2C%20estoy%20interesado%20en%20La%20Troca')">
-        Consultar por WhatsApp
-    </button>
-
-</div>
-
-<div class="tarjeta">
-
-    <img src="fotos/carritos9soles/mazda repu.png" alt="Mazda Repu Hot Wheels">
-
-    <h3>Mazda Repu</h3>
-
-    <p class="precio">S/9</p>
-
-    <p>Disponible</p>
-
-    <button onclick="window.open('https://wa.me/51921797846?text=Hola%2C%20estoy%20interesado%20en%20el%20Mazda%20Repu')">
-        Consultar por WhatsApp
-    </button>
-
-</div>
-
-<div class="tarjeta">
-
-    <img src="fotos/carritos9soles/mazda rx-3.png" alt="Mazda RX-3 Hot Wheels">
-
-    <h3>Mazda RX-3</h3>
-
-    <p class="precio">S/9</p>
-
-    <p>Disponible</p>
-
-    <button onclick="window.open('https://wa.me/51921797846?text=Hola%2C%20estoy%20interesado%20en%20el%20Mazda%20RX-3')">
-        Consultar por WhatsApp
-    </button>
-
-</div>
-
-<div class="tarjeta">
-
-    <img src="fotos/carritos9soles/mid mill.png" alt="Mid Mill Hot Wheels">
-
-    <h3>Mid Mill</h3>
-
-    <p class="precio">S/9</p>
-
-    <p>Disponible</p>
-
-    <button onclick="window.open('https://wa.me/51921797846?text=Hola%2C%20estoy%20interesado%20en%20el%20Mid%20Mill')">
-        Consultar por WhatsApp
-    </button>
-
-</div>
-
-<div class="tarjeta">
-
-    <img src="fotos/carritos9soles/morgan super 3  roja.png" alt="Morgan Super 3 Roja Hot Wheels">
-
-    <h3>Morgan Super 3 Roja</h3>
-
-    <p class="precio">S/9</p>
-
-    <p>Disponible</p>
-
-    <button onclick="window.open('https://wa.me/51921797846?text=Hola%2C%20estoy%20interesado%20en%20el%20Morgan%20Super%203%20Roja')">
-        Consultar por WhatsApp
-    </button>
-
-</div>
-
-<div class="tarjeta">
-
-    <img src="fotos/carritos9soles/morgan super 3 plomo.png" alt="Morgan Super 3 Plomo Hot Wheels">
-
-    <h3>Morgan Super 3 Plomo</h3>
-
-    <p class="precio">S/9</p>
-
-    <p>Disponible</p>
-
-    <button onclick="window.open('https://wa.me/51921797846?text=Hola%2C%20estoy%20interesado%20en%20el%20Morgan%20Super%203%20Plomo')">
-        Consultar por WhatsApp
-    </button>
-
-</div>
-
-<div class="tarjeta">
-
-    <img src="fotos/carritos9soles/pedal driver.png" alt="Pedal Driver Hot Wheels">
-
-    <h3>Pedal Driver</h3>
-
-    <p class="precio">S/9</p>
-
-    <p>Disponible</p>
-
-    <button onclick="window.open('https://wa.me/51921797846?text=Hola%2C%20estoy%20interesado%20en%20el%20Pedal%20Driver')">
-        Consultar por WhatsApp
-    </button>
-
-</div>
-
-<div class="tarjeta">
-
-    <img src="fotos/carritos9soles/rapid pulse.png" alt="Rapid Pulse Hot Wheels">
-
-    <h3>Rapid Pulse</h3>
-
-    <p class="precio">S/9</p>
-
-    <p>Disponible</p>
-
-    <button onclick="window.open('https://wa.me/51921797846?text=Hola%2C%20estoy%20interesado%20en%20el%20Rapid%20Pulse')">
-        Consultar por WhatsApp
-    </button>
-
-</div>
-
-<div class="tarjeta">
-
-    <img src="fotos/carritos9soles/screamliner.png" alt="Screamliner Hot Wheels">
-
-    <h3>Screamliner</h3>
-
-    <p class="precio">S/9</p>
-
-    <p>Disponible</p>
-
-    <button onclick="window.open('https://wa.me/51921797846?text=Hola%2C%20estoy%20interesado%20en%20el%20Screamliner')">
-        Consultar por WhatsApp
-    </button>
-
-</div>
-
-<div class="tarjeta">
-
-    <img src="fotos/carritos9soles/tooned purple passion.png" alt="Tooned Purple Passion Hot Wheels">
-
-    <h3>Tooned Purple Passion</h3>
-
-    <p class="precio">S/9</p>
-
-    <p>Disponible</p>
-
-    <button onclick="window.open('https://wa.me/51921797846?text=Hola%2C%20estoy%20interesado%20en%20el%20Tooned%20Purple%20Passion')">
-        Consultar por WhatsApp
-    </button>
-
-</div>
-
-<div class="tarjeta">
-
-    <img src="fotos/carritos9soles/vairstrike.png" alt="Vairstrike Hot Wheels">
-
-    <h3>Vairstrike</h3>
-
-    <p class="precio">S/9</p>
-
-    <p>Disponible</p>
-
-    <button onclick="window.open('https://wa.me/51921797846?text=Hola%2C%20estoy%20interesado%20en%20el%20Vairstrike')">
-        Consultar por WhatsApp
-    </button>
-
-</div>
 </section>
+
+
+<!-- ==========================================
+     PREMIUM
+========================================== -->
+
+<section id="premium" class="productos">
+
+    <h2>⭐ Hot Wheels Premium</h2>
+
+    <div class="tarjetas">
+
+        <article class="tarjeta">
+            <img src="fotos/hotwheels/premium/formula.png"
+                 alt="Hot Wheels Formula"
+                 onclick="verImagen(this.src)">
+            <h3>Hot Wheels Formula</h3>
+            <div class="precio">S/ 15</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Hot Wheels Formula',15)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+        <article class="tarjeta">
+            <img src="fotos/hotwheels/premium/ferrari.png"
+                 alt="Ferrari Hot Wheels"
+                 onclick="verImagen(this.src)">
+            <h3>Ferrari</h3>
+            <div class="precio">S/ 15</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Ferrari Hot Wheels',15)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+    </div>
+</section>
+
+
+<!-- ==========================================
+     FUNKOS
+========================================== -->
+
 <section id="funkos" class="productos">
 
     <h2>🎁 Funkos</h2>
 
     <div class="tarjetas">
 
-        <div class="tarjeta">
-            <img src="fotos/funkos/funko1.jpeg" alt="Funko Pop">
+        <article class="tarjeta">
+            <img src="fotos/funkos/funko 1.png"
+                 alt="Funko Pop"
+                 onclick="verImagen(this.src)">
             <h3>Funko Pop</h3>
-            <p class="precio">S/00</p>
-            <p>Disponible</p>
-
-            <button onclick="window.open('https://wa.me/51921797846?text=Hola%20estoy%20interesado%20en%20este%20Funko%20Pop')">
+            <div class="precio">Consultar</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Funko Pop',0)">
                 Consultar por WhatsApp
             </button>
-        </div>
+        </article>
 
     </div>
-
 </section>
+
+
+<!-- ==========================================
+     VISOR DE FOTOS
+========================================== -->
+
+<div id="visor" onclick="cerrarImagen()">
+    <span class="cerrar">&times;</span>
+    <img id="imagenVisor" src="" alt="Imagen ampliada">
+</div>
+
+
+<!-- ==========================================
+     JAVASCRIPT
+========================================== -->
+
 <script>
-document.querySelectorAll('.tarjeta img').forEach(img => {
 
-    img.addEventListener('click', function() {
+const NUMERO_WHATSAPP = "51921797846";
 
-        const ventana = document.createElement('div');
+function consultar(producto, precio) {
 
-        ventana.style.position = 'fixed';
-        ventana.style.top = '0';
-        ventana.style.left = '0';
-        ventana.style.width = '100%';
-        ventana.style.height = '100%';
-        ventana.style.background = 'rgba(0,0,0,0.9)';
-        ventana.style.display = 'flex';
-        ventana.style.alignItems = 'center';
-        ventana.style.justifyContent = 'center';
-        ventana.style.zIndex = '9999';
+    let mensaje;
 
-        // Buscar las fotos del mismo producto
-        let fotos = [];
+    if (precio > 0) {
+        mensaje =
+            "Hola 😊, estoy interesado(a) en el producto: " +
+            producto +
+            " - S/ " +
+            precio +
+            ". ¿Sigue disponible?";
+    } else {
+        mensaje =
+            "Hola 😊, estoy interesado(a) en el producto: " +
+            producto +
+            ". ¿Me pueden indicar el precio y disponibilidad?";
+    }
 
-if (img.dataset.fotos) {
-    fotos = JSON.parse(img.dataset.fotos);
-} else {
-    fotos = [img.src];
+    const url =
+        "https://wa.me/" +
+        NUMERO_WHATSAPP +
+        "?text=" +
+        encodeURIComponent(mensaje);
+
+    window.open(url, "_blank");
 }
 
-        let indiceActual = 0;
 
-        // FOTO GRANDE
-        const fotoGrande = document.createElement('img');
+function verImagen(src) {
 
-        fotoGrande.src = fotos[indiceActual];
+    const visor = document.getElementById("visor");
+    const imagen = document.getElementById("imagenVisor");
 
-        fotoGrande.style.maxWidth = '80%';
-        fotoGrande.style.maxHeight = '85%';
-        fotoGrande.style.objectFit = 'contain';
-        fotoGrande.style.borderRadius = '12px';
+    imagen.src = src;
+    visor.style.display = "flex";
+}
 
-        // FLECHA IZQUIERDA
-        const izquierda = document.createElement('button');
 
-        izquierda.innerHTML = '‹';
+function cerrarImagen() {
 
-        izquierda.style.position = 'absolute';
-        izquierda.style.left = '25px';
-        izquierda.style.top = '50%';
-        izquierda.style.transform = 'translateY(-50%)';
-        izquierda.style.fontSize = '65px';
-        izquierda.style.color = 'white';
-        izquierda.style.background = 'rgba(0,0,0,0.5)';
-        izquierda.style.border = 'none';
-        izquierda.style.cursor = 'pointer';
-        izquierda.style.zIndex = '10001';
-        izquierda.style.borderRadius = '10px';
-        izquierda.style.padding = '0 15px';
+    const visor = document.getElementById("visor");
 
-        // FLECHA DERECHA
-        const derecha = document.createElement('button');
+    visor.style.display = "none";
+    document.getElementById("imagenVisor").src = "";
+}
 
-        derecha.innerHTML = '›';
 
-        derecha.style.position = 'absolute';
-        derecha.style.right = '25px';
-        derecha.style.top = '50%';
-        derecha.style.transform = 'translateY(-50%)';
-        derecha.style.fontSize = '65px';
-        derecha.style.color = 'white';
-        derecha.style.background = 'rgba(0,0,0,0.5)';
-        derecha.style.border = 'none';
-        derecha.style.cursor = 'pointer';
-        derecha.style.zIndex = '10001';
-        derecha.style.borderRadius = '10px';
-        derecha.style.padding = '0 15px';
+document.addEventListener("keydown", function(event) {
 
-        // BOTÓN CERRAR
-        const cerrar = document.createElement('div');
-
-        cerrar.innerHTML = '×';
-
-        cerrar.style.position = 'absolute';
-        cerrar.style.top = '15px';
-        cerrar.style.right = '25px';
-        cerrar.style.fontSize = '45px';
-        cerrar.style.color = 'white';
-        cerrar.style.cursor = 'pointer';
-        cerrar.style.zIndex = '10001';
-
-        // CAMBIAR FOTO
-        function cambiarFoto(direccion) {
-
-            indiceActual += direccion;
-
-            if (indiceActual < 0) {
-                indiceActual = fotos.length - 1;
-            }
-
-            if (indiceActual >= fotos.length) {
-                indiceActual = 0;
-            }
-
-           fotoGrande.src = fotos[indiceActual];
-        }
-
-        izquierda.addEventListener('click', function(e) {
-            e.stopPropagation();
-            cambiarFoto(-1);
-        });
-
-        derecha.addEventListener('click', function(e) {
-            e.stopPropagation();
-            cambiarFoto(1);
-        });
-
-        cerrar.addEventListener('click', function(e) {
-            e.stopPropagation();
-            ventana.remove();
-        });
-
-        ventana.addEventListener('click', function() {
-            ventana.remove();
-        });
-
-        ventana.appendChild(fotoGrande);
-        ventana.appendChild(izquierda);
-        ventana.appendChild(derecha);
-        ventana.appendChild(cerrar);
-
-        document.body.appendChild(ventana);
-    });
+    if (event.key === "Escape") {
+        cerrarImagen();
+    }
 
 });
+
 </script>
+
 </body>
 </html>
