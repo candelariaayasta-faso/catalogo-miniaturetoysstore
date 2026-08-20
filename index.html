@@ -254,12 +254,14 @@ header p {
         font-size: 17px;
     }
 }
-    /* GALERIA DESLIZABLE PARA CELULAR */
+/* GALERIA DESLIZABLE PARA CELULAR */
 .galeria-movil {
     display: flex !important;
     flex-direction: row !important;
-    gap: 10px !important;
+    flex-wrap: nowrap !important;
+    gap: 0 !important;
     width: 100% !important;
+    max-width: 100% !important;
     overflow-x: auto !important;
     overflow-y: hidden !important;
     scroll-snap-type: x mandatory !important;
@@ -272,13 +274,47 @@ header p {
 }
 
 .galeria-movil img {
+    display: block !important;
     flex: 0 0 100% !important;
     width: 100% !important;
+    min-width: 100% !important;
     max-width: 100% !important;
-    height: 230px !important;
+    height: 250px !important;
     object-fit: contain !important;
     scroll-snap-align: start !important;
-    display: block !important;
+    box-sizing: border-box !important;
+}
+
+
+/* CELULAR */
+@media (max-width: 600px) {
+
+    .tarjetas {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 15px !important;
+        width: 100% !important;
+    }
+
+    .tarjeta {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    .galeria-movil {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+    }
+
+    .galeria-movil img {
+        flex: 0 0 100% !important;
+        min-width: 100% !important;
+        width: 100% !important;
+    }
 }
 </style>
 </head>
