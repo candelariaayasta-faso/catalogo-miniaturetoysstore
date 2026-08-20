@@ -254,6 +254,32 @@ header p {
         font-size: 17px;
     }
 }
+    /* GALERIA DESLIZABLE PARA CELULAR */
+.galeria-movil {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 10px !important;
+    width: 100% !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+}
+
+.galeria-movil::-webkit-scrollbar {
+    display: none !important;
+}
+
+.galeria-movil img {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 230px !important;
+    object-fit: contain !important;
+    scroll-snap-align: start !important;
+    display: block !important;
+}
 </style>
 </head>
 
