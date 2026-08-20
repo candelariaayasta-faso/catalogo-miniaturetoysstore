@@ -296,6 +296,189 @@ header p {
     height: 280px;
     margin: 0 auto;
 }
+            /* AJUSTE PARA CELULAR */
+@media (max-width: 600px) {
+
+    .productos {
+        width: calc(100% - 16px) !important;
+        max-width: none !important;
+        padding: 25px 8px !important;
+        margin: 15px auto !important;
+    }
+
+    .tarjetas {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+        width: 100% !important;
+    }
+
+    .tarjeta,
+    #hotwheels .tarjeta,
+    #carritos-hotwheels .tarjeta {
+        width: 100% !important;
+        max-width: none !important;
+        padding: 10px !important;
+        margin: 0 !important;
+    }
+
+    .tarjeta img,
+    #hotwheels .tarjeta img,
+    #carritos-hotwheels .tarjeta img {
+        width: 100% !important;
+        height: 190px !important;
+        object-fit: contain !important;
+    }
+
+    .tarjeta h3 {
+        font-size: 15px !important;
+        line-height: 1.2 !important;
+    }
+
+    .tarjeta .precio {
+        font-size: 21px !important;
+    }
+
+    .tarjeta button {
+        width: 100% !important;
+        padding: 10px 5px !important;
+        font-size: 11px !important;
+    }
+
+    #hotwheels .tarjetas,
+    #carritos-hotwheels .tarjetas {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        width: 100% !important;
+    }
+
+    #hotwheels .tarjeta,
+    #carritos-hotwheels .tarjeta {
+        width: 100% !important;
+    }
+
+    #carritos-hotwheels .tarjeta img {
+        width: 100% !important;
+        height: 190px !important;
+    }
+}
+@media (max-width: 600px) {
+
+    body {
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    header {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 30px 15px;
+    }
+
+    header h1 {
+        font-size: 30px !important;
+    }
+
+    header p {
+        font-size: 14px !important;
+    }
+
+    .categorias {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 20px 10px;
+        gap: 10px;
+    }
+
+    .categoria {
+        font-size: 13px !important;
+        padding: 12px 15px !important;
+    }
+
+    .bienvenida {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 25px 15px;
+    }
+
+    .productos {
+        width: calc(100% - 20px) !important;
+        max-width: none !important;
+        box-sizing: border-box !important;
+        margin: 20px 10px !important;
+        padding: 25px 10px !important;
+    }
+
+    .productos h2 {
+        font-size: 25px !important;
+        margin-bottom: 25px !important;
+    }
+
+    .tarjetas {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .tarjeta,
+    #hotwheels .tarjeta,
+    #carritos-hotwheels .tarjeta {
+        width: 100% !important;
+        max-width: none !important;
+        min-width: 0 !important;
+        padding: 8px !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    .tarjeta img,
+    #hotwheels .tarjeta img,
+    #carritos-hotwheels .tarjeta img {
+        width: 100% !important;
+        height: 180px !important;
+        object-fit: contain !important;
+        box-sizing: border-box !important;
+    }
+
+    .tarjeta h3 {
+        font-size: 14px !important;
+        line-height: 1.2 !important;
+    }
+
+    .tarjeta .precio {
+        font-size: 20px !important;
+    }
+
+    .tarjeta button {
+        width: 100% !important;
+        font-size: 11px !important;
+        padding: 10px 4px !important;
+        box-sizing: border-box !important;
+    }
+
+    #carritos-escala .tarjetas {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+    }
+
+    #carritos-escala .tarjeta {
+        width: 100% !important;
+    }
+
+    .carousel,
+    #carritos-escala .carousel {
+        width: 100% !important;
+        max-width: 260px !important;
+        margin: 0 auto !important;
+    }
+
+    .foto-carrusel {
+        max-width: 100% !important;
+        height: 230px !important;
+        object-fit: contain !important;
+    }
+}
+}
     </style>
 </head>
 
@@ -552,7 +735,6 @@ data-fotos='["fotos/escala/kawasaki lado 2.png","fotos/escala/kawasaki lado 1.pn
             class="foto-carrusel"
             src="fotos/escala/ducati.jpeg"
             alt="Ducati escala"
-        >
 
     </div>
 
@@ -642,6 +824,7 @@ data-fotos='["fotos/escala/kawasaki lado 2.png","fotos/escala/kawasaki lado 1.pn
         </div>
 
     </div>
+    </section>
 
 <section id="carritos-hotwheels" class="productos">
 
