@@ -296,74 +296,16 @@ header p {
     height: 280px;
     margin: 0 auto;
 }
-            /* AJUSTE PARA CELULAR */
-@media (max-width: 600px) {
+/* ================================
+   DISEÑO EXCLUSIVO PARA CELULAR
+   ================================ */
 
-    .productos {
-        width: calc(100% - 16px) !important;
-        max-width: none !important;
-        padding: 25px 8px !important;
-        margin: 15px auto !important;
-    }
-
-    .tarjetas {
-        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-        gap: 10px !important;
-        width: 100% !important;
-    }
-
-    .tarjeta,
-    #hotwheels .tarjeta,
-    #carritos-hotwheels .tarjeta {
-        width: 100% !important;
-        max-width: none !important;
-        padding: 10px !important;
-        margin: 0 !important;
-    }
-
-    .tarjeta img,
-    #hotwheels .tarjeta img,
-    #carritos-hotwheels .tarjeta img {
-        width: 100% !important;
-        height: 190px !important;
-        object-fit: contain !important;
-    }
-
-    .tarjeta h3 {
-        font-size: 15px !important;
-        line-height: 1.2 !important;
-    }
-
-    .tarjeta .precio {
-        font-size: 21px !important;
-    }
-
-    .tarjeta button {
-        width: 100% !important;
-        padding: 10px 5px !important;
-        font-size: 11px !important;
-    }
-
-    #hotwheels .tarjetas,
-    #carritos-hotwheels .tarjetas {
-        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-        width: 100% !important;
-    }
-
-    #hotwheels .tarjeta,
-    #carritos-hotwheels .tarjeta {
-        width: 100% !important;
-    }
-
-    #carritos-hotwheels .tarjeta img {
-        width: 100% !important;
-        height: 190px !important;
-    }
-}
 @media (max-width: 600px) {
 
     body {
         width: 100%;
+        margin: 0;
+        padding: 0;
         overflow-x: hidden;
     }
 
@@ -375,29 +317,42 @@ header p {
 
     header h1 {
         font-size: 30px !important;
+        line-height: 1.2;
     }
 
     header p {
         font-size: 14px !important;
+        line-height: 1.4;
     }
+
+    /* BOTONES DE CATEGORÍAS */
 
     .categorias {
         width: 100%;
         box-sizing: border-box;
-        padding: 20px 10px;
+        padding: 15px 10px;
         gap: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
     .categoria {
         font-size: 13px !important;
         padding: 12px 15px !important;
+        white-space: nowrap;
     }
+
+    /* TEXTO DE BIENVENIDA */
 
     .bienvenida {
         width: 100%;
         box-sizing: border-box;
         padding: 25px 15px;
+        text-align: center;
     }
+
+    /* SECCIÓN DE PRODUCTOS */
 
     .productos {
         width: calc(100% - 20px) !important;
@@ -409,15 +364,19 @@ header p {
 
     .productos h2 {
         font-size: 25px !important;
-        margin-bottom: 25px !important;
+        line-height: 1.2;
+        margin-bottom: 25px;
+        text-align: center;
     }
+
+    /* TODAS LAS TARJETAS */
 
     .tarjetas {
         display: grid !important;
         grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
         gap: 10px !important;
         width: 100% !important;
-        box-sizing: border-box !important;
+        box-sizing: border-box;
     }
 
     .tarjeta,
@@ -426,58 +385,74 @@ header p {
         width: 100% !important;
         max-width: none !important;
         min-width: 0 !important;
-        padding: 8px !important;
         margin: 0 !important;
+        padding: 8px !important;
         box-sizing: border-box !important;
     }
+
+    /* FOTOS DE LOS PRODUCTOS */
 
     .tarjeta img,
     #hotwheels .tarjeta img,
     #carritos-hotwheels .tarjeta img {
+        display: block;
         width: 100% !important;
-        height: 180px !important;
+        height: 190px !important;
         object-fit: contain !important;
-        box-sizing: border-box !important;
+        box-sizing: border-box;
     }
+
+    /* NOMBRE DEL PRODUCTO */
 
     .tarjeta h3 {
         font-size: 14px !important;
         line-height: 1.2 !important;
+        text-align: center;
+        margin: 10px 0;
     }
+
+    /* PRECIO */
 
     .tarjeta .precio {
         font-size: 20px !important;
+        text-align: center;
     }
+
+    /* BOTÓN WHATSAPP */
 
     .tarjeta button {
         width: 100% !important;
+        box-sizing: border-box !important;
         font-size: 11px !important;
         padding: 10px 4px !important;
-        box-sizing: border-box !important;
     }
+
+    /* MOTOS A ESCALA */
 
     #carritos-escala .tarjetas {
         display: grid !important;
         grid-template-columns: 1fr !important;
+        gap: 15px !important;
     }
 
     #carritos-escala .tarjeta {
         width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
     }
 
-    .carousel,
     #carritos-escala .carousel {
         width: 100% !important;
-        max-width: 260px !important;
+        max-width: none !important;
         margin: 0 auto !important;
     }
 
     .foto-carrusel {
+        width: 100% !important;
         max-width: 100% !important;
         height: 230px !important;
         object-fit: contain !important;
     }
-}
 }
     </style>
 </head>
