@@ -1409,6 +1409,62 @@ function enviarPedidoWhatsApp() {
         "_blank"
     );
 }
+    /* =========================================
+   AGREGAR BOTÓN DE CARRITO A TODOS
+   ========================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    document.querySelectorAll(".tarjeta").forEach(function (tarjeta) {
+
+        // Evitar que se cree el botón dos veces
+        if (tarjeta.querySelector(".btn-carrito")) {
+            return;
+        }
+
+        const botonWhatsApp = tarjeta.querySelector(".btn-whatsapp");
+
+        if (!botonWhatsApp) {
+            return;
+        }
+
+        // Obtener nombre y precio de la tarjeta
+        const nombreElemento = tarjeta.querySelector("h3");
+        const precioElemento = tarjeta.querySelector(".precio");
+
+        if (!nombreElemento || !precioElemento) {
+            return;
+        }
+
+        const nombre = nombreElemento.textContent.trim();
+
+        const precioTexto = precioElemento.textContent
+            .replace("S/", "")
+            .replace("S/", "")
+            .trim();
+
+        const precio = parseFloat(precioTexto);
+
+        if (isNaN(precio)) {
+            return;
+        }
+
+        // Crear botón
+        const botonCarrito = document.createElement("button");
+
+        botonCarrito.className = "btn-carrito";
+        botonCarrito.innerHTML = "🛒 Agregar al carrito";
+
+        botonCarrito.onclick = function () {
+            agregarAlCarrito(nombre, precio);
+        };
+
+        // Colocarlo debajo del botón WhatsApp
+        botonWhatsApp.insertAdjacentElement("afterend", botonCarrito);
+
+    });
+
+});
 </script>
 
 </body>
