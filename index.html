@@ -2216,7 +2216,6 @@ document.addEventListener("keydown", function(event) {
     }
 
 });
-    <script>
 /* =========================
    CARRITO DE PEDIDOS
 ========================= */
@@ -2367,8 +2366,9 @@ function enviarPedidoWhatsApp() {
         "https://wa.me/TUNUMERO?text=" + mensaje,
         "_blank"
     );
-}
-    /* =========================================
+}<script>
+
+/* =========================================
    AGREGAR BOTÓN DE CARRITO A TODOS
    ========================================= */
 
@@ -2376,7 +2376,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.querySelectorAll(".tarjeta").forEach(function (tarjeta) {
 
-        // Evitar que se cree el botón dos veces
         if (tarjeta.querySelector(".btn-carrito")) {
             return;
         }
@@ -2387,7 +2386,6 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        // Obtener nombre y precio de la tarjeta
         const nombreElemento = tarjeta.querySelector("h3");
         const precioElemento = tarjeta.querySelector(".precio");
 
@@ -2399,7 +2397,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const precioTexto = precioElemento.textContent
             .replace("S/", "")
-            .replace("S/", "")
             .trim();
 
         const precio = parseFloat(precioTexto);
@@ -2408,7 +2405,6 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        // Crear botón
         const botonCarrito = document.createElement("button");
 
         botonCarrito.className = "btn-carrito";
@@ -2418,12 +2414,12 @@ document.addEventListener("DOMContentLoaded", function () {
             agregarAlCarrito(nombre, precio);
         };
 
-        // Colocarlo debajo del botón WhatsApp
         botonWhatsApp.insertAdjacentElement("afterend", botonCarrito);
 
     });
 
 });
+</script>
 
 </body>
 </html>
