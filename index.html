@@ -325,6 +325,33 @@ header p {
     z-index: 99999 !important;
     cursor: pointer !important;
 }
+    /* 🚗 FORMATO CARRITOS S/15 */
+#carritos-15soles .tarjetas {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 20px !important;
+    width: 100% !important;
+}
+
+#carritos-15soles .tarjeta {
+    width: auto !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+}
+
+@media (max-width: 768px) {
+    #carritos-15soles .tarjetas {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
 </style>
 
 </head>
