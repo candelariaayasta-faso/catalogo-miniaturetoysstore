@@ -325,7 +325,32 @@ header p {
     <h1>Miniature Toys Store</h1>
     <p>✨ Coleccionables, Hot Wheels y modelos a escala ✨</p>
 </header>
+<!-- CARRITO -->
+<div class="carrito-boton" onclick="abrirCarrito()">
+    🛒 Mi carrito
+    <span id="contador-carrito">0</span>
+</div>
 
+<!-- VENTANA DEL CARRITO -->
+<div id="ventana-carrito" class="ventana-carrito">
+
+    <div class="contenido-ventana-carrito">
+
+        <button class="cerrar-carrito" onclick="cerrarCarrito()">✕</button>
+
+        <h2>🛒 Mi carrito</h2>
+
+        <div id="contenido-carrito">
+            <p>Tu carrito está vacío 🛒</p>
+        </div>
+
+    </div>
+
+</div>
+
+<div id="mensaje-carrito" class="mensaje-carrito">
+    ✅ Producto agregado al carrito
+</div>
 <nav class="categorias">
     <a href="#motos-hotwheels" class="categoria">🏍️ Motos Hot Wheels</a>
     <a href="#motos-escala" class="categoria">🏍️ Motos a escala</a>
@@ -1233,7 +1258,157 @@ document.addEventListener("keydown", function(event) {
     }
 
 });
+/* =========================
+   CARRITO DE PEDIDOS
+========================= */
 
+let carrito = [];
+
+function agregarAlCarrito(nombre, precio) {
+    const productoExistente = carrito.find(p => p.nombre === nombre);
+
+    if (productoExistente) {
+        productoExistente.cantidad++;
+    } else {
+        carrito.push({
+            nombre: nombre,
+            precio: precio,
+            cantidad: 1
+        });
+    }
+
+    actualizarCarrito();
+    mostrarMensajeCarrito();
+}
+
+function eliminarDelCarrito(index) {
+    carrito.splice(index, 1);
+    actualizarCarrito();
+}
+
+function cambiarCantidad(index, cambio) {
+    carrito[index].cantidad += cambio;
+
+    if (carrito[index].cantidad <= 0) {
+        carrito.splice(index, 1);
+    }
+
+    actualizarCarrito();
+}
+
+function actualizarCarrito() {
+    const contador = document.getElementById("contador-carrito");
+
+    if (contador) {
+        const cantidadTotal = carrito.reduce(
+            (total, producto) => total + producto.cantidad,
+            0
+        );
+
+        contador.textContent = cantidadTotal;
+    }
+}
+
+function mostrarMensajeCarrito() {
+    const mensaje = document.getElementById("mensaje-carrito");
+
+    if (mensaje) {
+        mensaje.classList.add("mostrar");
+
+        setTimeout(() => {
+            mensaje.classList.remove("mostrar");
+        }, 2000);
+    }
+}
+
+function abrirCarrito() {
+    let contenido = "";
+
+    if (carrito.length === 0) {
+        contenido = "<p>Tu carrito está vacío 🛒</p>";
+    } else {
+
+        let total = 0;
+
+        carrito.forEach((producto, index) => {
+
+            const subtotal = producto.precio * producto.cantidad;
+            total += subtotal;
+
+            contenido += `
+                <div class="producto-carrito">
+
+                    <div>
+                        <strong>${producto.nombre}</strong>
+                        <br>
+                        S/ ${producto.precio}
+                    </div>
+
+                    <div class="cantidad-carrito">
+                        <button onclick="cambiarCantidad(${index}, -1)">−</button>
+                        <span>${producto.cantidad}</span>
+                        <button onclick="cambiarCantidad(${index}, 1)">+</button>
+                    </div>
+
+                    <button 
+                        class="eliminar-carrito"
+                        onclick="eliminarDelCarrito(${index})">
+                        ✕
+                    </button>
+
+                </div>
+            `;
+        });
+
+        contenido += `
+            <div class="total-carrito">
+                Total: S/ ${total}
+            </div>
+
+            <button class="btn-enviar-pedido" onclick="enviarPedidoWhatsApp()">
+                📲 Enviar pedido por WhatsApp
+            </button>
+        `;
+    }
+
+    document.getElementById("contenido-carrito").innerHTML = contenido;
+    document.getElementById("ventana-carrito").classList.add("abierto");
+}
+
+function cerrarCarrito() {
+    document.getElementById("ventana-carrito").classList.remove("abierto");
+}
+
+function enviarPedidoWhatsApp() {
+
+    if (carrito.length === 0) {
+        alert("Tu carrito está vacío");
+        return;
+    }
+
+    let mensaje = "🛒 *NUEVO PEDIDO - MINIATURE TOYS STORE*%0A%0A";
+
+    let total = 0;
+
+    carrito.forEach(producto => {
+
+        const subtotal = producto.precio * producto.cantidad;
+        total += subtotal;
+
+        mensaje += `▪️ ${producto.nombre}%0A`;
+        mensaje += `   Cantidad: ${producto.cantidad}%0A`;
+        mensaje += `   Precio: S/ ${producto.precio}%0A`;
+        mensaje += `   Subtotal: S/ ${subtotal}%0A%0A`;
+    });
+
+    mensaje += `💰 *TOTAL: S/ ${total}*%0A%0A`;
+    mensaje += "Hola, quisiera realizar este pedido. 😊";
+
+    window.open(
+        "https://wa.me/TUNUMERO?text=" + mensaje,
+        "_blank"
+    );
+}
 </script>
 
 </body>
