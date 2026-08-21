@@ -554,6 +554,44 @@ header p {
 
     cursor: pointer;
 }
+    /* =========================================
+   🔎 BUSCADOR
+========================================= */
+
+.buscador {
+    width: calc(100% - 20px);
+    margin: 15px auto;
+    display: flex;
+    justify-content: center;
+}
+
+#buscadorProductos {
+    width: 100%;
+    max-width: 500px;
+    padding: 13px 18px;
+    border: 2px solid #ddd;
+    border-radius: 25px;
+    outline: none;
+    font-size: 14px;
+    background: white;
+    box-shadow: 0 3px 10px rgba(0,0,0,.08);
+}
+
+#buscadorProductos:focus {
+    border-color: #111;
+}
+
+@media (max-width: 600px) {
+    .buscador {
+        width: calc(100% - 20px);
+        margin: 12px auto;
+    }
+
+    #buscadorProductos {
+        font-size: 13px;
+        padding: 12px 16px;
+    }
+}
 </style>
 
 </head>
@@ -590,6 +628,14 @@ header p {
 
 <div id="mensaje-carrito" class="mensaje-carrito">
     ✅ Producto agregado al carrito
+</div>
+    <!-- 🔎 BUSCADOR -->
+<div class="buscador">
+    <input
+        type="text"
+        id="buscadorProductos"
+        placeholder="🔎 Buscar carrito, marca o modelo..."
+        oninput="buscarProductos()">
 </div>
 <nav class="categorias">
     <a href="#motos-hotwheels" class="categoria">🏍️ Motos Hot Wheels</a>
@@ -2620,6 +2666,47 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+    <script>
+
+/* =========================================
+   🔎 BUSCADOR DE PRODUCTOS
+========================================= */
+
+function buscarProductos() {
+
+    const texto = document
+        .getElementById("buscadorProductos")
+        .value
+        .toLowerCase()
+        .trim();
+
+    const tarjetas = document.querySelectorAll(".tarjeta");
+
+    tarjetas.forEach(tarjeta => {
+
+        const nombre = tarjeta
+            .querySelector("h3")
+            ?.textContent
+            .toLowerCase() || "";
+
+        const categoria = tarjeta
+            .dataset.categoria
+            ?.toLowerCase() || "";
+
+        if (
+            texto === "" ||
+            nombre.includes(texto) ||
+            categoria.includes(texto)
+        ) {
+            tarjeta.style.display = "";
+        } else {
+            tarjeta.style.display = "none";
+        }
+
+    });
+}
+
+</script>
 </script>
 
 </body>
