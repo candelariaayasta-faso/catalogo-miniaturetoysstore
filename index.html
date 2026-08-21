@@ -727,6 +727,13 @@ header p {
         font-size: 9px !important;
     }
 }
+    /* =========================================
+   🏍️ AJUSTE FOTOS MOTOS A ESCALA
+========================================= */
+
+#motos-escala .tarjeta > img {
+    object-fit: cover !important;
+}
 </style>
 
 </head>
@@ -2799,31 +2806,43 @@ document.addEventListener("DOMContentLoaded", function () {
         botonWhatsApp.insertAdjacentElement("afterend", botonCarrito);
 
     });
-
-});
-
-/* =========================================
+    
+ });
+    
+    /* =========================================
    🔎 BUSCADOR DE PRODUCTOS
 ========================================= */
 
 function buscarProductos() {
 
     const buscador = document.getElementById("buscadorProductos");
-    const texto = buscador.value.toLowerCase().trim();
+
+    if (!buscador) return;
+
+    const texto = buscador.value
+        .toLowerCase()
+        .trim();
 
     const tarjetas = document.querySelectorAll(".tarjeta");
 
     tarjetas.forEach(function(tarjeta) {
 
-        const contenido = tarjeta.textContent.toLowerCase();
+        const nombreElemento = tarjeta.querySelector("h3");
 
-        if (contenido.includes(texto)) {
+        if (!nombreElemento) return;
+
+        const nombre = nombreElemento.textContent
+            .toLowerCase()
+            .trim();
+
+        if (texto === "" || nombre.includes(texto)) {
             tarjeta.style.display = "";
         } else {
             tarjeta.style.display = "none";
         }
 
     });
+
 }
 
 </script>
