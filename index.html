@@ -826,7 +826,112 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid 
     .carrito-boton { right: 14px !important; bottom: 16px !important; padding: 11px 13px; }
     .mensaje-carrito { right: 14px; bottom: 78px; left: 14px; text-align: center; }
 }
-\n/* MINIATURE TOYS THEME */\n:root{--blue:#09aaf5;--purple:#711cff;--pink:#ed0bd2;--yellow:#ffd21c;--dark:#090b22}\nbody{font-family:Inter,system-ui,sans-serif;background:radial-gradient(circle at 10% 0%,#eef8ff,#f7f7fb 55%,#f2f3f8);color:var(--dark)}\nheader{padding:22px 16px 30px;background:linear-gradient(135deg,#070814,#17124d 50%,#071d49);border-bottom:4px solid transparent;border-image:linear-gradient(90deg,var(--blue),var(--pink),var(--yellow)) 1}\n.marca{display:flex;align-items:center;justify-content:center;gap:12px}.logo-principal{width:86px;height:86px;object-fit:contain;filter:drop-shadow(0 6px 12px #0008)}\nheader h1{color:#fff;font-size:clamp(24px,7vw,36px);letter-spacing:-.8px}header p{color:#d9e9ff}\n.categorias{position:sticky;top:0;z-index:20;gap:10px;background:#fffffff2;box-shadow:0 5px 18px #11183f14}.categoria{color:#11183f;background:#eef4ff;border:1px solid #d9e5ff;transition:.2s}.categoria:hover{color:#fff;background:linear-gradient(135deg,var(--purple),var(--blue));transform:translateY(-2px)}\n.bienvenida{background:transparent}.productos{border:1px solid #e7eaf4;box-shadow:0 10px 30px #11183f12}.tarjeta{border-color:#e6e8f1;box-shadow:0 5px 18px #11183f14;transition:.2s}.tarjeta:hover{transform:translateY(-4px);box-shadow:0 12px 25px #11183f26}.tarjeta .precio{color:#4d12bb}.tarjeta .btn-carrito{background:linear-gradient(135deg,#151a4d,#5421bd)!important}\n.buscador{width:calc(100% - 20px);max-width:650px;margin:20px auto 8px}.buscador-contenedor{position:relative;display:flex;align-items:center}.icono-busqueda{position:absolute;left:17px;color:var(--purple);font-size:20px;pointer-events:none}#buscadorProductos{max-width:none;padding:15px 88px 15px 47px;border:2px solid #dce3f5;border-radius:16px;box-shadow:0 8px 22px #3322881a;font-size:15px}#buscadorProductos:focus{border-color:var(--purple);box-shadow:0 0 0 4px #7b18ff22}.btn-limpiar{position:absolute;right:10px;border:0;border-radius:10px;padding:7px 10px;background:#f0edff;color:#5414bd;cursor:pointer;font-weight:700}.btn-limpiar[hidden]{display:none}.resultados-contador{margin:8px 4px 0;color:#667085;font-size:13px;text-align:center}@media(max-width:600px){.marca{align-items:center}.logo-principal{width:70px;height:70px}header h1{font-size:24px}header p{font-size:12px}.categorias{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap}.categoria{flex:0 0 auto}}\n</style>
+
+/* MINIATURE TOYS THEME */
+:root{--blue:#09aaf5;--purple:#711cff;--pink:#ed0bd2;--yellow:#ffd21c;--dark:#090b22}
+body{font-family:Inter,system-ui,sans-serif;background:radial-gradient(circle at 10% 0%,#eef8ff,#f7f7fb 55%,#f2f3f8);color:var(--dark)}
+header{padding:22px 16px 30px;background:linear-gradient(135deg,#070814,#17124d 50%,#071d49);border-bottom:4px solid transparent;border-image:linear-gradient(90deg,var(--blue),var(--pink),var(--yellow)) 1}
+.marca{display:flex;align-items:center;justify-content:center;gap:12px}.logo-principal{width:86px;height:86px;object-fit:contain;filter:drop-shadow(0 6px 12px #0008)}
+header h1{color:#fff;font-size:clamp(24px,7vw,36px);letter-spacing:-.8px}header p{color:#d9e9ff}
+.categorias{position:sticky;top:0;z-index:20;gap:10px;background:#fffffff2;box-shadow:0 5px 18px #11183f14}.categoria{color:#11183f;background:#eef4ff;border:1px solid #d9e5ff;transition:.2s}.categoria:hover{color:#fff;background:linear-gradient(135deg,var(--purple),var(--blue));transform:translateY(-2px)}
+.bienvenida{background:transparent}.productos{border:1px solid #e7eaf4;box-shadow:0 10px 30px #11183f12}.tarjeta{border-color:#e6e8f1;box-shadow:0 5px 18px #11183f14;transition:.2s}.tarjeta:hover{transform:translateY(-4px);box-shadow:0 12px 25px #11183f26}.tarjeta .precio{color:#4d12bb}.tarjeta .btn-carrito{background:linear-gradient(135deg,#151a4d,#5421bd)!important}
+.buscador{width:calc(100% - 20px);max-width:650px;margin:20px auto 8px}.buscador-contenedor{position:relative;display:flex;align-items:center}.icono-busqueda{position:absolute;left:17px;color:var(--purple);font-size:20px;pointer-events:none}#buscadorProductos{max-width:none;padding:15px 88px 15px 47px;border:2px solid #dce3f5;border-radius:16px;box-shadow:0 8px 22px #3322881a;font-size:15px}#buscadorProductos:focus{border-color:var(--purple);box-shadow:0 0 0 4px #7b18ff22}.btn-limpiar{position:absolute;right:10px;border:0;border-radius:10px;padding:7px 10px;background:#f0edff;color:#5414bd;cursor:pointer;font-weight:700}.btn-limpiar[hidden]{display:none}.resultados-contador{margin:8px 4px 0;color:#667085;font-size:13px;text-align:center}@media(max-width:600px){.marca{align-items:center}.logo-principal{width:70px;height:70px}header h1{font-size:24px}header p{font-size:12px}.categorias{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap}.categoria{flex:0 0 auto}}
+
+/* ===== GALERIAS MULTIFOTO: DESLIZAMIENTO RESTAURADO ===== */
+.galeria-movil {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-snap-type: x mandatory !important;
+    scroll-behavior: smooth !important;
+    -webkit-overflow-scrolling: touch !important;
+    touch-action: pan-x !important;
+    cursor: grab !important;
+    scrollbar-width: none !important;
+}
+.galeria-movil:active { cursor: grabbing !important; }
+.galeria-movil::-webkit-scrollbar { display: none !important; }
+.galeria-movil > img {
+    display: block !important;
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    object-fit: contain !important;
+    scroll-snap-align: center !important;
+    user-select: none !important;
+    -webkit-user-drag: none !important;
+}
+
+/* ===== IDENTIDAD VISUAL COMPLETA ===== */
+body {
+    background:
+        radial-gradient(circle at 8% 4%, rgba(9,170,245,.28), transparent 28%),
+        radial-gradient(circle at 92% 20%, rgba(237,11,210,.22), transparent 30%),
+        linear-gradient(145deg, #08091c 0%, #111443 42%, #24104b 72%, #071d49 100%);
+    color: #f8faff;
+}
+.bienvenida { color:#e5ebff; }
+.bienvenida h2, .productos h2 { color:#ffffff; text-shadow:0 2px 14px rgba(9,170,245,.28); }
+.productos { background:rgba(255,255,255,.94); color:#10132f; border:1px solid rgba(9,170,245,.3); box-shadow:0 14px 36px rgba(0,0,0,.26), 0 0 0 1px rgba(237,11,210,.08); }
+.productos h2 { color:#17144b; text-shadow:none; }
+.tarjeta { background:linear-gradient(145deg,#ffffff 0%,#f4f5ff 68%,#edf8ff 100%); border:1px solid #cfd8ff; box-shadow:0 7px 20px rgba(15,19,71,.18); }
+.tarjeta:hover { box-shadow:0 14px 28px rgba(9,170,245,.25),0 0 0 2px rgba(237,11,210,.18); }
+.categorias { background:rgba(8,9,28,.92); border-bottom:1px solid rgba(9,170,245,.35); }
+.categoria { color:#eef4ff; background:linear-gradient(135deg,#171957,#3a1474); border-color:#5e55ce; }
+.categoria:hover,.categoria:focus-visible { background:linear-gradient(135deg,var(--blue),var(--pink)); color:#fff; }
+.subcategorias { width:calc(100% - 20px); max-width:760px; margin:12px auto 18px; padding:12px; display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:8px; border:1px solid rgba(9,170,245,.42); border-radius:16px; background:linear-gradient(135deg,rgba(20,22,75,.96),rgba(70,14,103,.94)); box-shadow:0 10px 28px rgba(0,0,0,.24); }
+.subcategorias-titulo { color:#ffe04a; font-weight:800; margin-right:4px; }
+.subcategorias a { color:#fff; text-decoration:none; padding:8px 11px; border-radius:999px; background:linear-gradient(135deg,#153d86,#7516a7); border:1px solid rgba(255,255,255,.24); font-size:12px; font-weight:700; transition:.2s; }
+.subcategorias a:hover,.subcategorias a:focus-visible { background:linear-gradient(135deg,#08aaf5,#ed0bd2); transform:translateY(-2px); }
+.buscador-contenedor { background:rgba(255,255,255,.1); border-radius:18px; padding:3px; }
+#buscadorProductos { background:#fff; }
+.carrito-boton { background:linear-gradient(135deg,#151a4d,#711cff) !important; border:1px solid rgba(9,170,245,.55); }
+#ventana-carrito h2, .total-carrito { background:linear-gradient(135deg,#111443,#5712a1); }
+.cantidad-carrito button, .tarjeta .btn-carrito { background:linear-gradient(135deg,#151a4d,#5421bd) !important; }
+@media(max-width:600px){ .subcategorias{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap;scrollbar-width:none}.subcategorias::-webkit-scrollbar{display:none}.subcategorias a{flex:0 0 auto} }
+
+/* ===== PANEL DESPLEGABLE HOT WHEELS ===== */
+.categoria-hotwheels { border:0; font:inherit; cursor:pointer; }
+.flecha-hotwheels { display:inline-block; margin-left:4px; transition:transform .2s ease; }
+#botonHotwheels[aria-expanded="true"] .flecha-hotwheels { transform:rotate(180deg); }
+.panel-hotwheels { width:100%; animation:aparecerHotwheels .22s ease-out; }
+.panel-hotwheels[hidden] { display:none; }
+@keyframes aparecerHotwheels { from{opacity:0;transform:translateY(-8px)} to{opacity:1;transform:translateY(0)} }
+
+/* ===== SELECTOR VISUAL DE MARCAS HOT WHEELS ===== */
+.marcas-hotwheels { width:100%; display:flex; gap:14px; overflow-x:auto; padding:14px 18px 18px; scroll-snap-type:x mandatory; scrollbar-width:none; background:linear-gradient(180deg,rgba(8,9,28,.96),rgba(23,18,77,.96)); border-bottom:1px solid rgba(9,170,245,.28); }
+.marcas-hotwheels::-webkit-scrollbar { display:none; }
+.marca-item { flex:0 0 92px; display:flex; flex-direction:column; align-items:center; gap:7px; border:0; background:transparent; color:#fff; font:inherit; font-size:12px; font-weight:700; cursor:pointer; scroll-snap-align:start; }
+.marca-item:hover .marca-logo,.marca-item:focus-visible .marca-logo { transform:translateY(-4px) scale(1.06); box-shadow:0 0 0 3px rgba(9,170,245,.4),0 8px 20px rgba(237,11,210,.38); }
+.marca-logo { width:64px; height:64px; display:grid; place-items:center; border-radius:50%; background:linear-gradient(145deg,#fff,#eaf1ff); color:#151a4d; border:3px solid rgba(255,255,255,.78); box-shadow:0 6px 16px rgba(0,0,0,.28); font-weight:900; font-size:22px; font-style:italic; transition:.2s ease; }
+.logo-ferrari { background:linear-gradient(145deg,#e51b2d,#ffcf33); color:#fff; font-family:Georgia,serif; }
+.logo-ford { background:#1254a4; color:#fff; font-family:Georgia,serif; font-size:14px; }
+.logo-bmw { background:conic-gradient(#fff 0 25%,#1d69b3 0 50%,#fff 0 75%,#1d69b3 0); color:#11183f; font-size:15px; }
+.logo-chevy { background:#ffd21c; color:#11183f; }
+.logo-mazda { background:#ec1c3a; color:#fff; }
+.logo-dodge { background:#24243a; color:#ed1c2e; }
+.logo-lambo { background:linear-gradient(145deg,#ffe45c,#c99700); color:#17144b; }
+.logo-porsche { background:#c9152b; color:#ffd64a; }
+.logo-audi { background:#e8edf8; color:#b00016; }
+.logo-nissan { background:#fff; color:#b40020; }
+
+/* ===== SELECTORES DE COLOR Y AGOTADOS ===== */
+.selector-color { grid-column:1 / -1; grid-row:3; display:flex; flex-wrap:wrap; align-items:center; gap:6px; padding:8px; border-top:1px solid #dce3f5; background:rgba(239,244,255,.75); }
+.selector-color strong { width:100%; color:#17144b; font-size:11px; }
+.color-opcion { border:2px solid #c8d2ed; border-radius:999px; padding:5px 9px; background:#fff; color:#151a4d; cursor:pointer; font-size:11px; font-weight:700; }
+.color-opcion.activo { border-color:#711cff; background:linear-gradient(135deg,#711cff,#09aaf5); color:#fff; box-shadow:0 0 0 2px rgba(113,28,255,.18); }
+.color-opcion.agotado-color { opacity:.45; text-decoration:line-through; cursor:not-allowed; background:#e8e8ee; }
+.tarjeta:has(.selector-color) { grid-template-rows:auto auto auto auto !important; }
+.tarjeta:has(.selector-color) .btn-whatsapp, .tarjeta:has(.selector-color) .btn-carrito { grid-row:4 !important; }
+.tarjeta.modelo-agotado { filter:grayscale(.7); opacity:.8; }
+.tarjeta.modelo-agotado::after { content:"MODELO AGOTADO"; grid-column:1 / -1; grid-row:3; align-self:center; justify-self:center; padding:7px 10px; border-radius:999px; background:#55596b; color:#fff; font-size:11px; font-weight:800; }
+.tarjeta.modelo-agotado .btn-whatsapp, .tarjeta.modelo-agotado .btn-carrito { pointer-events:none; background:#777 !important; }
+</style>
 
 </head>
 
@@ -868,10 +973,32 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid 
     <a href="#motos-hotwheels" class="categoria">🏍️ Motos Hot Wheels</a>
     <a href="#motos-escala" class="categoria">🏍️ Motos a escala</a>
     <a href="#carritos-escala" class="categoria">🚗 Carritos a escala</a>
-    <a href="#carritos-hotwheels" class="categoria">🚘 Hot Wheels</a>
+    <button id="botonHotwheels" class="categoria categoria-hotwheels" type="button" aria-expanded="false" aria-controls="panel-hotwheels" onclick="alternarHotWheels()">🚘 Hot Wheels <span class="flecha-hotwheels">⌄</span></button>
     <a href="#premium" class="categoria">⭐ Premium</a>
     <a href="#funkos" class="categoria">🎁 Funkos</a>
 </nav>
+
+<div id="panel-hotwheels" class="panel-hotwheels" hidden>
+<div id="categorias-hotwheels" class="subcategorias" aria-label="Categorías de Hot Wheels">
+    <span class="subcategorias-titulo">Hot Wheels:</span>
+    <a href="#carritos-9soles" onclick="cerrarPanelHotWheels()">Clásicos · S/ 9</a>
+    <a href="#carritos-15soles" onclick="cerrarPanelHotWheels()">Intermedios · S/ 15</a>
+    <a href="#carritos-25-45" onclick="cerrarPanelHotWheels()">Premium · S/ 25–45</a>
+</div>
+
+<div class="marcas-hotwheels" aria-label="Filtrar carritos por marca">
+    <button class="marca-item" type="button" onclick="filtrarMarca('Ferrari','carritos-25-45')"><span class="marca-logo logo-ferrari">F</span><span>Ferrari</span></button>
+    <button class="marca-item" type="button" onclick="filtrarMarca('Ford','carritos-25-45')"><span class="marca-logo logo-ford">Ford</span><span>Ford</span></button>
+    <button class="marca-item" type="button" onclick="filtrarMarca('BMW','carritos-9soles')"><span class="marca-logo logo-bmw">BMW</span><span>BMW</span></button>
+    <button class="marca-item" type="button" onclick="filtrarMarca('Chevy','carritos-9soles')"><span class="marca-logo logo-chevy">C</span><span>Chevy</span></button>
+    <button class="marca-item" type="button" onclick="filtrarMarca('Mazda','carritos-15soles')"><span class="marca-logo logo-mazda">M</span><span>Mazda</span></button>
+    <button class="marca-item" type="button" onclick="filtrarMarca('Dodge','carritos-15soles')"><span class="marca-logo logo-dodge">D</span><span>Dodge</span></button>
+    <button class="marca-item" type="button" onclick="filtrarMarca('Lamborguini','carritos-25-45')"><span class="marca-logo logo-lambo">L</span><span>Lamborghini</span></button>
+    <button class="marca-item" type="button" onclick="filtrarMarca('Porsche','carritos-25-45')"><span class="marca-logo logo-porsche">P</span><span>Porsche</span></button>
+    <button class="marca-item" type="button" onclick="filtrarMarca('Audi','carritos-25-45')"><span class="marca-logo logo-audi">A</span><span>Audi</span></button>
+    <button class="marca-item" type="button" onclick="filtrarMarca('Nissan','carritos-25-45')"><span class="marca-logo logo-nissan">N</span><span>Nissan</span></button>
+</div>
+</div>
 
 <section class="bienvenida">
     <h2>¡Bienvenidos! 🎉</h2>
@@ -2729,16 +2856,17 @@ function guardarCarrito() {
     localStorage.setItem("miniatureToysCarrito", JSON.stringify(carrito));
 }
 
-function agregarAlCarrito(nombre, precio) {
+function agregarAlCarrito(nombre, precio, color) {
 
+    const nombreCompleto = color ? `${nombre} - Color: ${color}` : nombre;
     const productoExistente =
-        carrito.find(p => p.nombre === nombre);
+        carrito.find(p => p.nombre === nombreCompleto);
 
     if (productoExistente) {
         productoExistente.cantidad++;
     } else {
         carrito.push({
-            nombre: nombre,
+            nombre: nombreCompleto,
             precio: precio,
             cantidad: 1
         });
@@ -2941,9 +3069,51 @@ function enviarPedidoWhatsApp() {
    🛒 BOTÓN CARRITO PARA TODAS LAS TARJETAS
 ========================================= */
 
+const OPCIONES_COLOR = {
+    "BMW Escala 1:14": { colores:["Blanco","Rojo","Negro"], agotado:false },
+    "Moto simulación Kawasaki con muñeco Biker": { colores:["Naranja","Azul","Verde"], agotado:false },
+    "Ducati Escala 1:14": { colores:["Blanco","Rojo","Negro"], agotado:false },
+    "Ducati escala 1:12": { colores:["Blanco","Rojo","Negro"], agotado:false },
+    "Kawasaki Escala 1:14": { colores:["Blanco","Rojo","Negro"], agotado:false },
+    "Kawasaki H2R escala 1:9": { colores:["Blanco","Rojo","Negro"], agotado:false }
+};
+
+function crearSelectoresColor() {
+    document.querySelectorAll(".tarjeta").forEach(function(tarjeta) {
+        const titulo = tarjeta.querySelector("h3");
+        if (!titulo || tarjeta.querySelector(".selector-color")) return;
+        const config = OPCIONES_COLOR[titulo.textContent.trim()];
+        if (!config) return;
+        if (config.agotado) {
+            tarjeta.classList.add("modelo-agotado");
+            const whatsapp = tarjeta.querySelector(".btn-whatsapp");
+            if (whatsapp) { whatsapp.disabled = true; whatsapp.textContent = "Modelo agotado"; }
+            return;
+        }
+        const selector = document.createElement("div");
+        selector.className = "selector-color";
+        selector.innerHTML = `<strong>Selecciona el color:</strong>`;
+        config.colores.forEach(function(colorInfo) {
+            const color = typeof colorInfo === "string" ? {nombre:colorInfo, agotado:false} : colorInfo;
+            const boton = document.createElement("button");
+            boton.type = "button";
+            boton.className = "color-opcion" + (color.agotado ? " agotado-color" : "");
+            boton.textContent = color.nombre + (color.agotado ? " · Agotado" : "");
+            boton.disabled = !!color.agotado;
+            boton.dataset.color = color.nombre;
+            if (!color.agotado && !selector.querySelector(".activo")) boton.classList.add("activo");
+            boton.addEventListener("click", function() { selector.querySelectorAll(".color-opcion").forEach(b => b.classList.remove("activo")); boton.classList.add("activo"); });
+            selector.appendChild(boton);
+        });
+        titulo.insertAdjacentElement("afterend", selector);
+    });
+}
+
 function crearBotonesCarrito() {
 
     document.querySelectorAll(".tarjeta").forEach(function(tarjeta) {
+
+        if (tarjeta.classList.contains("modelo-agotado")) return;
 
         if (tarjeta.querySelector(".btn-carrito")) {
             return;
@@ -2990,7 +3160,8 @@ function crearBotonesCarrito() {
             event.preventDefault();
             event.stopPropagation();
 
-            agregarAlCarrito(nombre, precio);
+            const opcion = tarjeta.querySelector(".color-opcion.activo");
+            agregarAlCarrito(nombre, precio, opcion ? opcion.dataset.color : "");
         };
 
         botonWhatsApp.insertAdjacentElement(
@@ -3006,6 +3177,9 @@ function crearBotonesCarrito() {
    🔎 BUSCADOR
 ========================================= */
 
+function alternarHotWheels(force) { const panel=document.getElementById('panel-hotwheels'), boton=document.getElementById('botonHotwheels'); if(!panel||!boton)return; const abrir=typeof force==='boolean'?force:panel.hidden; panel.hidden=!abrir; boton.setAttribute('aria-expanded',String(abrir)); }
+function cerrarPanelHotWheels() { alternarHotWheels(false); }
+function filtrarMarca(marca, destino) { const input=document.getElementById('buscadorProductos'); if(input){ input.value=marca; buscarProductos(); } cerrarPanelHotWheels(); const seccion=document.getElementById(destino); if(seccion) seccion.scrollIntoView({behavior:'smooth',block:'start'}); }
 function normalizarTexto(t){return t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"")}
 function buscarProductos(){const input=document.getElementById("buscadorProductos"), aviso=document.getElementById("sin-resultados"), contador=document.getElementById("contadorResultados"), limpiar=document.getElementById("limpiarBusqueda");if(!input)return;const q=normalizarTexto(input.value.trim());let encontrados=0,total=0;document.querySelectorAll(".productos").forEach(sec=>{let enSec=0;sec.querySelectorAll(".tarjeta").forEach(card=>{total++;const datos=[card.textContent,...[...card.querySelectorAll("img")].map(i=>i.alt)].join(" ");const ok=!q||normalizarTexto(datos).includes(q);card.classList.toggle("oculta",!ok);if(ok){encontrados++;enSec++}});sec.hidden=!!q&&!enSec});if(limpiar)limpiar.hidden=!q;if(aviso)aviso.hidden=!q||encontrados>0;if(contador)contador.textContent=q?`${encontrados} resultado${encontrados===1?"":"s"} para “${input.value.trim()}”`:`${total} productos disponibles`}
 
@@ -3017,6 +3191,7 @@ document.addEventListener(
     "DOMContentLoaded",
     function() {
 
+        crearSelectoresColor();
         crearBotonesCarrito();
         actualizarCarrito();
 
