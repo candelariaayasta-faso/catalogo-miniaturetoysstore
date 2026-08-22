@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 
 <html lang="es">
@@ -825,15 +826,14 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid 
     .carrito-boton { right: 14px !important; bottom: 16px !important; padding: 11px 13px; }
     .mensaje-carrito { right: 14px; bottom: 78px; left: 14px; text-align: center; }
 }
-</style>
+\n/* MINIATURE TOYS THEME */\n:root{--blue:#09aaf5;--purple:#711cff;--pink:#ed0bd2;--yellow:#ffd21c;--dark:#090b22}\nbody{font-family:Inter,system-ui,sans-serif;background:radial-gradient(circle at 10% 0%,#eef8ff,#f7f7fb 55%,#f2f3f8);color:var(--dark)}\nheader{padding:22px 16px 30px;background:linear-gradient(135deg,#070814,#17124d 50%,#071d49);border-bottom:4px solid transparent;border-image:linear-gradient(90deg,var(--blue),var(--pink),var(--yellow)) 1}\n.marca{display:flex;align-items:center;justify-content:center;gap:12px}.logo-principal{width:86px;height:86px;object-fit:contain;filter:drop-shadow(0 6px 12px #0008)}\nheader h1{color:#fff;font-size:clamp(24px,7vw,36px);letter-spacing:-.8px}header p{color:#d9e9ff}\n.categorias{position:sticky;top:0;z-index:20;gap:10px;background:#fffffff2;box-shadow:0 5px 18px #11183f14}.categoria{color:#11183f;background:#eef4ff;border:1px solid #d9e5ff;transition:.2s}.categoria:hover{color:#fff;background:linear-gradient(135deg,var(--purple),var(--blue));transform:translateY(-2px)}\n.bienvenida{background:transparent}.productos{border:1px solid #e7eaf4;box-shadow:0 10px 30px #11183f12}.tarjeta{border-color:#e6e8f1;box-shadow:0 5px 18px #11183f14;transition:.2s}.tarjeta:hover{transform:translateY(-4px);box-shadow:0 12px 25px #11183f26}.tarjeta .precio{color:#4d12bb}.tarjeta .btn-carrito{background:linear-gradient(135deg,#151a4d,#5421bd)!important}\n.buscador{width:calc(100% - 20px);max-width:650px;margin:20px auto 8px}.buscador-contenedor{position:relative;display:flex;align-items:center}.icono-busqueda{position:absolute;left:17px;color:var(--purple);font-size:20px;pointer-events:none}#buscadorProductos{max-width:none;padding:15px 88px 15px 47px;border:2px solid #dce3f5;border-radius:16px;box-shadow:0 8px 22px #3322881a;font-size:15px}#buscadorProductos:focus{border-color:var(--purple);box-shadow:0 0 0 4px #7b18ff22}.btn-limpiar{position:absolute;right:10px;border:0;border-radius:10px;padding:7px 10px;background:#f0edff;color:#5414bd;cursor:pointer;font-weight:700}.btn-limpiar[hidden]{display:none}.resultados-contador{margin:8px 4px 0;color:#667085;font-size:13px;text-align:center}@media(max-width:600px){.marca{align-items:center}.logo-principal{width:70px;height:70px}header h1{font-size:24px}header p{font-size:12px}.categorias{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap}.categoria{flex:0 0 auto}}\n</style>
 
 </head>
 
 <body>
 
 <header>
-    <h1>Miniature Toys Store</h1>
-    <p>✨ Coleccionables, Hot Wheels y modelos a escala ✨</p>
+ <div class="marca"><img class="logo-principal" src="logo-miniature-toys.png" alt="Logo de Miniature Toys Store"><div><h1>Miniature Toys Store</h1><p>✨ Coleccionables, Hot Wheels y modelos a escala ✨</p></div></div>
 </header>
 <!-- CARRITO -->
 <button class="carrito-boton" type="button" onclick="abrirCarrito()" aria-label="Abrir mi pedido">
@@ -863,18 +863,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid 
     ✅ Producto agregado al carrito
 </div>
     <!-- 🔎 BUSCADOR -->
-<div class="buscador">
-    <input
-        type="text"
-        id="buscadorProductos"
-        placeholder="🔎 Buscar carrito, marca o modelo..."
-        aria-label="Buscar productos"
-        autocomplete="off"
-        oninput="buscarProductos()">
-</div>
-<p id="sin-resultados" class="sin-resultados" role="status" hidden>
-    No encontramos productos con esa búsqueda.
-</p>
+<div class="buscador" role="search"><div class="buscador-contenedor"><span class="icono-busqueda" aria-hidden="true">⌕</span><input type="search" id="buscadorProductos" placeholder="Busca por nombre, marca o modelo..." aria-label="Buscar productos" autocomplete="off"><button id="limpiarBusqueda" class="btn-limpiar" type="button" hidden>Limpiar</button></div><p id="contadorResultados" class="resultados-contador" role="status" aria-live="polite"></p></div><p id="sin-resultados" class="sin-resultados" role="status" hidden>No encontramos productos con esa búsqueda.</p>
 <nav class="categorias">
     <a href="#motos-hotwheels" class="categoria">🏍️ Motos Hot Wheels</a>
     <a href="#motos-escala" class="categoria">🏍️ Motos a escala</a>
@@ -3017,36 +3006,8 @@ function crearBotonesCarrito() {
    🔎 BUSCADOR
 ========================================= */
 
-function buscarProductos() {
-    const buscador = document.getElementById("buscadorProductos");
-
-    if (!buscador) return;
-
-    const texto = buscador.value
-        .toLowerCase()
-        .trim()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "");
-
-    document.querySelectorAll(".tarjeta").forEach(function(tarjeta) {
-        const titulo = tarjeta.querySelector("h3");
-        const nombre = titulo ? titulo.textContent : "";
-
-        const nombreNormalizado = nombre
-            .toLowerCase()
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "");
-
-        const coincide =
-            texto === "" || nombreNormalizado.includes(texto);
-
-        tarjeta.style.setProperty(
-            "display",
-            coincide ? "grid" : "none",
-            "important"
-        );
-    });
-}
+function normalizarTexto(t){return t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"")}
+function buscarProductos(){const input=document.getElementById("buscadorProductos"), aviso=document.getElementById("sin-resultados"), contador=document.getElementById("contadorResultados"), limpiar=document.getElementById("limpiarBusqueda");if(!input)return;const q=normalizarTexto(input.value.trim());let encontrados=0,total=0;document.querySelectorAll(".productos").forEach(sec=>{let enSec=0;sec.querySelectorAll(".tarjeta").forEach(card=>{total++;const datos=[card.textContent,...[...card.querySelectorAll("img")].map(i=>i.alt)].join(" ");const ok=!q||normalizarTexto(datos).includes(q);card.classList.toggle("oculta",!ok);if(ok){encontrados++;enSec++}});sec.hidden=!!q&&!enSec});if(limpiar)limpiar.hidden=!q;if(aviso)aviso.hidden=!q||encontrados>0;if(contador)contador.textContent=q?`${encontrados} resultado${encontrados===1?"":"s"} para “${input.value.trim()}”`:`${total} productos disponibles`}
 
 /* =========================================
    🚀 INICIAR
@@ -3062,13 +3023,7 @@ document.addEventListener(
         const buscador =
             document.getElementById("buscadorProductos");
 
-        if (buscador) {
-
-            buscador.addEventListener(
-                "input",
-                buscarProductos
-            );
-        }
+        if (buscador) { buscador.addEventListener("input", buscarProductos); const limpiar=document.getElementById("limpiarBusqueda"); if(limpiar) limpiar.addEventListener("click",()=>{buscador.value="";buscarProductos();buscador.focus()}); buscarProductos(); }
 
     }
 );
