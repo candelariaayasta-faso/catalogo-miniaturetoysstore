@@ -3019,37 +3019,34 @@ function crearBotonesCarrito() {
 
 function buscarProductos() {
     const buscador = document.getElementById("buscadorProductos");
+
     if (!buscador) return;
+
     const texto = buscador.value
         .toLowerCase()
         .trim()
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "");
 
-    const tarjetas = document.querySelectorAll(".tarjeta");
-
-    tarjetas.forEach(function(tarjeta) {
+    document.querySelectorAll(".tarjeta").forEach(function(tarjeta) {
         const titulo = tarjeta.querySelector("h3");
         const nombre = titulo ? titulo.textContent : "";
+
         const nombreNormalizado = nombre
             .toLowerCase()
             .normalize("NFD")
             .replace(/[\u0300-\u036f]/g, "");
-        tarjeta.classList.toggle(
-            "oculta",
-            texto !== "" && !nombreNormalizado.includes(texto)
+
+        const coincide =
+            texto === "" || nombreNormalizado.includes(texto);
+
+        tarjeta.style.setProperty(
+            "display",
+            coincide ? "grid" : "none",
+            "important"
         );
     });
-
-    document.querySelectorAll(".productos").forEach(function(seccion) {
-        const tieneResultados = seccion.querySelector(".tarjeta:not(.oculta)");
-        seccion.classList.toggle("sin-coincidencias", texto !== "" && !tieneResultados);
-    });
-
-    const hayResultados = document.querySelector(".tarjeta:not(.oculta)");
-    document.getElementById("sin-resultados").hidden = texto === "" || !!hayResultados;
 }
-
 
 /* =========================================
    🚀 INICIAR
