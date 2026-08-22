@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 
 <html lang="es">
@@ -788,6 +789,41 @@ header p {
         height: 145px !important;
     }
 }
+/* ===== MEJORAS DE COMPRA ===== */
+.carrito-boton {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 12px 15px;
+    border: 0;
+    border-radius: 999px;
+    background: #111;
+    color: #fff;
+    font: inherit;
+    font-weight: 700;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .24);
+}
+.carrito-boton:hover, .carrito-boton:focus-visible { background: #2b2b2b; transform: translateY(-2px); }
+#contador-carrito {
+    display: grid; place-items: center; min-width: 25px; height: 25px; padding: 0 7px;
+    border-radius: 999px; background: #25D366; color: #063f1c; font-size: 13px;
+}
+.mensaje-carrito {
+    position: fixed; right: 20px; bottom: 86px; z-index: 100001; padding: 11px 14px;
+    border-radius: 12px; background: #173f2a; color: #fff; box-shadow: 0 8px 24px rgba(0, 0, 0, .2);
+    opacity: 0; transform: translateY(12px); pointer-events: none; transition: opacity .2s ease, transform .2s ease;
+}
+.mensaje-carrito.mostrar { opacity: 1; transform: translateY(0); }
+.sin-resultados {
+    width: calc(100% - 32px); max-width: 600px; margin: 18px auto; padding: 16px;
+    border: 1px dashed #999; border-radius: 12px; background: #fff; text-align: center;
+}
+.productos[hidden] { display: none !important; }
+button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid #6aafff; outline-offset: 3px; }
+@media (max-width: 600px) {
+    .carrito-boton { right: 14px !important; bottom: 16px !important; padding: 11px 13px; }
+    .mensaje-carrito { right: 14px; bottom: 78px; left: 14px; text-align: center; }
+}
 </style>
 
 </head>
@@ -799,10 +835,10 @@ header p {
     <p>✨ Coleccionables, Hot Wheels y modelos a escala ✨</p>
 </header>
 <!-- CARRITO -->
-<div class="carrito-boton" onclick="abrirCarrito()">
-    🛒 Mi carrito
-    <span id="contador-carrito">0</span>
-</div>
+<button class="carrito-boton" type="button" onclick="abrirCarrito()" aria-label="Abrir mi pedido">
+    <span>🛒 Mi pedido</span>
+    <strong id="contador-carrito" aria-live="polite">0</strong>
+</button>
 
 <!-- VENTANA DEL CARRITO -->
 
@@ -831,8 +867,13 @@ header p {
         type="text"
         id="buscadorProductos"
         placeholder="🔎 Buscar carrito, marca o modelo..."
+        aria-label="Buscar productos"
+        autocomplete="off"
         oninput="buscarProductos()">
 </div>
+<p id="sin-resultados" class="sin-resultados" role="status" hidden>
+    No encontramos productos con esa búsqueda.
+</p>
 <nav class="categorias">
     <a href="#motos-hotwheels" class="categoria">🏍️ Motos Hot Wheels</a>
     <a href="#motos-escala" class="categoria">🏍️ Motos a escala</a>
@@ -2515,7 +2556,7 @@ header p {
             <div class="precio">S/ 35</div>
             <span class="disponible">Disponible</span>
             <button class="btn-whatsapp"
-                    onclick="consultar('Nissan Skyline GT-R BNR34',3 5)">
+                    onclick="consultar('Nissan Skyline GT-R BNR34',35)">
                 Consultar por WhatsApp
             </button>
         </article>
@@ -2677,7 +2718,26 @@ document.addEventListener("keydown", function(event) {
    🛒 CARRITO
 ========================================= */
 
-let carrito = [];
+let carrito = cargarCarrito();
+
+function cargarCarrito() {
+    try {
+        const guardado = JSON.parse(localStorage.getItem("miniatureToysCarrito"));
+        return Array.isArray(guardado) ? guardado.filter(function(producto) {
+            return producto && typeof producto.nombre === "string" &&
+                Number.isFinite(Number(producto.precio)) && Number.isFinite(Number(producto.cantidad)) &&
+                Number(producto.cantidad) > 0;
+        }).map(function(producto) {
+            return { nombre: producto.nombre, precio: Number(producto.precio), cantidad: Math.floor(Number(producto.cantidad)) };
+        }) : [];
+    } catch (error) {
+        return [];
+    }
+}
+
+function guardarCarrito() {
+    localStorage.setItem("miniatureToysCarrito", JSON.stringify(carrito));
+}
 
 function agregarAlCarrito(nombre, precio) {
 
@@ -2694,6 +2754,7 @@ function agregarAlCarrito(nombre, precio) {
         });
     }
 
+    guardarCarrito();
     actualizarCarrito();
     mostrarMensajeCarrito();
 }
@@ -2701,6 +2762,7 @@ function agregarAlCarrito(nombre, precio) {
 function eliminarDelCarrito(index) {
 
     carrito.splice(index, 1);
+    guardarCarrito();
     actualizarCarrito();
     abrirCarrito();
 }
@@ -2715,6 +2777,7 @@ function cambiarCantidad(index, cambio) {
         carrito.splice(index, 1);
     }
 
+    guardarCarrito();
     actualizarCarrito();
     abrirCarrito();
 }
@@ -2733,6 +2796,10 @@ function actualizarCarrito() {
         );
 
     contador.textContent = cantidadTotal;
+    contador.closest(".carrito-boton").setAttribute(
+        "aria-label",
+        "Abrir mi pedido: " + cantidadTotal + " producto" + (cantidadTotal === 1 ? "" : "s")
+    );
 }
 
 function mostrarMensajeCarrito() {
@@ -2966,8 +3033,6 @@ function buscarProductos() {
     const tarjetas =
         document.querySelectorAll(".tarjeta");
 
-    let primeraCoincidencia = null;
-
     tarjetas.forEach(function(tarjeta) {
 
         const contenido =
@@ -2983,13 +3048,6 @@ function buscarProductos() {
 
             tarjeta.style.display = "";
 
-            if (
-                texto !== "" &&
-                primeraCoincidencia === null
-            ) {
-                primeraCoincidencia = tarjeta;
-            }
-
         } else {
 
             tarjeta.style.display = "none";
@@ -2997,20 +3055,18 @@ function buscarProductos() {
 
     });
 
-    if (
-        primeraCoincidencia &&
-        texto !== ""
-    ) {
+    document.querySelectorAll(".productos").forEach(function(seccion) {
+        const tieneResultados = Array.from(seccion.querySelectorAll(".tarjeta")).some(function(tarjeta) {
+            return tarjeta.style.display !== "none";
+        });
+        seccion.hidden = texto !== "" && !tieneResultados;
+    });
 
-        setTimeout(function() {
+    const hayResultados = Array.from(tarjetas).some(function(tarjeta) {
+        return tarjeta.style.display !== "none";
+    });
 
-            primeraCoincidencia.scrollIntoView({
-                behavior: "smooth",
-                block: "center"
-            });
-
-        }, 150);
-    }
+    document.getElementById("sin-resultados").hidden = texto === "" || hayResultados;
 }
 
 
@@ -3023,6 +3079,7 @@ document.addEventListener(
     function() {
 
         crearBotonesCarrito();
+        actualizarCarrito();
 
         const buscador =
             document.getElementById("buscadorProductos");
@@ -3042,3 +3099,4 @@ document.addEventListener(
 
 </body>
 </html>
+
