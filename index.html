@@ -3016,6 +3016,3024 @@ function crearBotonesCarrito() {
    🔎 BUSCADOR
 ========================================= */
 
+
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Miniature Toys Store</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    color: #222;
+    overflow-x: hidden;
+}
+
+/* ===== ENCABEZADO ===== */
+
+header {
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 28px 15px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 30px;
+}
+
+header p {
+    margin: 8px 0 0;
+    font-size: 14px;
+}
+
+/* ===== CATEGORÍAS ===== */
+
+.categorias {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    padding: 15px 10px;
+    background: white;
+}
+
+.categoria {
+    display: block;
+    text-decoration: none;
+    color: #111;
+    background: #eeeeee;
+    padding: 10px 13px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* ===== BIENVENIDA ===== */
+
+.bienvenida {
+    text-align: center;
+    padding: 22px 15px;
+    background: white;
+}
+
+.bienvenida h2 {
+    margin: 0 0 8px;
+    font-size: 23px;
+}
+
+.bienvenida p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/* ===== SECCIONES ===== */
+
+.productos {
+    width: calc(100% - 20px);
+    margin: 15px auto;
+    padding: 20px 10px;
+    background: white;
+    border-radius: 18px;
+}
+
+.productos h2 {
+    text-align: center;
+    font-size: 23px;
+    margin: 0 0 18px;
+}
+
+/* ===== TARJETAS ===== */
+
+.tarjetas {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    width: 100%;
+}
+
+.tarjeta {
+    min-width: 0;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 8px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+}
+
+.tarjeta img {
+    display: block;
+    width: 100%;
+    height: 155px;
+    object-fit: contain;
+    margin: 0 auto 8px;
+}
+
+.tarjeta h3 {
+    font-size: 13px;
+    line-height: 1.2;
+    margin: 6px 0;
+}
+
+.precio {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 6px 0;
+}
+
+.disponible {
+    display: inline-block;
+    font-size: 10px;
+    padding: 4px 7px;
+    border-radius: 10px;
+    background: #e8f5e9;
+    color: #218838;
+    margin-bottom: 7px;
+}
+
+/* ===== BOTÓN ===== */
+
+.btn-whatsapp {
+    display: block;
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    padding: 9px 3px;
+    background: #25D366;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* ===== CARRUSEL ===== */
+
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.carousel img {
+    width: 100%;
+    height: 180px;
+    object-fit: contain;
+}
+
+/* ===== VISTA SOLO CELULAR ===== */
+
+@media (min-width: 601px) {
+    body {
+        max-width: 600px;
+        margin: auto;
+    }
+}
+
+/* ===== VISOR DE IMAGEN ===== */
+
+#visor {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.88);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+#visor img {
+    max-width: 95%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+#visor .cerrar {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: white;
+    font-size: 35px;
+    cursor: pointer;
+}
+
+/* ===== AJUSTES DE CELULAR ===== */
+
+@media (max-width: 600px) {
+
+    header h1 {
+        font-size: 28px;
+    }
+
+    .productos {
+        width: calc(100% - 16px);
+        padding: 18px 8px;
+    }
+
+    .productos h2 {
+        font-size: 21px;
+    }
+
+    .tarjetas {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .tarjeta {
+        padding: 7px;
+    }
+
+    .tarjeta img {
+        height: 145px;
+    }
+
+    .tarjeta h3 {
+        font-size: 12px;
+    }
+
+    .precio {
+        font-size: 17px;
+    }
+}
+/* GALERIA DESLIZABLE PARA CELULAR */
+.galeria-movil {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+}
+
+.galeria-movil::-webkit-scrollbar {
+    display: none !important;
+}
+
+.galeria-movil img {
+    display: block !important;
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    height: 250px !important;
+    object-fit: contain !important;
+    scroll-snap-align: start !important;
+    box-sizing: border-box !important;
+}
+
+
+/* CELULAR */
+@media (max-width: 600px) {
+
+    .tarjetas {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 15px !important;
+        width: 100% !important;
+    }
+
+    .tarjeta {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    .galeria-movil {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+    }
+
+    .galeria-movil img {
+        flex: 0 0 100% !important;
+        min-width: 100% !important;
+        width: 100% !important;
+    }
+}
+    /* 🛒 CARRITO FIJO AL COSTADO */
+.carrito-boton {
+    position: fixed !important;
+    right: 20px !important;
+    bottom: 25px !important;
+    z-index: 99999 !important;
+    cursor: pointer !important;
+}
+    /* 🚗 FORMATO CARRITOS S/15 */
+#carritos-15soles .tarjetas {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 20px !important;
+    width: 100% !important;
+}
+
+#carritos-15soles .tarjeta {
+    width: auto !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+}
+
+@media (max-width: 768px) {
+    #carritos-15soles .tarjetas {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+    }
+}
+
+/* =========================================
+   🛒 VENTANA MI PEDIDO
+========================================= */
+
+#ventana-carrito {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -45%) scale(0.95);
+
+    width: 92%;
+    max-width: 420px;
+    max-height: 80vh;
+
+    background: #fff;
+    border-radius: 18px;
+
+    box-shadow: 0 10px 40px rgba(0,0,0,.35);
+
+    z-index: 100000;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: all .25s ease;
+
+    overflow: hidden;
+}
+
+#ventana-carrito.abierto {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* CONTENEDOR INTERNO */
+
+.contenido-ventana-carrito {
+    position: relative;
+    padding-top: 55px;
+}
+
+/* TÍTULO */
+
+#ventana-carrito h2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 16px;
+
+    background: #111;
+    color: white;
+
+    font-size: 20px;
+    text-align: center;
+}
+
+/* BOTÓN CERRAR */
+
+.cerrar-carrito {
+    position: absolute;
+
+    top: 10px;
+    right: 10px;
+
+    z-index: 2;
+
+    width: 32px;
+    height: 32px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #e53935;
+    color: white;
+
+    font-size: 17px;
+
+    cursor: pointer;
+}
+
+/* PRODUCTOS */
+
+#contenido-carrito {
+    padding: 15px;
+
+    max-height: 50vh;
+
+    overflow-y: auto;
+}
+
+.producto-carrito {
+    background: #f7f7f7;
+
+    border: 1px solid #ddd;
+    border-radius: 12px;
+
+    padding: 12px;
+    margin-bottom: 10px;
+
+    display: grid;
+
+    grid-template-columns: 1fr auto;
+
+    gap: 10px;
+
+    align-items: center;
+}
+
+.producto-carrito strong {
+    font-size: 14px;
+    color: #222;
+}
+
+.producto-carrito div:first-child {
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* CANTIDAD */
+
+.cantidad-carrito {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.cantidad-carrito button {
+    width: 30px;
+    height: 30px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #111;
+    color: white;
+
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.cantidad-carrito span {
+    min-width: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* ELIMINAR */
+
+.eliminar-carrito {
+    border: none;
+
+    background: #e53935;
+    color: white;
+
+    width: 28px;
+    height: 28px;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+}
+
+/* TOTAL */
+
+.total-carrito {
+    margin: 10px 15px;
+
+    padding: 14px;
+
+    border-radius: 12px;
+
+    background: #111;
+    color: white;
+
+    text-align: center;
+
+    font-size: 19px;
+    font-weight: bold;
+}
+
+/* WHATSAPP */
+
+.btn-enviar-pedido {
+    display: block;
+
+    width: calc(100% - 30px);
+
+    margin: 10px 15px 18px;
+
+    padding: 14px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: #25D366;
+    color: white;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+    /* =========================================
+   🔎 BUSCADOR
+========================================= */
+
+.buscador {
+    width: calc(100% - 20px);
+    margin: 15px auto;
+    display: flex;
+    justify-content: center;
+}
+
+#buscadorProductos {
+    width: 100%;
+    max-width: 500px;
+    padding: 13px 18px;
+    border: 2px solid #ddd;
+    border-radius: 25px;
+    outline: none;
+    font-size: 14px;
+    background: white;
+    box-shadow: 0 3px 10px rgba(0,0,0,.08);
+}
+
+#buscadorProductos:focus {
+    border-color: #111;
+}
+
+@media (max-width: 600px) {
+    .buscador {
+        width: calc(100% - 20px);
+        margin: 12px auto;
+    }
+
+    #buscadorProductos {
+        font-size: 13px;
+        padding: 12px 16px;
+    }
+}
+    /* =========================================
+   🛍️ TARJETAS GENERALES
+   Nombre + precio / WhatsApp + carrito
+========================================= */
+
+.tarjeta {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    grid-template-rows: auto auto auto !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    text-align: left !important;
+}
+
+/* FOTO */
+.tarjeta > img {
+    grid-column: 1 / 3 !important;
+    grid-row: 1 !important;
+
+    width: 100% !important;
+    height: 180px !important;
+
+    object-fit: contain !important;
+    padding: 8px !important;
+    margin: 0 !important;
+}
+
+/* NOMBRE */
+.tarjeta h3 {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+
+    margin: 0 !important;
+    padding: 11px 8px !important;
+
+    font-size: 13px !important;
+    line-height: 1.2 !important;
+
+    display: flex !important;
+    align-items: center !important;
+
+    border-top: 1px solid #ddd !important;
+    border-bottom: 1px solid #ddd !important;
+}
+
+/* PRECIO */
+.tarjeta .precio {
+    grid-column: 2 !important;
+    grid-row: 2 !important;
+
+    margin: 0 !important;
+    padding: 11px 8px !important;
+
+    font-size: 16px !important;
+    font-weight: bold !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+
+    border-top: 1px solid #ddd !important;
+    border-bottom: 1px solid #ddd !important;
+    border-left: 1px solid #ddd !important;
+}
+
+/* OCULTAR DISPONIBLE */
+.tarjeta .disponible {
+    display: none !important;
+}
+
+/* WHATSAPP */
+.tarjeta .btn-whatsapp {
+    grid-column: 1 !important;
+    grid-row: 3 !important;
+
+    width: 100% !important;
+    height: 38px !important;
+
+    margin: 0 !important;
+    padding: 0 3px !important;
+
+    border: none !important;
+    border-radius: 0 !important;
+
+    background: #25D366 !important;
+    color: white !important;
+
+    font-size: 10px !important;
+    font-weight: bold !important;
+}
+
+/* CARRITO */
+.tarjeta .btn-carrito {
+    grid-column: 2 !important;
+    grid-row: 3 !important;
+
+    width: 100% !important;
+    height: 38px !important;
+
+    margin: 0 !important;
+    padding: 0 3px !important;
+
+    border: none !important;
+    border-radius: 0 !important;
+
+    background: #111 !important;
+    color: white !important;
+
+    font-size: 10px !important;
+    font-weight: bold !important;
+}
+
+/* CELULAR */
+@media (max-width: 600px) {
+
+    .tarjeta > img {
+        height: 145px !important;
+    }
+
+    .tarjeta h3 {
+        font-size: 11px !important;
+        padding: 9px 6px !important;
+    }
+
+    .tarjeta .precio {
+        font-size: 14px !important;
+        padding: 9px 6px !important;
+    }
+
+    .tarjeta .btn-whatsapp,
+    .tarjeta .btn-carrito {
+        height: 36px !important;
+        font-size: 9px !important;
+    }
+/* =========================================
+   🏍️ MOTOS A ESCALA
+   GALERÍA CENTRADA
+========================================= */
+
+#motos-escala .tarjeta > .galeria-movil {
+    grid-column: 1 / -1 !important;
+    grid-row: 1 !important;
+
+    width: 100% !important;
+    height: 180px !important;
+
+    display: flex !important;
+    align-items: center !important;
+
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+
+    scroll-snap-type: x mandatory !important;
+}
+
+#motos-escala .galeria-movil img {
+    flex: 0 0 100% !important;
+
+    width: 100% !important;
+    min-width: 100% !important;
+
+    height: 180px !important;
+
+    object-fit: contain !important;
+    object-position: center center !important;
+
+    margin: 0 !important;
+    padding: 8px !important;
+
+    scroll-snap-align: center !important;
+}
+
+/* INDICADOR DE FOTOS */
+
+#motos-escala .indicador-fotos {
+    grid-column: 1 / -1 !important;
+    grid-row: 1 !important;
+
+    position: relative;
+    z-index: 2;
+
+    margin: 0 !important;
+}
+
+/* 📱 CELULAR */
+
+@media (max-width: 600px) {
+
+    #motos-escala .tarjeta > .galeria-movil {
+        height: 145px !important;
+    }
+
+    #motos-escala .galeria-movil img {
+        height: 145px !important;
+    }
+}
+/* ===== MEJORAS DE COMPRA ===== */
+.carrito-boton {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 12px 15px;
+    border: 0;
+    border-radius: 999px;
+    background: #111;
+    color: #fff;
+    font: inherit;
+    font-weight: 700;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .24);
+}
+.carrito-boton:hover, .carrito-boton:focus-visible { background: #2b2b2b; transform: translateY(-2px); }
+#contador-carrito {
+    display: grid; place-items: center; min-width: 25px; height: 25px; padding: 0 7px;
+    border-radius: 999px; background: #25D366; color: #063f1c; font-size: 13px;
+}
+.mensaje-carrito {
+    position: fixed; right: 20px; bottom: 86px; z-index: 100001; padding: 11px 14px;
+    border-radius: 12px; background: #173f2a; color: #fff; box-shadow: 0 8px 24px rgba(0, 0, 0, .2);
+    opacity: 0; transform: translateY(12px); pointer-events: none; transition: opacity .2s ease, transform .2s ease;
+}
+.mensaje-carrito.mostrar { opacity: 1; transform: translateY(0); }
+.sin-resultados {
+    width: calc(100% - 32px); max-width: 600px; margin: 18px auto; padding: 16px;
+    border: 1px dashed #999; border-radius: 12px; background: #fff; text-align: center;
+}
+.productos[hidden] { display: none !important; }
+button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid #6aafff; outline-offset: 3px; }
+@media (max-width: 600px) {
+    .carrito-boton { right: 14px !important; bottom: 16px !important; padding: 11px 13px; }
+    .mensaje-carrito { right: 14px; bottom: 78px; left: 14px; text-align: center; }
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+    <h1>Miniature Toys Store</h1>
+    <p>✨ Coleccionables, Hot Wheels y modelos a escala ✨</p>
+</header>
+<!-- CARRITO -->
+<button class="carrito-boton" type="button" onclick="abrirCarrito()" aria-label="Abrir mi pedido">
+    <span>🛒 Mi pedido</span>
+    <strong id="contador-carrito" aria-live="polite">0</strong>
+</button>
+
+<!-- VENTANA DEL CARRITO -->
+
+<div id="ventana-carrito" class="ventana-carrito">
+
+<div class="contenido-ventana-carrito">
+
+    <button class="cerrar-carrito" onclick="cerrarCarrito()">✕</button>
+
+    <h2>🛒 Mi carrito</h2>
+
+    <div id="contenido-carrito">
+        <p>Tu carrito está vacío 🛒</p>
+    </div>
+
+</div>
+
+</div>
+
+<div id="mensaje-carrito" class="mensaje-carrito">
+    ✅ Producto agregado al carrito
+</div>
+    <!-- 🔎 BUSCADOR -->
+<div class="buscador">
+    <input
+        type="text"
+        id="buscadorProductos"
+        placeholder="🔎 Buscar carrito, marca o modelo..."
+        aria-label="Buscar productos"
+        autocomplete="off"
+        oninput="buscarProductos()">
+</div>
+<p id="sin-resultados" class="sin-resultados" role="status" hidden>
+    No encontramos productos con esa búsqueda.
+</p>
+<nav class="categorias">
+    <a href="#motos-hotwheels" class="categoria">🏍️ Motos Hot Wheels</a>
+    <a href="#motos-escala" class="categoria">🏍️ Motos a escala</a>
+    <a href="#carritos-escala" class="categoria">🚗 Carritos a escala</a>
+    <a href="#carritos-hotwheels" class="categoria">🚘 Hot Wheels</a>
+    <a href="#premium" class="categoria">⭐ Premium</a>
+    <a href="#funkos" class="categoria">🎁 Funkos</a>
+</nav>
+
+<section class="bienvenida">
+    <h2>¡Bienvenidos! 🎉</h2>
+    <p>Encuentra modelos para coleccionar, regalar o simplemente darte un gusto.</p>
+</section>
+
+<!-- ==========================================
+     MOTOS HOT WHEELS
+========================================== -->
+
+<section id="motos-hotwheels" class="productos">
+
+<h2>🏍️ Motos Hot Wheels</h2>
+
+<div class="tarjetas">
+
+    <article class="tarjeta">
+        <img src="fotos/hotwheels/1966 triumph tiger 100.jpeg"
+             alt="1966 Triumph Tiger 100"
+             onclick="verImagen(this.src)">
+        <h3>1966 Triumph Tiger 100</h3>
+        <div class="precio">S/ 30</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+            onclick="consultar('1966 Triumph Tiger 100',30)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/hotwheels/honda cb750 cafe azul.jpeg"
+             alt="Honda CB750 Café Azul"
+             onclick="verImagen(this.src)">
+        <h3>Honda CB750 Café Azul</h3>
+        <div class="precio">S/ 25</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+            onclick="consultar('Honda CB750 Café Azul',25)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/hotwheels/honda cb750 cafe rojo.jpeg"
+             alt="Honda CB750 Café Rojo"
+             onclick="verImagen(this.src)">
+        <h3>Honda CB750 Café Rojo</h3>
+        <div class="precio">S/ 25</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+            onclick="consultar('Honda CB750 Café Rojo',25)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/hotwheels/honda motocompo amarilla.jpeg"
+             alt="Honda Motocompo Amarilla"
+             onclick="verImagen(this.src)">
+        <h3>Honda Motocompo Amarilla</h3>
+        <div class="precio">S/ 12</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+            onclick="consultar('Honda Motocompo Amarilla',12)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/hotwheels/honda motocompo roja.jpeg"
+             alt="Honda Motocompo Roja"
+             onclick="verImagen(this.src)">
+        <h3>Honda Motocompo Roja</h3>
+        <div class="precio">S/ 12</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+            onclick="consultar('Honda Motocompo Roja',12)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/hotwheels/honda vfr750r rc30.jpeg"
+             alt="Honda VFR750R RC30"
+             onclick="verImagen(this.src)">
+        <h3>Honda VFR750R RC30</h3>
+        <div class="precio">S/ 30</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+            onclick="consultar('Honda VFR750R RC30',30)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+</div>
+
+</section>
+
+<!-- ==========================================
+     MOTOS A ESCALA
+========================================== -->
+
+<section id="motos-escala" class="productos">
+
+<h2>🏍️ Motos a escala</h2>
+
+<div class="tarjetas">
+
+    <!-- BMW -->
+    <article class="tarjeta">
+        <div class="galeria-movil">
+            <img src="fotos/escala/BMW.jpeg"
+                 alt="BMW"
+                 onclick="verImagen(this.src)">
+        </div>
+
+        <h3>BMW Escala 1:14</h3>
+        <div class="precio">S/ 30</div>
+        <span class="disponible">Disponible</span>
+
+        <button class="btn-whatsapp"
+                onclick="consultar('BMW',30)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+
+    <!-- BIKER -->
+    <article class="tarjeta">
+        <div class="galeria-movil">
+            <img src="fotos/escala/biker.jpeg"
+                 alt="Biker"
+                 onclick="verImagen(this.src)">
+        </div>
+
+        <h3>Moto simulación Kawasaki con muñeco Biker</h3>
+        <div class="precio">S/ 45</div>
+        <span class="disponible">Disponible</span>
+
+        <button class="btn-whatsapp"
+                onclick="consultar('Biker',45)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+
+    <!-- DUCATI -->
+    <article class="tarjeta">
+        <div class="galeria-movil">
+            <img src="fotos/escala/ducati.jpeg"
+                 alt="Ducati"
+                 onclick="verImagen(this.src)">
+        </div>
+
+        <h3>Ducati Escala 1:14</h3>
+        <div class="precio">S/ 30</div>
+        <span class="disponible">Disponible</span>
+
+        <button class="btn-whatsapp"
+                onclick="consultar('Ducati',30)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+
+    <!-- DUCATI ESCALA 1:12 -->
+    <article class="tarjeta">
+        <div class="galeria-movil">
+            <img src="fotos/escala/dukati escala 1 12.png"
+                 alt="Ducati escala 1:12"
+                 onclick="verImagen(this.src)">
+        </div>
+
+        <h3>Ducati escala 1:12</h3>
+        <div class="precio">S/ 25</div>
+        <span class="disponible">Disponible</span>
+
+        <button class="btn-whatsapp"
+                onclick="consultar('Ducati escala 1:12',25)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+
+    <!-- KAWASAKI - 2 FOTOS -->
+
+<article class="tarjeta">
+
+<div class="galeria-movil">
+
+    <img src="fotos/escala/kawasaki.jpeg"
+         alt="Kawasaki"
+         onclick="verImagen(this.src)">
+
+    <img src="fotos/escala/kawasaki blanca.jpeg"
+         alt="Kawasaki blanca"
+         onclick="verImagen(this.src)">
+
+</div>
+
+<p class="indicador-fotos">Desliza para ver las fotos ➜</p>
+
+<h3>Kawasaki Escala 1:14</h3>
+<div class="precio">S/ 30</div>
+<span class="disponible">Disponible</span>
+
+<button class="btn-whatsapp"
+        onclick="consultar('Kawasaki',30)">
+    Consultar por WhatsApp
+</button>
+
+</article>
+
+    <!-- KAWASAKI - 3 FOTOS -->
+
+<article class="tarjeta">
+
+<div class="galeria-movil">
+
+    <img src="fotos/escala/kawasaki lado 1.png"
+         alt="Kawasaki lado 1"
+         onclick="verImagen(this.src)">
+
+    <img src="fotos/escala/kawasaki lado 2.png"
+         alt="Kawasaki lado 2"
+         onclick="verImagen(this.src)">
+
+    <img src="fotos/escala/kawasaki lado 3.png"
+         alt="Kawasaki lado 3"
+         onclick="verImagen(this.src)">
+
+</div>
+
+<p class="indicador-fotos">Desliza para ver las fotos ➜</p>
+
+<h3>Kawasaki H2R escala 1:9</h3>
+<div class="precio">S/110</div>
+<span class="disponible">Disponible</span>
+
+<button class="btn-whatsapp"
+        onclick="consultar('Kawasaki',110)">
+    Consultar por WhatsApp
+</button>
+
+</article>
+
+ <!-- YAMAHA - 2 FOTOS -->
+
+<article class="tarjeta">
+
+<div class="galeria-movil">
+
+    <img src="fotos/escala/yamaha1.png"
+         alt="Yamaha"
+         onclick="verImagen(this.src)">
+
+    <img src="fotos/escala/yamaha 2.png"
+         alt="Yamaha"
+         onclick="verImagen(this.src)">
+
+</div>
+
+<p class="indicador-fotos">Desliza para ver las fotos ➜</p>
+
+<h3>Yamaha R1 escala 1:9</h3>
+<div class="precio">S/110</div>
+<span class="disponible">Disponible</span>
+
+<button class="btn-whatsapp"
+        onclick="consultar('Yamaha',110)">
+    Consultar por WhatsApp
+</button>
+
+</article>
+
+</div>
+
+
+</section>
+
+<!-- ==========================================
+     CARRITOS A ESCALA
+========================================== -->
+
+<section id="carritos-escala" class="productos">
+
+<h2>🚗 Carritos a escala</h2>
+
+<div class="tarjetas">
+
+       <article class="tarjeta">
+        <img src="fotos/escala/mercedes amg gt 1 18.png"
+             alt="Mercedes AMG GT escala"
+             onclick="verImagen(this.src)">
+        <h3>Mercedes AMG GT</h3>
+        <div class="precio">S/ 75</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('Mercedes AMG GT',75)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+</div>
+
+</section>
+<!-- ============================= -->
+<!-- CARRITOS CLASSIC -->
+<!-- ============================= -->
+<section id="carritos-9soles" class="productos">
+
+<h2>🚗 Carritos Classic - S/ 9</h2>
+
+<div class="tarjetas">
+
+    <article class="tarjeta">
+        <img src="fotos/carritos9soles/20 dodge charger hellcat.png"
+             alt="20 Dodge Charger Hellcat"
+             onclick="verImagen(this.src)">
+        <h3>20 Dodge Charger Hellcat</h3>
+        <div class="precio">S/ 9</div>
+        <span class="disponible">Disponible</span>
+
+        <button class="btn-whatsapp"
+                onclick="consultar('20 Dodge Charger Hellcat',9)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+
+    <article class="tarjeta">
+        <img src="fotos/carritos9soles/33 ford lo boy.png"
+             alt="33 Ford Lo Boy"
+             onclick="verImagen(this.src)">
+        <h3>33 Ford Lo Boy</h3>
+        <div class="precio">S/ 9</div>
+        <span class="disponible">Disponible</span>
+
+        <button class="btn-whatsapp"
+                onclick="consultar('33 Ford Lo Boy',9)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+
+    <article class="tarjeta">
+        <img src="fotos/carritos9soles/8 crate.png"
+             alt="8 Crate"
+             onclick="verImagen(this.src)">
+        <h3>8 Crate</h3>
+        <div class="precio">S/ 9</div>
+        <span class="disponible">Disponible</span>
+
+        <button class="btn-whatsapp"
+                onclick="consultar('8 Crate',9)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+
+    <article class="tarjeta">
+        <img src="fotos/carritos9soles/83 chevy silverado black widow.png"
+             alt="83 Chevy Silverado Black Widow"
+             onclick="verImagen(this.src)">
+        <h3>83 Chevy Silverado Black Widow</h3>
+        <div class="precio">S/ 9</div>
+        <span class="disponible">Disponible</span>
+
+        <button class="btn-whatsapp"
+                onclick="consultar('83 Chevy Silverado Black Widow',9)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+
+    <article class="tarjeta">
+        <img src="fotos/carritos9soles/83 chevy silverado celeste.png"
+             alt="83 Chevy Silverado Celeste"
+             onclick="verImagen(this.src)">
+        <h3>83 Chevy Silverado Celeste</h3>
+        <div class="precio">S/ 9</div>
+        <span class="disponible">Disponible</span>
+
+        <button class="btn-whatsapp"
+                onclick="consultar('83 Chevy Silverado Celeste',9)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+
+    <article class="tarjeta">
+        <img src="fotos/carritos9soles/83 chevy silverado negro.png"
+             alt="83 Chevy Silverado Negro"
+             onclick="verImagen(this.src)">
+        <h3>83 Chevy Silverado Negro</h3>
+        <div class="precio">S/ 9</div>
+        <span class="disponible">Disponible</span>
+
+        <button class="btn-whatsapp"
+                onclick="consultar('83 Chevy Silverado Negro',9)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+
+    <article class="tarjeta">
+        <img src="fotos/carritos9soles/bmw 2002.png"
+             alt="BMW 2002"
+             onclick="verImagen(this.src)">
+        <h3>BMW 2002</h3>
+        <div class="precio">S/ 9</div>
+        <span class="disponible">Disponible</span>
+
+        <button class="btn-whatsapp"
+                onclick="consultar('BMW 2002',9)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+
+    <article class="tarjeta">
+        <img src="fotos/carritos9soles/bone shaker.png"
+             alt="Bone Shaker"
+             onclick="verImagen(this.src)">
+        <h3>Bone Shaker</h3>
+        <div class="precio">S/ 9</div>
+        <span class="disponible">Disponible</span>
+
+        <button class="btn-whatsapp"
+                onclick="consultar('Bone Shaker',9)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+
+    <article class="tarjeta">
+        <img src="fotos/carritos9soles/bounce´n bass.png"
+             alt="Bounce N Bass"
+             onclick="verImagen(this.src)">
+        <h3>Bounce N Bass</h3>
+        <div class="precio">S/ 9</div>
+        <span class="disponible">Disponible</span>
+
+        <button class="btn-whatsapp"
+                onclick="consultar('Bounce N Bass',9)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+
+    <article class="tarjeta">
+        <img src="fotos/carritos9soles/buns of steel.png"
+             alt="Buns of Steel"
+             onclick="verImagen(this.src)">
+        <h3>Buns of Steel</h3>
+        <div class="precio">S/ 9</div>
+        <span class="disponible">Disponible</span>
+
+        <button class="btn-whatsapp"
+                onclick="consultar('Buns of Steel',9)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+
+    <article class="tarjeta">
+        <img src="fotos/carritos9soles/decifely go.png"
+             alt="Decifely Go"
+             onclick="verImagen(this.src)">
+        <h3>Decifely Go</h3>
+        <div class="precio">S/ 9</div>
+        <span class="disponible">Disponible</span>
+
+        <button class="btn-whatsapp"
+                onclick="consultar('Decifely Go',9)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+
+    <article class="tarjeta">
+        <img src="fotos/carritos9soles/deora ii.png"
+             alt="Deora II"
+             onclick="verImagen(this.src)">
+        <h3>Deora II</h3>
+        <div class="precio">S/ 9</div>
+        <span class="disponible">Disponible</span>
+
+        <button class="btn-whatsapp"
+                onclick="consultar('Deora II',9)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+
+    <article class="tarjeta">
+        <img src="fotos/carritos9soles/deora too´nd.png"
+ alt="Deora"
+ onclick="verImagen(this.src)">
+        <h3>Deora</h3>
+        <div class="precio">S/ 9</div>
+        <span class="disponible">Disponible</span>
+
+        <button class="btn-whatsapp"
+                onclick="consultar('Deora',9)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+
+    <article class="tarjeta">
+        <img src="fotos/carritos9soles/fiat beast of turin.png"
+             alt="Fiat Beast of Turin"
+             onclick="verImagen(this.src)">
+        <h3>Fiat Beast of Turin</h3>
+        <div class="precio">S/ 9</div>
+        <span class="disponible">Disponible</span>
+
+        <button class="btn-whatsapp"
+                onclick="consultar('Fiat Beast of Turin',9)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+
+    <article class="tarjeta">
+        <img src="fotos/carritos9soles/ford model a custom 31.png"
+             alt="Ford Model A Custom 31"
+             onclick="verImagen(this.src)">
+        <h3>Ford Model A Custom 31</h3>
+        <div class="precio">S/ 9</div>
+        <span class="disponible">Disponible</span>
+
+        <button class="btn-whatsapp"
+                onclick="consultar('Ford Model A Custom 31',9)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+
+    <article class="tarjeta">
+        <img src="fotos/carritos9soles/instant boost.png"
+             alt="Instant Boost"
+             onclick="verImagen(this.src)">
+        <h3>Instant Boost</h3>
+        <div class="precio">S/ 9</div>
+        <span class="disponible">Disponible</span>
+
+        <button class="btn-whatsapp"
+                onclick="consultar('Instant Boost',9)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+
+    <article class="tarjeta">
+        <img src="fotos/carritos9soles/la troca.png"
+             alt="La Troca"
+             onclick="verImagen(this.src)">
+        <h3>La Troca</h3>
+        <div class="precio">S/ 9</div>
+        <span class="disponible">Disponible</span>
+
+        <button class="btn-whatsapp"
+                onclick="consultar('La Troca',9)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+
+    <article class="tarjeta">
+        <img src="fotos/carritos9soles/mazda repu.png"
+             alt="Mazda Repu"
+             onclick="verImagen(this.src)">
+        <h3>Mazda Repu</h3>
+        <div class="precio">S/ 9</div>
+        <span class="disponible">Disponible</span>
+
+        <button class="btn-whatsapp"
+                onclick="consultar('Mazda Repu',9)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+
+    <article class="tarjeta">
+        <img src="fotos/carritos9soles/mazda rx-3.png"
+             alt="Mazda RX-3"
+             onclick="verImagen(this.src)">
+        <h3>Mazda RX-3</h3>
+        <div class="precio">S/ 9</div>
+        <span class="disponible">Disponible</span>
+
+        <button class="btn-whatsapp"
+                onclick="consultar('Mazda RX-3',9)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+
+    <article class="tarjeta">
+        <img src="fotos/carritos9soles/mid mill.png"
+             alt="Mid Mill"
+             onclick="verImagen(this.src)">
+        <h3>Mid Mill</h3>
+        <div class="precio">S/ 9</div>
+        <span class="disponible">Disponible</span>
+
+        <button class="btn-whatsapp"
+                onclick="consultar('Mid Mill',9)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+
+    <article class="tarjeta">
+        <img src="fotos/carritos9soles/morgan super 3 roja.png"
+ alt="Morgan Super 3 Roja"
+ onclick="verImagen(this.src)">
+        <h3>Morgan Super 3 Roja</h3>
+        <div class="precio">S/ 9</div>
+        <span class="disponible">Disponible</span>
+
+        <button class="btn-whatsapp"
+                onclick="consultar('Morgan Super 3 Roja',9)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+
+    <article class="tarjeta">
+        <img src="fotos/carritos9soles/morgan super 3 plomo.png"
+             alt="Morgan Super 3 Plomo"
+             onclick="verImagen(this.src)">
+        <h3>Morgan Super 3 Plomo</h3>
+        <div class="precio">S/ 9</div>
+        <span class="disponible">Disponible</span>
+
+        <button class="btn-whatsapp"
+                onclick="consultar('Morgan Super 3 Plomo',9)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+
+    <article class="tarjeta">
+        <img src="fotos/carritos9soles/pedal driver.png"
+             alt="Pedal Driver"
+             onclick="verImagen(this.src)">
+        <h3>Pedal Driver</h3>
+        <div class="precio">S/ 9</div>
+        <span class="disponible">Disponible</span>
+
+        <button class="btn-whatsapp"
+                onclick="consultar('Pedal Driver',9)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+
+    <article class="tarjeta">
+        <img src="fotos/carritos9soles/rapid pulse.png"
+             alt="Rapid Pulse"
+             onclick="verImagen(this.src)">
+        <h3>Rapid Pulse</h3>
+        <div class="precio">S/ 9</div>
+        <span class="disponible">Disponible</span>
+
+        <button class="btn-whatsapp"
+                onclick="consultar('Rapid Pulse',9)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+
+    <article class="tarjeta">
+        <img src="fotos/carritos9soles/screamliner.png"
+             alt="Screamliner"
+             onclick="verImagen(this.src)">
+        <h3>Screamliner</h3>
+        <div class="precio">S/ 9</div>
+        <span class="disponible">Disponible</span>
+
+        <button class="btn-whatsapp"
+                onclick="consultar('Screamliner',9)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+
+    <article class="tarjeta">
+        <img src="fotos/carritos9soles/tooned purple passion.png"
+             alt="Tooned Purple Passion"
+             onclick="verImagen(this.src)">
+        <h3>Tooned Purple Passion</h3>
+        <div class="precio">S/ 9</div>
+        <span class="disponible">Disponible</span>
+
+        <button class="btn-whatsapp"
+                onclick="consultar('Tooned Purple Passion',9)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+
+    <article class="tarjeta">
+        <img src="fotos/carritos9soles/vairstrike.png"
+             alt="Vairstrike"
+             onclick="verImagen(this.src)">
+        <h3>Vairstrike</h3>
+        <div class="precio">S/ 9</div>
+        <span class="disponible">Disponible</span>
+
+        <button class="btn-whatsapp"
+                onclick="consultar('Vairstrike',9)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+</div>
+
+</section>
+    <!-- ============================= -->
+<!-- CARRITOS INTERMEDIO -->
+<!-- ============================= -->
+    <section id="carritos-15soles" class="productos">
+
+<h2>🚗 Carritos Intermedios - S/ 15</h2>
+
+<div class="tarjetas">
+    
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181535.png"
+             alt="Classic Tv Series Batmobile"
+             onclick="verImagen(this.src)">
+        <h3>Classic Tv Series Batmobile</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('Classic Tv Series Batmobile',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181553.png"
+             alt="Corvette' C7 206"
+             onclick="verImagen(this.src)">
+        <h3>Corvette' C7 206</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('Corvette' C7 206',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181559.png"
+             alt="59 Chevy Impala"
+             onclick="verImagen(this.src)">
+        <h3>59 Chevy Impala</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('59 Chevy Impala',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181605.png"
+             alt="2019 Audi R8 Spyder"
+             onclick="verImagen(this.src)">
+        <h3>2019 Audi R8 Spyder</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('2019 Audi R8 Spyder',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181613.png"
+             alt="Pass N Go"
+             onclick="verImagen(this.src)">
+        <h3>Pass N Go</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('Pass N Go',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181620.png"
+             alt="Ford Mustang GTD"
+             onclick="verImagen(this.src)">
+        <h3>Ford Mustang GTD</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('Ford Mustang GTD',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181625.png"
+             alt="Custom / Personnalisé 72 Chevy Luv"
+             onclick="verImagen(this.src)">
+        <h3>Custom / Personnalisé 72 Chevy Luv</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('Custom / Personnalisé 72 Chevy Luv',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181632.png"
+             alt="Barbie Dream Camper / Roulotte"
+             onclick="verImagen(this.src)">
+        <h3>Barbie Dream Camper / Roulotte</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('Barbie Dream Camper / Roulotte',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181638.png"
+             alt="Honda Odysesey"
+             onclick="verImagen(this.src)">
+        <h3>Honda Odysesey</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('Honda Odysesey',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181643.png"
+             alt="95 Mazda RX-7 Drift/Déraper"
+             onclick="verImagen(this.src)">
+        <h3>95 Mazda RX-7 Drift/Déraper</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('95 Mazda RX-7 Drift/Déraper',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181648.png"
+             alt="68 Dodge Dart"
+             onclick="verImagen(this.src)">
+        <h3>68 Dodge Dart</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('68 Dodge Dart1',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181654.png"
+             alt="Quick Chat"
+             onclick="verImagen(this.src)">
+        <h3>Quick Chat</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('Quick Chat',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181659.png"
+             alt="Mazda RX-3"
+             onclick="verImagen(this.src)">
+        <h3>Mazda RX-3</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('Mazda RX-3',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181704.png"
+             alt="Maserati Shamal"
+             onclick="verImagen(this.src)">
+        <h3>Maserati Shamal</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('Maserati Shamal',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181710.png"
+             alt="20 Jeep Gladiator"
+             onclick="verImagen(this.src)">
+        <h3>20 Jeep Gladiator</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('20 Jeep Gladiator',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181719.png"
+             alt="Audi 90"
+             onclick="verImagen(this.src)">
+        <h3>Audi 90</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('Audi 90',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181731.png"
+             alt="Nissan Skyline 2000GT-R LBWK"
+             onclick="verImagen(this.src)">
+        <h3>Nissan Skyline 2000GT-R LBWK</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('Nissan Skyline 2000GT-R LBWK',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181736.png"
+             alt="Ford RS200"
+             onclick="verImagen(this.src)">
+        <h3>Ford RS200</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('Ford RS200',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181741.png"
+             alt="2020 Ford Mustang Shelby GT500"
+             onclick="verImagen(this.src)">
+        <h3>2020 Ford Mustang Shelby GT500</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('2020 Ford Mustang Shelby GT500',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181747.png"
+             alt="Ford Mustang GTD"
+             onclick="verImagen(this.src)">
+        <h3>Ford Mustang GTD</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('Ford Mustang GTD',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181758.png"
+             alt="Mazda RX-3"
+             onclick="verImagen(this.src)">
+        <h3>Mazda RX-3</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('Mazda RX-3',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181803.png"
+             alt="2016 Ford GT Race / Course"
+             onclick="verImagen(this.src)">
+        <h3>2016 Ford GT Race / Course</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('2016 Ford GT Race / Course',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181808.png"
+             alt="73 Honda Civic Custom/Personnalisé"
+             onclick="verImagen(this.src)">
+        <h3>73 Honda Civic Custom/Personnalisé</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('73 Honda Civic Custom/Personnalisé',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181813.png"
+             alt="64 Impala"
+             onclick="verImagen(this.src)">
+        <h3>64 Impala</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('64 Impala',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181818.png"
+             alt="BWM 835 CSi"
+             onclick="verImagen(this.src)">
+        <h3>BWM 835 CSi</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('BWM 835 CSi',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181824.png"
+             alt="90 Honda Civic EF"
+             onclick="verImagen(this.src)">
+        <h3>90 Honda Civic EF</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('90 Honda Civic EF',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181829.png"
+             alt="1985 Honda CR-X"
+             onclick="verImagen(this.src)">
+        <h3>1985 Honda CR-X</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('1985 Honda CR-X',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181833.png"
+             alt="98 Honda Prelude"
+             onclick="verImagen(this.src)">
+        <h3>98 Honda Prelude</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('98 Honda Prelude',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181837.png"
+             alt="2018 Honda Civic Typer R"
+             onclick="verImagen(this.src)">
+        <h3>2018 Honda Civic Typer R</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('2018 Honda Civic Typer R',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181846.png"
+             alt="Mazda RX-3"
+             onclick="verImagen(this.src)">
+        <h3>Mazda RX-3</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('Mazda RX-3',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181851.png"
+             alt="68 Dodge Dart"
+             onclick="verImagen(this.src)">
+        <h3>68 Dodge Dart</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('68 Dodge Dart',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181900.png"
+             alt="Custom / Personnalisé 66 Toronado"
+             onclick="verImagen(this.src)">
+        <h3>Custom / Personnalisé 66 Toronado</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('Custom / Personnalisé 66 Toronado',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181905.png"
+             alt="Ford F-150 Lightning Supertruck"
+             onclick="verImagen(this.src)">
+        <h3>Ford F-150 Lightning Supertruck</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('Ford F-150 Lightning Supertruck',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181910.png"
+             alt="Nissan Skyline 2000 GT-R"
+             onclick="verImagen(this.src)">
+        <h3>Nissan Skyline 2000 GT-R</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('Nissan Skyline 2000 GT-R',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181913.png"
+             alt="20 Dodge Charger Hellcat"
+             onclick="verImagen(this.src)">
+        <h3>20 Dodge Charger Hellcat</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('20 Dodge Charger Hellcat',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181917.png"
+             alt="16 Cadillac ATS- V R"
+             onclick="verImagen(this.src)">
+        <h3>16 Cadillac ATS- V R</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('16 Cadillac ATS- V R',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181923.png"
+             alt="Lamborguini Centenario"
+             onclick="verImagen(this.src)">
+        <h3>Lamborguini Centenario</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('Lamborguini Centenario',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181928.png"
+             alt="Quick Chat"
+             onclick="verImagen(this.src)">
+        <h3>Quick Chat</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('Quick Chat',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181936.png"
+             alt="96 Dodge Viper GTS"
+             onclick="verImagen(this.src)">
+        <h3>96 Dodge Viper GTS</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('96 Dodge Viper GTS',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181941.png"
+             alt="Ford Mustang GTD"
+             onclick="verImagen(this.src)">
+        <h3>Ford Mustang GTD</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('Ford Mustang GTD',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181946.png"
+             alt="Honda Civic Custom / Personnalizé"
+             onclick="verImagen(this.src)">
+        <h3>Honda Civic Custom / Personnalizé</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('Honda Civic Custom / Personnalizé',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181951.png"
+             alt="69 Mazda Savanna RX-7 FC3S"
+             onclick="verImagen(this.src)">
+        <h3>69 Mazda Savanna RX-7 FC3S</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('69 Mazda Savanna RX-7 FC3S',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181955.png"
+             alt="2020 Ford Mustang Shelby GT500"
+             onclick="verImagen(this.src)">
+        <h3>2020 Ford Mustang Shelby GT500</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('2020 Ford Mustang Shelby GT500',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 182000.png"
+             alt="Feline Lucky"
+             onclick="verImagen(this.src)">
+        <h3>Feline Lucky</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('Feline Lucky',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 182004.png"
+             alt="96 Porsche Carrera"
+             onclick="verImagen(this.src)">
+        <h3>96 Porsche Carrera</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('96 Porsche Carrera',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 182008.png"
+             alt="Ferrari 365 GTB4 Competizione"
+             onclick="verImagen(this.src)">
+        <h3>Ferrari 365 GTB4 Competizione</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('Ferrari 365 GTB4 Competizione',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 182012.png"
+             alt="2020 Ford Mustang Shelby GT500"
+             onclick="verImagen(this.src)">
+        <h3>2020 Ford Mustang Shelby GT500</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('2020 Ford Mustang Shelby GT500',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 182018.png"
+             alt="Gordon Murray Automotive T.33"
+             onclick="verImagen(this.src)">
+        <h3>Gordon Murray Automotive T.33</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('Gordon Murray Automotive T.33',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 182022.png"
+             alt="Pagani Huayra Roadster"
+             onclick="verImagen(this.src)">
+        <h3>Pagani Huayra Roadster</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('Pagani Huayra Roadster',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 182026.png"
+             alt="Aston Martin Vantage GT3"
+             onclick="verImagen(this.src)">
+        <h3>Aston Martin Vantage GT3</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('Aston Martin Vantage GT3',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+</div>
+
+</section>
+    
+<!-- ============================= -->
+<!-- CARRITOS S/25 A S/45 -->
+<!-- ============================= -->
+<section id="carritos-25-45" class="productos">
+
+    <h2>🚗 Carritos Premium - S/ 25 a S/ 45</h2>
+
+    <div class="tarjetas">
+
+        <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/Captura de pantalla 2026-08-20 201244.png"
+                 alt="The Dark Knight Batmobile"
+                 onclick="verImagen(this.src)">
+            <h3>The Dark Knight Batmobile</h3>
+            <div class="precio">S/ 20</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('The Dark Knight Batmobile',20)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+        <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/Captura de pantalla 2026-08-20 201252.png"
+                 alt="Batmobile"
+                 onclick="verImagen(this.src)">
+            <h3>Batmobile</h3>
+            <div class="precio">S/ 20/div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Batmobile',20)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+        <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/Captura de pantalla 2026-08-20 201258.png"
+                 alt="Tv Series / Serie Tele Batmobile"
+                 onclick="verImagen(this.src)">
+            <h3>Tv Series / Serie Tele Batmobile</h3>
+            <div class="precio">S/ 20</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Tv Series / Serie Tele Batmobile',20)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+        <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/Captura de pantalla 2026-08-20 201306.png"
+                 alt="1966 Bat Boat / Bateau"
+                 onclick="verImagen(this.src)">
+            <h3>1966 Bat Boat / Bateau</h3>
+            <div class="precio">S/20</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('1966 Bat Boat / Bateau',20)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+        <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/Captura de pantalla 2026-08-20 201314.png"
+                 alt="Carrito 25-45 05Spider - Mobile"
+                 onclick="verImagen(this.src)">
+            <h3>Spider - Mobile</h3>
+            <div class="precio">S/ 20</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Spider - Mobile',20)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+        <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/Captura de pantalla 2026-08-20 201319.png"
+                 alt="Standard Kart"
+                 onclick="verImagen(this.src)">
+            <h3>Standard Kart</h3>
+            <div class="precio">S/20</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Standard Kart',20)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+        <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/Captura de pantalla 2026-08-20 201329.png"
+                 alt="Optimus Prime"
+                 onclick="verImagen(this.src)">
+            <h3>Optimus Prime</h3>
+            <div class="precio">S/ 25</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Optimus Prime',25)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+        <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/Captura de pantalla 2026-08-20 201352.png"
+                 alt="Visa Cash App Racing Bulls Formula One"
+                 onclick="verImagen(this.src)">
+            <h3>Visa Cash App Racing Bulls Formula One</h3>
+            <div class="precio">S/25</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Visa Cash App Racing Bulls Formula One',25)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+        <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/Captura de pantalla 2026-08-20 201411.png"
+                 alt="Kick Sauber F1"
+                 onclick="verImagen(this.src)">
+            <h3>Kick Sauber F1</h3>
+            <div class="precio">S/ 30</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Kick Sauber F1',30)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+        <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/Captura de pantalla 2026-08-20 201420.png"
+                 alt="Scuderia Ferrari HP"
+                 onclick="verImagen(this.src)">
+            <h3>Scuderia Ferrari HP</h3>
+            <div class="precio">S/30</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Scuderia Ferrari HP',30)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+        <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/Captura de pantalla 2026-08-20 201430.png"
+                 alt="Carrito 25-45 11Aston Martin Aramco Formula One"
+                 onclick="verImagen(this.src)">
+            <h3>Aston Martin Aramco Formula One</h3>
+            <div class="precio">S/ 35</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('CarrAston Martin Aramco Formula One',35)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+        <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/Captura de pantalla 2026-08-20 201439.png"
+                 alt="Dino 206 Gt"
+                 onclick="verImagen(this.src)">
+            <h3>Dino 206 Gt</h3>
+            <div class="precio">S/ 20</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Dino 206 Gt',20)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+        <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/Captura de pantalla 2026-08-20 201446.png"
+                 alt="Ferrari SF90 Stradale"
+                 onclick="verImagen(this.src)">
+            <h3>Ferrari SF90 Stradale</h3>
+            <div class="precio">S/ 20</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Ferrari SF90 Stradale',20)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+        <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/Captura de pantalla 2026-08-20 201450.png"
+                 alt="Ferrari 365 GTB4 Competizone"
+                 onclick="verImagen(this.src)">
+            <h3>Ferrari 365 GTB4 Competizone</h3>
+            <div class="precio">S/20</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Ferrari 365 GTB4 Competizone',20)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+        <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/Captura de pantalla 2026-08-20 201456.png"
+                 alt="Ferrari 12 Cilindri"
+                 onclick="verImagen(this.src)">
+            <h3>Ferrari 12 Cilindri</h3>
+            <div class="precio">S/ 20</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Ferrari 12 Cilindri',20)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+        <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/Captura de pantalla 2026-08-20 201504.png"
+                 alt="Ferrari F40 Competizone"
+                 onclick="verImagen(this.src)">
+            <h3>Ferrari F40 Competizone</h3>
+            <div class="precio">S/20</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Ferrari F40 Competizone',20)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+        <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/Captura de pantalla 2026-08-20 201512.png"
+                 alt="Ferrari SF90 Stradale"
+                 onclick="verImagen(this.src)">
+            <h3>Ferrari SF90 Stradale</h3>
+            <div class="precio">S/20</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Ferrari SF90 Stradale',20)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+        <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/Captura de pantalla 2026-08-20 201517.png"
+                 alt="Ferrari 365 GTB4 Competizione"
+                 onclick="verImagen(this.src)">
+            <h3>Ferrari 365 GTB4 Competizione</h3>
+            <div class="precio">S/20</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Ferrari 365 GTB4 Competizione',20)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+        <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/Captura de pantalla 2026-08-20 201523.png"
+                 alt="The Simpsons Family Car"
+                 onclick="verImagen(this.src)">
+            <h3>The Simpsons Family Car</h3>
+            <div class="precio">S/ 20</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('The Simpsons Family Car',20)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+        <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/Captura de pantalla 2026-08-20 201529.png"
+                 alt="Subaru Impreza WRX"
+                 onclick="verImagen(this.src)">
+            <h3>Subaru Impreza WRX</h3>
+            <div class="precio">S/20 </div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Subaru Impreza WRX',20)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+        <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/Captura de pantalla 2026-08-20 201534.png"
+                 alt="20 Toyota GR Supra"
+                 onclick="verImagen(this.src)">
+            <h3>20 Toyota GR Supra</h3>
+            <div class="precio">S/20 </div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('20 Toyota GR Supra',20)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+        <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/Captura de pantalla 2026-08-20 201540.png"
+                 alt="Nissan Skyline GT-R BNR34"
+                 onclick="verImagen(this.src)">
+            <h3>Nissan Skyline GT-R BNR34</h3>
+            <div class="precio">S/ 35</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Nissan Skyline GT-R BNR34',35)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+    </div>
+</section>
+<!-- ==========================================
+     PREMIUM
+========================================== -->
+
+<section id="premium" class="productos">
+
+<h2>⭐ Hot Wheels Premium</h2>
+
+<div class="tarjetas">
+
+    <article class="tarjeta">
+        <img src="fotos/hotwheels/premium/formula.png"
+             alt="Hot Wheels Formula"
+             onclick="verImagen(this.src)">
+        <h3>Hot Wheels Formula</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('Hot Wheels Formula',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/hotwheels/premium/ferrari.png"
+             alt="Ferrari Hot Wheels"
+             onclick="verImagen(this.src)">
+        <h3>Ferrari</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('Ferrari Hot Wheels',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+</div>
+
+</section>
+
+<!-- ==========================================
+     FUNKOS
+========================================== -->
+
+<section id="funkos" class="productos">
+
+<h2>🎁 Funkos</h2>
+
+<div class="tarjetas">
+
+    <article class="tarjeta">
+        <img src="fotos/funkos/funko 1.png"
+             alt="Funko Pop"
+             onclick="verImagen(this.src)">
+        <h3>Funko Pop</h3>
+        <div class="precio">Consultar</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('Funko Pop',0)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+</div>
+
+</section>
+
+<!-- ==========================================
+     VISOR DE FOTOS
+========================================== -->
+
+<div id="visor" onclick="cerrarImagen()">
+    <span class="cerrar">&times;</span>
+    <img id="imagenVisor" src="" alt="Imagen ampliada">
+</div>
+
+<!-- ==========================================
+     JAVASCRIPT
+========================================== -->
+
+<script>
+
+const NUMERO_WHATSAPP = "51921797846";
+
+/* =========================================
+   WHATSAPP
+========================================= */
+
+function consultar(producto, precio) {
+
+    let mensaje;
+
+    if (precio > 0) {
+        mensaje =
+            "Hola 😊, estoy interesado(a) en el producto: " +
+            producto +
+            " - S/ " +
+            precio +
+            ". ¿Sigue disponible?";
+    } else {
+        mensaje =
+            "Hola 😊, estoy interesado(a) en el producto: " +
+            producto +
+            ". ¿Me pueden indicar el precio y disponibilidad?";
+    }
+
+    const url =
+        "https://wa.me/" +
+        NUMERO_WHATSAPP +
+        "?text=" +
+        encodeURIComponent(mensaje);
+
+    window.open(url, "_blank");
+}
+
+
+/* =========================================
+   VISOR DE IMÁGENES
+========================================= */
+
+function verImagen(src) {
+
+    const visor = document.getElementById("visor");
+    const imagen = document.getElementById("imagenVisor");
+
+    if (!visor || !imagen) return;
+
+    imagen.src = src;
+    visor.style.display = "flex";
+}
+
+function cerrarImagen() {
+
+    const visor = document.getElementById("visor");
+    const imagen = document.getElementById("imagenVisor");
+
+    if (!visor || !imagen) return;
+
+    visor.style.display = "none";
+    imagen.src = "";
+}
+
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "Escape") {
+        cerrarImagen();
+    }
+
+});
+
+
+/* =========================================
+   🛒 CARRITO
+========================================= */
+
+let carrito = cargarCarrito();
+
+function cargarCarrito() {
+    try {
+        const guardado = JSON.parse(localStorage.getItem("miniatureToysCarrito"));
+        return Array.isArray(guardado) ? guardado.filter(function(producto) {
+            return producto && typeof producto.nombre === "string" &&
+                Number.isFinite(Number(producto.precio)) && Number.isFinite(Number(producto.cantidad)) &&
+                Number(producto.cantidad) > 0;
+        }).map(function(producto) {
+            return { nombre: producto.nombre, precio: Number(producto.precio), cantidad: Math.floor(Number(producto.cantidad)) };
+        }) : [];
+    } catch (error) {
+        return [];
+    }
+}
+
+function guardarCarrito() {
+    localStorage.setItem("miniatureToysCarrito", JSON.stringify(carrito));
+}
+
+function agregarAlCarrito(nombre, precio) {
+
+    const productoExistente =
+        carrito.find(p => p.nombre === nombre);
+
+    if (productoExistente) {
+        productoExistente.cantidad++;
+    } else {
+        carrito.push({
+            nombre: nombre,
+            precio: precio,
+            cantidad: 1
+        });
+    }
+
+    guardarCarrito();
+    actualizarCarrito();
+    mostrarMensajeCarrito();
+}
+
+function eliminarDelCarrito(index) {
+
+    carrito.splice(index, 1);
+    guardarCarrito();
+    actualizarCarrito();
+    abrirCarrito();
+}
+
+function cambiarCantidad(index, cambio) {
+
+    if (!carrito[index]) return;
+
+    carrito[index].cantidad += cambio;
+
+    if (carrito[index].cantidad <= 0) {
+        carrito.splice(index, 1);
+    }
+
+    guardarCarrito();
+    actualizarCarrito();
+    abrirCarrito();
+}
+
+function actualizarCarrito() {
+
+    const contador =
+        document.getElementById("contador-carrito");
+
+    if (!contador) return;
+
+    const cantidadTotal =
+        carrito.reduce(
+            (total, producto) => total + producto.cantidad,
+            0
+        );
+
+    contador.textContent = cantidadTotal;
+    contador.closest(".carrito-boton").setAttribute(
+        "aria-label",
+        "Abrir mi pedido: " + cantidadTotal + " producto" + (cantidadTotal === 1 ? "" : "s")
+    );
+}
+
+function mostrarMensajeCarrito() {
+
+    const mensaje =
+        document.getElementById("mensaje-carrito");
+
+    if (!mensaje) return;
+
+    mensaje.classList.add("mostrar");
+
+    setTimeout(function() {
+        mensaje.classList.remove("mostrar");
+    }, 2000);
+}
+
+function abrirCarrito() {
+
+    const ventana =
+        document.getElementById("ventana-carrito");
+
+    const contenidoCarrito =
+        document.getElementById("contenido-carrito");
+
+    if (!ventana || !contenidoCarrito) return;
+
+    let contenido = "";
+
+    if (carrito.length === 0) {
+
+        contenido =
+            "<p style='text-align:center;'>Tu carrito está vacío 🛒</p>";
+
+    } else {
+
+        let total = 0;
+
+        carrito.forEach(function(producto, index) {
+
+            const subtotal =
+                producto.precio * producto.cantidad;
+
+            total += subtotal;
+
+            contenido += `
+                <div class="producto-carrito">
+
+                    <div>
+                        <strong>${producto.nombre}</strong>
+                        <br>
+                        S/ ${producto.precio.toFixed(2)}
+                    </div>
+
+                    <div class="cantidad-carrito">
+
+                        <button
+                            onclick="cambiarCantidad(${index}, -1)">
+                            −
+                        </button>
+
+                        <span>${producto.cantidad}</span>
+
+                        <button
+                            onclick="cambiarCantidad(${index}, 1)">
+                            +
+                        </button>
+
+                    </div>
+
+                    <button
+                        class="eliminar-carrito"
+                        onclick="eliminarDelCarrito(${index})">
+                        ✕
+                    </button>
+
+                </div>
+            `;
+        });
+
+        contenido += `
+            <div class="total-carrito">
+                Total: S/ ${total.toFixed(2)}
+            </div>
+
+            <button
+                class="btn-enviar-pedido"
+                onclick="enviarPedidoWhatsApp()">
+                📲 Enviar pedido por WhatsApp
+            </button>
+        `;
+    }
+
+    contenidoCarrito.innerHTML = contenido;
+    ventana.classList.add("abierto");
+}
+
+function cerrarCarrito() {
+
+    const ventana =
+        document.getElementById("ventana-carrito");
+
+    if (!ventana) return;
+
+    ventana.classList.remove("abierto");
+}
+
+function enviarPedidoWhatsApp() {
+
+    if (carrito.length === 0) {
+        alert("Tu carrito está vacío");
+        return;
+    }
+
+    let mensaje =
+        "🛒 *NUEVO PEDIDO - MINIATURE TOYS STORE*%0A%0A";
+
+    let total = 0;
+
+    carrito.forEach(function(producto) {
+
+        const subtotal =
+            producto.precio * producto.cantidad;
+
+        total += subtotal;
+
+        mensaje +=
+            `▪️ ${producto.nombre}%0A` +
+            `   Cantidad: ${producto.cantidad}%0A` +
+            `   Precio: S/ ${producto.precio.toFixed(2)}%0A` +
+            `   Subtotal: S/ ${subtotal.toFixed(2)}%0A%0A`;
+    });
+
+    mensaje +=
+        `💰 *TOTAL: S/ ${total.toFixed(2)}*%0A%0A`;
+
+    mensaje +=
+        "Hola, quisiera realizar este pedido. 😊";
+
+    window.open(
+        "https://wa.me/" +
+        NUMERO_WHATSAPP +
+        "?text=" +
+        mensaje,
+        "_blank"
+    );
+}
+
+/* =========================================
+   🛒 BOTÓN CARRITO PARA TODAS LAS TARJETAS
+========================================= */
+
+function crearBotonesCarrito() {
+
+    document.querySelectorAll(".tarjeta").forEach(function(tarjeta) {
+
+        if (tarjeta.querySelector(".btn-carrito")) {
+            return;
+        }
+
+        const botonWhatsApp =
+            tarjeta.querySelector(".btn-whatsapp");
+
+        const nombreElemento =
+            tarjeta.querySelector("h3");
+
+        const precioElemento =
+            tarjeta.querySelector(".precio");
+
+        if (!botonWhatsApp || !nombreElemento || !precioElemento) {
+            return;
+        }
+
+        const nombre =
+            nombreElemento.textContent.trim();
+
+        const precioTexto =
+            precioElemento.textContent
+                .replace(/S\/\s*/gi, "")
+                .replace(",", ".")
+                .trim();
+
+        const precio =
+            parseFloat(precioTexto);
+
+        if (isNaN(precio)) {
+            return;
+        }
+
+        const botonCarrito =
+            document.createElement("button");
+
+        botonCarrito.className = "btn-carrito";
+        botonCarrito.type = "button";
+        botonCarrito.innerHTML = "🛒 Carrito";
+
+        botonCarrito.onclick = function(event) {
+
+            event.preventDefault();
+            event.stopPropagation();
+
+            agregarAlCarrito(nombre, precio);
+        };
+
+        botonWhatsApp.insertAdjacentElement(
+            "afterend",
+            botonCarrito
+        );
+
+    });
+}
+
+
+/* =========================================
+   🔎 BUSCADOR
+========================================= */
+
 function buscarProductos() {
 
     const buscador =
@@ -3068,6 +6086,37 @@ function buscarProductos() {
 
     document.getElementById("sin-resultados").hidden = texto === "" || hayResultados;
 }
+
+
+/* =========================================
+   🚀 INICIAR
+========================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        crearBotonesCarrito();
+        actualizarCarrito();
+
+        const buscador =
+            document.getElementById("buscadorProductos");
+
+        if (buscador) {
+
+            buscador.addEventListener(
+                "input",
+                buscarProductos
+            );
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
 
 
 /* =========================================
