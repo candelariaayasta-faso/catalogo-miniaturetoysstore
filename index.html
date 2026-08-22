@@ -728,7 +728,7 @@ header p {
     }
 /* =========================================
    🏍️ MOTOS A ESCALA
-   IGUALAR AL DISEÑO GENERAL
+   GALERÍA CENTRADA
 ========================================= */
 
 #motos-escala .tarjeta > .galeria-movil {
@@ -740,14 +740,15 @@ header p {
 
     display: flex !important;
     align-items: center !important;
-    justify-content: center !important;
 
     overflow-x: auto !important;
     overflow-y: hidden !important;
+
+    scroll-snap-type: x mandatory !important;
 }
 
 #motos-escala .galeria-movil img {
-    display: block !important;
+    flex: 0 0 100% !important;
 
     width: 100% !important;
     min-width: 100% !important;
@@ -758,6 +759,9 @@ header p {
     object-position: center center !important;
 
     margin: 0 !important;
+    padding: 8px !important;
+
+    scroll-snap-align: center !important;
 }
 
 /* INDICADOR DE FOTOS */
@@ -772,7 +776,7 @@ header p {
     margin: 0 !important;
 }
 
-/* CELULAR */
+/* 📱 CELULAR */
 
 @media (max-width: 600px) {
 
@@ -783,7 +787,6 @@ header p {
     #motos-escala .galeria-movil img {
         height: 145px !important;
     }
-
 }
 </style>
 
@@ -2877,81 +2880,73 @@ function enviarPedidoWhatsApp() {
     );
 }
 
-
 /* =========================================
-   🛒 AGREGAR BOTÓN CARRITO A TODAS
+   🛒 BOTÓN CARRITO PARA TODAS LAS TARJETAS
 ========================================= */
 
 function crearBotonesCarrito() {
 
-    document
-        .querySelectorAll(".tarjeta")
-        .forEach(function(tarjeta) {
+    document.querySelectorAll(".tarjeta").forEach(function(tarjeta) {
 
-            if (tarjeta.querySelector(".btn-carrito")) {
-                return;
-            }
+        if (tarjeta.querySelector(".btn-carrito")) {
+            return;
+        }
 
-            const botonWhatsApp =
-                tarjeta.querySelector(".btn-whatsapp");
+        const botonWhatsApp =
+            tarjeta.querySelector(".btn-whatsapp");
 
-            const nombreElemento =
-                tarjeta.querySelector("h3");
+        const nombreElemento =
+            tarjeta.querySelector("h3");
 
-            const precioElemento =
-                tarjeta.querySelector(".precio");
+        const precioElemento =
+            tarjeta.querySelector(".precio");
 
-            if (
-                !botonWhatsApp ||
-                !nombreElemento ||
-                !precioElemento
-            ) {
-                return;
-            }
+        if (!botonWhatsApp || !nombreElemento || !precioElemento) {
+            return;
+        }
 
-            const nombre =
-                nombreElemento.textContent.trim();
+        const nombre =
+            nombreElemento.textContent.trim();
 
-            const precioTexto =
-                precioElemento.textContent
-                .replace(/S\/\s*/i, "")
+        const precioTexto =
+            precioElemento.textContent
+                .replace(/S\/\s*/gi, "")
                 .replace(",", ".")
                 .trim();
 
-            const precio =
-                parseFloat(precioTexto);
+        const precio =
+            parseFloat(precioTexto);
 
-            if (isNaN(precio)) return;
+        if (isNaN(precio)) {
+            return;
+        }
 
-            const botonCarrito =
-                document.createElement("button");
+        const botonCarrito =
+            document.createElement("button");
 
-            botonCarrito.className = "btn-carrito";
-            botonCarrito.type = "button";
-            botonCarrito.innerHTML = "🛒 Carrito";
+        botonCarrito.className = "btn-carrito";
+        botonCarrito.type = "button";
+        botonCarrito.innerHTML = "🛒 Carrito";
 
-            botonCarrito.onclick = function(event) {
+        botonCarrito.onclick = function(event) {
 
-                event.preventDefault();
-                event.stopPropagation();
+            event.preventDefault();
+            event.stopPropagation();
 
-                agregarAlCarrito(nombre, precio);
-            };
+            agregarAlCarrito(nombre, precio);
+        };
 
-            botonWhatsApp.insertAdjacentElement(
-                "afterend",
-                botonCarrito
-            );
-        });
+        botonWhatsApp.insertAdjacentElement(
+            "afterend",
+            botonCarrito
+        );
+
+    });
 }
 
 
 /* =========================================
    🔎 BUSCADOR
-   - Busca por nombre, precio o texto de la tarjeta.
-   - Muestra solamente los resultados.
-   - Lleva automáticamente al primer resultado.
-   - Si borras la búsqueda, vuelve a mostrar todo.
 ========================================= */
 
 function buscarProductos() {
@@ -2963,8 +2958,10 @@ function buscarProductos() {
 
     const texto =
         buscador.value
-        .toLowerCase()
-        .trim();
+            .toLowerCase()
+            .trim()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "");
 
     const tarjetas =
         document.querySelectorAll(".tarjeta");
@@ -2975,25 +2972,20 @@ function buscarProductos() {
 
         const contenido =
             tarjeta.textContent
-            .toLowerCase()
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "");
-
-        const busqueda =
-            texto
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "");
+                .toLowerCase()
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "");
 
         if (
-            busqueda === "" ||
-            contenido.includes(busqueda)
+            texto === "" ||
+            contenido.includes(texto)
         ) {
 
             tarjeta.style.display = "";
 
             if (
-                busqueda !== "" &&
-                !primeraCoincidencia
+                texto !== "" &&
+                primeraCoincidencia === null
             ) {
                 primeraCoincidencia = tarjeta;
             }
@@ -3002,28 +2994,28 @@ function buscarProductos() {
 
             tarjeta.style.display = "none";
         }
+
     });
 
-    /* Llevar al primer resultado una sola vez por búsqueda */
     if (
         primeraCoincidencia &&
         texto !== ""
     ) {
 
-        requestAnimationFrame(function() {
+        setTimeout(function() {
 
             primeraCoincidencia.scrollIntoView({
                 behavior: "smooth",
                 block: "center"
             });
 
-        });
+        }, 150);
     }
 }
 
 
 /* =========================================
-   🚀 INICIAR TODO
+   🚀 INICIAR
 ========================================= */
 
 document.addEventListener(
