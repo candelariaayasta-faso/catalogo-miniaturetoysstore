@@ -948,6 +948,8 @@ body {
 .logo-porsche { background:#c9152b; color:#ffd64a; }
 .logo-audi { background:#e8edf8; color:#b00016; }
 .logo-nissan { background:#fff; color:#b40020; }
+.logo-mclaren {background: linear-gradient(145deg, #ff8700, #ffb000);color: #11183f;font-family: Arial, sans-serif;font-size: 24px; }
+
 
 /* ===== SELECTORES DE COLOR Y AGOTADOS ===== */
 .selector-color { grid-column:1 / -1; grid-row:3; display:flex; flex-wrap:wrap; align-items:center; gap:6px; padding:8px; border-top:1px solid #dce3f5; background:rgba(239,244,255,.75); }
@@ -960,6 +962,11 @@ body {
 .tarjeta.modelo-agotado { filter:grayscale(.7); opacity:.8; }
 .tarjeta.modelo-agotado::after { content:"MODELO AGOTADO"; grid-column:1 / -1; grid-row:3; align-self:center; justify-self:center; padding:7px 10px; border-radius:999px; background:#55596b; color:#fff; font-size:11px; font-weight:800; }
 .tarjeta.modelo-agotado .btn-whatsapp, .tarjeta.modelo-agotado .btn-carrito { pointer-events:none; background:#777 !important; }
+    
+    .indicador-fotos {
+    display: none !important;
+}
+
 </style>
 
 </head>
@@ -1026,6 +1033,9 @@ body {
     <button class="marca-item" type="button" onclick="filtrarMarca('Porsche','carritos-25-45')"><span class="marca-logo logo-porsche">P</span><span>Porsche</span></button>
     <button class="marca-item" type="button" onclick="filtrarMarca('Audi','carritos-25-45')"><span class="marca-logo logo-audi">A</span><span>Audi</span></button>
     <button class="marca-item" type="button" onclick="filtrarMarca('Nissan','carritos-25-45')"><span class="marca-logo logo-nissan">N</span><span>Nissan</span></button>
+    <button class="marca-item" type="button" onclick="filtrarMarca('McLaren','carritos-25-45')"><span class="marca-logo logo-mclaren">M</span><span>McLaren</span>
+</button>
+
 </div>
 </div>
 
@@ -1314,26 +1324,46 @@ body {
 
 <section id="carritos-escala" class="productos">
 
-<h2>🚗 Carritos a escala</h2>
+    <h2>🚗 Carritos a escala</h2>
 
-<div class="tarjetas">
+    <div class="tarjetas">
 
-       <article class="tarjeta">
-        <img src="fotos/escala/mercedes amg gt 1 18.png"
-             alt="Mercedes AMG GT escala"
-             onclick="verImagen(this.src)">
-        <h3>Mercedes AMG GT</h3>
-        <div class="precio">S/ 75</div>
-        <span class="disponible">Disponible</span>
-        <button class="btn-whatsapp"
-                onclick="consultar('Mercedes AMG GT',75)">
-            Consultar por WhatsApp
-        </button>
-    </article>
+        <!-- FORD MUSTANG DE TORETO - 3 FOTOS -->
+        <article class="tarjeta">
 
-</div>
+            <div class="galeria-movil">
+                <img src="fotos/carritos/ford-mustang-toreto-1.png"
+                     alt="Ford Mustang de Toretto vista lateral"
+                     onclick="verImagen(this.src)">
+
+                <img src="fotos/carritos/ford-mustang-toreto-2.png"
+                     alt="Ford Mustang de Toretto en su caja"
+                     onclick="verImagen(this.src)">
+
+                <img src="fotos/carritos/ford-mustang-toreto-3.png"
+                     alt="Ford Mustang de Toretto vista frontal"
+                     onclick="verImagen(this.src)">
+            </div>
+
+            <p class="indicador-fotos">Desliza para ver las fotos ➜</p>
+
+            <h3>Ford Mustang de Toretto</h3>
+            <div class="precio">S/ 50</div>
+            <span class="disponible">Disponible</span>
+
+            <button class="btn-whatsapp"
+                    onclick="consultar('Ford Mustang de Toretto',50)">
+                Consultar por WhatsApp
+            </button>
+
+        </article>
+
+        <!-- Aquí puedes agregar más productos -->
+
+    </div>
 
 </section>
+
 <!-- ============================= -->
 <!-- CARRITOS CLASSIC -->
 <!-- ============================= -->
@@ -2229,13 +2259,13 @@ body {
 
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181923.png"
-             alt="Lamborguini Centenario"
+             alt="16 Lamborghini Centenario"
              onclick="verImagen(this.src)">
-        <h3>Lamborguini Centenario</h3>
+        <h3>16 Lamborghini Centenario</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
         <button class="btn-whatsapp"
-                onclick="consultar('Lamborguini Centenario',15)">
+                onclick="consultar('16 Lamborghini Centenario Verde',15)">
             Consultar por WhatsApp
         </button>
     </article>
@@ -2405,6 +2435,45 @@ body {
         <span class="disponible">Disponible</span>
         <button class="btn-whatsapp"
                 onclick="consultar('Aston Martin Vantage GT3',15)">
+            Consultar por WhatsApp
+        </button>
+    </article
+
+        <article class="tarjeta">
+        <img src="fotos/carritos15soles/16 Lamborguini Centenario.jpeg"
+             alt="16 Lamborghini Centenario"
+             onclick="verImagen(this.src)">
+        <h3>16 Lamborghini Centenario</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('16 Lamborghini Centenario amarillo',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Custom Otto.jpeg"
+             alt="Custom Otto"
+             onclick="verImagen(this.src)">
+        <h3>Custom Otto</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('Custom Otto',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/LB-Works Lamborghini Huracán Coupé.jpeg"
+             alt="LB-Works Lamborghini Huracán Coupé"
+             onclick="verImagen(this.src)">
+        <h3>LB-Works Lamborghini Huracán Coupé</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('LB-Works Lamborghini Huracán Coupé',15)">
             Consultar por WhatsApp
         </button>
     </article>
@@ -2703,6 +2772,84 @@ body {
             <span class="disponible">Disponible</span>
             <button class="btn-whatsapp"
                     onclick="consultar('Nissan Skyline GT-R BNR34',35)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+        <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/1983 Porsche 928S.jpeg"
+                 alt="1983 Porsche 928S"
+                 onclick="verImagen(this.src)">
+            <h3>1983 Porsche 928S</h3>
+            <div class="precio">S/ 20</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('1983 Porsche 928S',20)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+        <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/Ferrari SF90 Stradale.jpeg"
+                 alt="Ferrari SF90 Stradale"
+                 onclick="verImagen(this.src)">
+            <h3>Ferrari SF90 Stradale</h3>
+            <div class="precio">S/ 20</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Ferrari SF90 Stradale azul',20)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+        <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/Nissan Skyline GT-R BCNR33.jpeg"
+                 alt="Nissan Skyline GT-R BCNR33"
+                 onclick="verImagen(this.src)">
+            <h3>Nissan Skyline GT-R BCNR33</h3>
+            <div class="precio">S/ 20</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Nissan Skyline GT-R BCNR33',20)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+         <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/McLaren W1.jpeg"
+                 alt="McLaren W1"
+                 onclick="verImagen(this.src)">
+            <h3>McLaren W1</h3>
+            <div class="precio">S/ 20</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('McLaren W1',20)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+        <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/Porsche 911 Carrera T.jpeg"
+                 alt="Porsche 911 Carrera T"
+                 onclick="verImagen(this.src)">
+            <h3>Porsche 911 Carrera T</h3>
+            <div class="precio">S/ 20</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Porsche 911 Carrera T',20)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+        
+        <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/Porsche Taycan Turbo S.jpeg"
+                 alt="Porsche Taycan Turbo S"
+                 onclick="verImagen(this.src)">
+            <h3>Porsche Taycan Turbo S</h3>
+            <div class="precio">S/ 20</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Porsche Taycan Turbo S',20)">
                 Consultar por WhatsApp
             </button>
         </article>
@@ -3097,14 +3244,36 @@ function enviarPedidoWhatsApp() {
 /* =========================================
    🛒 BOTÓN CARRITO PARA TODAS LAS TARJETAS
 ========================================= */
-
+    
 const OPCIONES_COLOR = {
-    "BMW Escala 1:14": { colores:["Blanco","Rojo","Negro"], agotado:false },
-    "Moto simulación Kawasaki con muñeco Biker": { colores:["Naranja","Azul","Verde"], agotado:false },
-    "Ducati Escala 1:14": { colores:["Blanco","Rojo","Negro"], agotado:false },
-    "Ducati escala 1:12": { colores:["Blanco","Rojo","Negro"], agotado:false },
-    "Kawasaki Escala 1:14": { colores:["Blanco","Rojo","Negro"], agotado:false },
-    "Kawasaki H2R escala 1:9": { colores:["Blanco","Rojo","Negro"], agotado:false }
+    "BMW Escala 1:14": {
+        colores: [
+            "Blanco",
+            { nombre: "Rojo", agotado: true },
+            "Negro"
+        ],
+        agotado: false
+    },
+    "Moto simulación Kawasaki con muñeco Biker": {
+        colores: ["Naranja", "Azul", "Verde"],
+        agotado: false
+    },
+    "Ducati Escala 1:14": {
+        colores: ["Blanco", "Rojo", "Negro"],
+        agotado: false
+    },
+    "Ducati escala 1:12": {
+        colores: ["Blanco", "Rojo", "Negro"],
+        agotado: false
+    },
+    "Kawasaki Escala 1:14": {
+        colores: ["Blanco", "Rojo", "Negro"],
+        agotado: true
+    },
+    "Kawasaki H2R escala 1:9": {
+        colores: ["Blanco", "Rojo", "Negro"],
+        agotado: false
+    }
 };
 
 function activarDeslizamientoGalerias() {
