@@ -880,6 +880,22 @@ header h1{color:#fff;font-size:clamp(24px,7vw,36px);letter-spacing:-.8px}header 
 @media(max-width:600px){ .galeria-flecha{width:26px;height:26px;font-size:19px} }
 @media(max-width:600px){ .galeria-movil,.galeria-movil > img { height:145px !important; } }
 
+/* ===== POSICIÓN Y TAMAÑO CORRECTOS DE FOTOS EN GALERÍAS ===== */
+#motos-escala .galeria-movil-wrap { grid-column:1 / -1 !important; grid-row:1 !important; width:100% !important; height:250px !important; min-height:250px !important; }
+#motos-escala .indicador-fotos { grid-column:1 / -1 !important; grid-row:2 !important; }
+.galeria-movil-wrap, .galeria-movil { min-height:250px !important; }
+.galeria-movil, .galeria-movil > img { height:250px !important; }
+#motos-escala .galeria-movil, #motos-escala .galeria-movil > img { height:250px !important; min-height:250px !important; }
+.galeria-movil > img { object-fit:contain !important; padding:0 !important; transform:scale(1.18); }
+@media(max-width:600px){ .galeria-movil-wrap, .galeria-movil { min-height:220px !important; } .galeria-movil-wrap, #motos-escala .galeria-movil-wrap { height:220px !important; } .galeria-movil, .galeria-movil > img, #motos-escala .galeria-movil, #motos-escala .galeria-movil > img { height:220px !important; min-height:220px !important; } }
+
+/* ===== TAMAÑO GRANDE DE FOTOS EN GALERÍAS ===== */
+.galeria-movil-wrap, .galeria-movil { min-height:250px !important; }
+.galeria-movil, .galeria-movil > img { height:250px !important; }
+#motos-escala .galeria-movil, #motos-escala .galeria-movil > img { height:250px !important; min-height:250px !important; }
+.galeria-movil > img { object-fit:contain !important; padding:0 !important; transform:scale(1.28) !important; transform-origin:center center !important; }
+@media(max-width:600px){ .galeria-movil-wrap, .galeria-movil { min-height:220px !important; } .galeria-movil, .galeria-movil > img, #motos-escala .galeria-movil, #motos-escala .galeria-movil > img { height:220px !important; min-height:220px !important; } }
+
 /* ===== IDENTIDAD VISUAL COMPLETA ===== */
 body {
     background:
