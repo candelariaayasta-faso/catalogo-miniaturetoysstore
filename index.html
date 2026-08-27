@@ -2,6 +2,7 @@
 
 
 
+
 <!DOCTYPE html>
 
 <html lang="es">
@@ -1000,6 +1001,28 @@ body {
         gap:8px !important;
     }
 }
+/* ===== CORRECCIONES FINALES DEL CATÁLOGO ===== */
+.batman-panel-btn { color:#ffe100; background:linear-gradient(135deg,#111827,#374151); border:1px solid #ffe100; padding:8px 11px; border-radius:999px; font-size:12px; font-weight:700; cursor:pointer; transition:.2s; }
+.batman-panel-btn:hover,.batman-panel-btn:focus-visible { background:linear-gradient(135deg,#ffe100,#f59e0b); color:#111827; transform:translateY(-2px); }
+#motos-hotwheels .tarjetas,
+#carritos-9soles .tarjetas,
+#carritos-15soles .tarjetas,
+#carritos-25-45 .tarjetas,
+#premium .tarjetas { display:grid !important; grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:10px !important; width:100% !important; }
+#motos-hotwheels .tarjeta,
+#carritos-9soles .tarjeta,
+#carritos-15soles .tarjeta,
+#carritos-25-45 .tarjeta,
+#premium .tarjeta { width:100% !important; min-width:0 !important; max-width:none !important; }
+.tarjeta > .agotado { grid-column:1 / -1 !important; justify-self:center; }
+.tarjeta.modelo-agotado .btn-whatsapp { grid-column:1 / -1 !important; }
+@media (max-width:600px) {
+    #motos-hotwheels .tarjetas,
+    #carritos-9soles .tarjetas,
+    #carritos-15soles .tarjetas,
+    #carritos-25-45 .tarjetas,
+    #premium .tarjetas { grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:8px !important; }
+}
 </style>
 
 </head>
@@ -1042,7 +1065,6 @@ body {
     <a href="#motos-hotwheels" class="categoria">🏍️ Motos Hot Wheels</a>
     <a href="#motos-escala" class="categoria">🏍️ Motos a escala</a>
     <a href="#carritos-escala" class="categoria">🚗 Carritos a escala</a>
-    <button class="categoria categoria-batman" type="button" onclick="filtrarBatman()">🦇 Batman</button>
     <button id="botonHotwheels" class="categoria categoria-hotwheels" type="button" aria-expanded="false" aria-controls="panel-hotwheels" onclick="alternarHotWheels()">🚘 Hot Wheels <span class="flecha-hotwheels">⌄</span></button>
     <a href="#premium" class="categoria">⭐ Premium</a>
     <a href="#funkos" class="categoria">🎁 Funkos</a>
@@ -1054,6 +1076,7 @@ body {
     <a href="#carritos-9soles" onclick="cerrarPanelHotWheels()">Clásicos · S/ 9</a>
     <a href="#carritos-15soles" onclick="cerrarPanelHotWheels()">Intermedios · S/ 15</a>
     <a href="#carritos-25-45" onclick="cerrarPanelHotWheels()">Premium · S/ 25–45</a>
+    <button class="batman-panel-btn" type="button" onclick="filtrarBatman(); cerrarPanelHotWheels();">🦇 Batman / Batmobile</button>
 </div>
 
 <div class="marcas-hotwheels" aria-label="Filtrar carritos por marca">
@@ -1166,7 +1189,7 @@ body {
         </button>
     </article>
 
-    article class="tarjeta">
+    <article class="tarjeta">
         <img src="fotos/hotwheels/Tred Shredder.png"
              alt="Tred Shredder"
              onclick="verImagen(this.src)">
