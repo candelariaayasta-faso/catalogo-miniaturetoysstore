@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 
 <html lang="es">
@@ -968,6 +969,12 @@ body {
     display: none !important;
 }
 
+/* ===== ESTADO AGOTADO PARA MOTOS Y CARRITOS ===== */
+.modelo-agotado { opacity:.58; filter:grayscale(.45); position:relative; }
+.modelo-agotado::before { content:"AGOTADO"; position:absolute; top:12px; left:12px; z-index:5; padding:6px 9px; border-radius:10px; background:#d62828; color:#fff; font-size:10px; font-weight:800; letter-spacing:.4px; }
+.modelo-agotado .btn-whatsapp, .modelo-agotado .btn-carrito { background:#777 !important; color:#fff !important; cursor:not-allowed !important; pointer-events:none !important; }
+.agotado { display:inline-block; margin-bottom:7px; padding:4px 8px; border-radius:10px; background:#d62828; color:#fff; font-size:10px; font-weight:700; }
+
 </style>
 
 </head>
@@ -1371,23 +1378,6 @@ body {
 <section id="carritos-9soles" class="productos">
 
 <h2>🚗 Carritos Classic - S/ 9</h2>
-
-<div class="tarjetas">
-
-    <article class="tarjeta">
-        <img src="fotos/carritos9soles/20 dodge charger hellcat.png"
-             alt="20 Dodge Charger Hellcat"
-             onclick="verImagen(this.src)">
-        <h3>20 Dodge Charger Hellcat</h3>
-        <div class="precio">S/ 9</div>
-        <span class="disponible">Disponible</span>
-
-        <button class="btn-whatsapp"
-                onclick="consultar('20 Dodge Charger Hellcat',9)">
-            Consultar por WhatsApp
-        </button>
-    </article>
-
 
     <article class="tarjeta">
         <img src="fotos/carritos9soles/33 ford lo boy.png"
@@ -3251,16 +3241,23 @@ const OPCIONES_COLOR = {
         colores: [
             "Blanco",
             { nombre: "Rojo", agotado: true },
-            "Negro"
+             { nombre: "Negro", agotado: true }
         ],
         agotado: false
     },
     "Moto simulación Kawasaki con muñeco Biker": {
-        colores: ["Naranja", "Azul", "Verde"],
+        colores: [
+            "Naranja", 
+            { nombre: "Azul", agotado: true }, 
+            "Verde"
+        ],
         agotado: false
     },
     "Ducati Escala 1:14": {
-        colores: ["Blanco", "Rojo", "Negro"],
+        colores: ["Blanco",
+                  "Rojo", 
+               { nombre: "Negro", agotado: true }
+                 ],
         agotado: false
     },
     "Ducati escala 1:12": {
@@ -3301,6 +3298,32 @@ function activarDeslizamientoGalerias() {
     });
 }
 
+/* Escribe aquí los nombres exactos de los modelos agotados.
+   Puedes incluir motos y carritos en la misma lista. */
+const MODELOS_AGOTADOS = [
+    // "Honda CB750 Cafe Rojo",
+    // "Honda CB750 Cafe Azul",
+    // "Vairstrike"
+   // "Screamliner"
+  // "20 Dodge Charger Hellcat"
+// "2 Ford Mustang GTD"
+    // "16 Lamborghini Centenario verde"
+    
+];
+
+function marcarModelosAgotados() {
+    const agotados = MODELOS_AGOTADOS.map(normalizarTexto);
+    document.querySelectorAll(".tarjeta").forEach(function(tarjeta) {
+        const titulo = tarjeta.querySelector("h3");
+        if (!titulo || !agotados.includes(normalizarTexto(titulo.textContent.trim()))) return;
+        tarjeta.classList.add("modelo-agotado");
+        const estado = tarjeta.querySelector(".disponible");
+        if (estado) { estado.className = "agotado"; estado.textContent = "Agotado"; }
+        const whatsapp = tarjeta.querySelector(".btn-whatsapp");
+        if (whatsapp) { whatsapp.disabled = true; whatsapp.textContent = "Modelo agotado"; }
+    });
+}
+
 function crearSelectoresColor() {
     document.querySelectorAll(".tarjeta").forEach(function(tarjeta) {
         const titulo = tarjeta.querySelector("h3");
@@ -3309,6 +3332,8 @@ function crearSelectoresColor() {
         if (!config) return;
         if (config.agotado) {
             tarjeta.classList.add("modelo-agotado");
+            const estado = tarjeta.querySelector(".disponible");
+            if (estado) { estado.className = "agotado"; estado.textContent = "Agotado"; }
             const whatsapp = tarjeta.querySelector(".btn-whatsapp");
             if (whatsapp) { whatsapp.disabled = true; whatsapp.textContent = "Modelo agotado"; }
             return;
@@ -3415,6 +3440,7 @@ document.addEventListener(
     function() {
 
         activarDeslizamientoGalerias();
+        marcarModelosAgotados();
         crearSelectoresColor();
         crearBotonesCarrito();
         actualizarCarrito();
