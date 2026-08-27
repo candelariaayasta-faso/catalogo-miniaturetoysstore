@@ -1,4 +1,7 @@
 
+
+
+
 <!DOCTYPE html>
 
 <html lang="es">
@@ -833,7 +836,10 @@ body{font-family:Inter,system-ui,sans-serif;background:radial-gradient(circle at
 header{padding:22px 16px 30px;background:linear-gradient(135deg,#070814,#17124d 50%,#071d49);border-bottom:4px solid transparent;border-image:linear-gradient(90deg,var(--blue),var(--pink),var(--yellow)) 1}
 .marca{display:flex;align-items:center;justify-content:center;gap:12px}.logo-principal{width:86px;height:86px;object-fit:contain;filter:drop-shadow(0 6px 12px #0008)}
 header h1{color:#fff;font-size:clamp(24px,7vw,36px);letter-spacing:-.8px}header p{color:#d9e9ff}
-.categorias{position:sticky;top:0;z-index:20;gap:10px;background:#fffffff2;box-shadow:0 5px 18px #11183f14}.categoria{color:#11183f;background:#eef4ff;border:1px solid #d9e5ff;transition:.2s}.categoria:hover{color:#fff;background:linear-gradient(135deg,var(--purple),var(--blue));transform:translateY(-2px)}
+.categorias{position:sticky;top:0;z-index:20;gap:10px;background:#fffffff2;box-shadow:0 5px 18px #11183f14}.categoria{color:#11183f;background:#eef4ff;border:1px solid #d9e5ff;transition:.2s}.categoria-batman { background:linear-gradient(135deg,#111827,#374151); color:#ffe100; border:1px solid #ffe100; }
+.categoria-batman:hover { background:linear-gradient(135deg,#ffe100,#f59e0b); color:#111827; }
+
+.categoria:hover {color:#fff;background:linear-gradient(135deg,var(--purple),var(--blue));transform:translateY(-2px)}
 .bienvenida{background:transparent}.productos{border:1px solid #e7eaf4;box-shadow:0 10px 30px #11183f12}.tarjeta{border-color:#e6e8f1;box-shadow:0 5px 18px #11183f14;transition:.2s}.tarjeta:hover{transform:translateY(-4px);box-shadow:0 12px 25px #11183f26}.tarjeta .precio{color:#4d12bb}.tarjeta .btn-carrito{background:linear-gradient(135deg,#151a4d,#5421bd)!important}
 .buscador{width:calc(100% - 20px);max-width:650px;margin:20px auto 8px}.buscador-contenedor{position:relative;display:flex;align-items:center}.icono-busqueda{position:absolute;left:17px;color:var(--purple);font-size:20px;pointer-events:none}#buscadorProductos{max-width:none;padding:15px 88px 15px 47px;border:2px solid #dce3f5;border-radius:16px;box-shadow:0 8px 22px #3322881a;font-size:15px}#buscadorProductos:focus{border-color:var(--purple);box-shadow:0 0 0 4px #7b18ff22}.btn-limpiar{position:absolute;right:10px;border:0;border-radius:10px;padding:7px 10px;background:#f0edff;color:#5414bd;cursor:pointer;font-weight:700}.btn-limpiar[hidden]{display:none}.resultados-contador{margin:8px 4px 0;color:#667085;font-size:13px;text-align:center}@media(max-width:600px){.marca{align-items:center}.logo-principal{width:70px;height:70px}header h1{font-size:24px}header p{font-size:12px}.categorias{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap}.categoria{flex:0 0 auto}}
 
@@ -948,6 +954,8 @@ body {
 .logo-porsche { background:#c9152b; color:#ffd64a; }
 .logo-audi { background:#e8edf8; color:#b00016; }
 .logo-nissan { background:#fff; color:#b40020; }
+.logo-mclaren {background: linear-gradient(145deg, #ff8700, #ffb000);color: #11183f;font-family: Arial, sans-serif;font-size: 24px; }
+
 
 /* ===== SELECTORES DE COLOR Y AGOTADOS ===== */
 .selector-color { grid-column:1 / -1; grid-row:3; display:flex; flex-wrap:wrap; align-items:center; gap:6px; padding:8px; border-top:1px solid #dce3f5; background:rgba(239,244,255,.75); }
@@ -960,6 +968,38 @@ body {
 .tarjeta.modelo-agotado { filter:grayscale(.7); opacity:.8; }
 .tarjeta.modelo-agotado::after { content:"MODELO AGOTADO"; grid-column:1 / -1; grid-row:3; align-self:center; justify-self:center; padding:7px 10px; border-radius:999px; background:#55596b; color:#fff; font-size:11px; font-weight:800; }
 .tarjeta.modelo-agotado .btn-whatsapp, .tarjeta.modelo-agotado .btn-carrito { pointer-events:none; background:#777 !important; }
+    
+    .indicador-fotos {
+    display: none !important;
+}
+
+/* ===== ESTADO AGOTADO PARA MOTOS Y CARRITOS ===== */
+.modelo-agotado { opacity:.58; filter:grayscale(.45); position:relative; }
+.modelo-agotado::before { content:"AGOTADO"; position:absolute; top:12px; left:12px; z-index:5; padding:6px 9px; border-radius:10px; background:#d62828; color:#fff; font-size:10px; font-weight:800; letter-spacing:.4px; }
+.modelo-agotado .btn-whatsapp, .modelo-agotado .btn-carrito { background:#777 !important; color:#fff !important; cursor:not-allowed !important; pointer-events:none !important; }
+.agotado { display:inline-block; margin-bottom:7px; padding:4px 8px; border-radius:10px; background:#d62828; color:#fff; font-size:10px; font-weight:700; }
+/* La etiqueta se superpone sin crear una fila adicional ni mover las tarjetas. */
+.tarjeta.modelo-agotado::after { display:none !important; }
+.tarjeta.modelo-agotado::before { pointer-events:none; }
+
+/* ===== CUADRÍCULA FIJA PARA CARRITOS S/ 9 ===== */
+#carritos-9soles .tarjetas {
+    display:grid !important;
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:10px !important;
+    width:100% !important;
+}
+#carritos-9soles .tarjeta {
+    width:100% !important;
+    min-width:0 !important;
+    max-width:none !important;
+}
+@media (max-width:600px) {
+    #carritos-9soles .tarjetas {
+        grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+        gap:8px !important;
+    }
+}
 </style>
 
 </head>
@@ -1002,6 +1042,7 @@ body {
     <a href="#motos-hotwheels" class="categoria">🏍️ Motos Hot Wheels</a>
     <a href="#motos-escala" class="categoria">🏍️ Motos a escala</a>
     <a href="#carritos-escala" class="categoria">🚗 Carritos a escala</a>
+    <button class="categoria categoria-batman" type="button" onclick="filtrarBatman()">🦇 Batman</button>
     <button id="botonHotwheels" class="categoria categoria-hotwheels" type="button" aria-expanded="false" aria-controls="panel-hotwheels" onclick="alternarHotWheels()">🚘 Hot Wheels <span class="flecha-hotwheels">⌄</span></button>
     <a href="#premium" class="categoria">⭐ Premium</a>
     <a href="#funkos" class="categoria">🎁 Funkos</a>
@@ -1022,10 +1063,13 @@ body {
     <button class="marca-item" type="button" onclick="filtrarMarca('Chevy','carritos-9soles')"><span class="marca-logo logo-chevy">C</span><span>Chevy</span></button>
     <button class="marca-item" type="button" onclick="filtrarMarca('Mazda','carritos-15soles')"><span class="marca-logo logo-mazda">M</span><span>Mazda</span></button>
     <button class="marca-item" type="button" onclick="filtrarMarca('Dodge','carritos-15soles')"><span class="marca-logo logo-dodge">D</span><span>Dodge</span></button>
-    <button class="marca-item" type="button" onclick="filtrarMarca('Lamborguini','carritos-25-45')"><span class="marca-logo logo-lambo">L</span><span>Lamborghini</span></button>
+    <button class="marca-item" type="button" onclick="filtrarMarca('Lamborghini','carritos-25-45')"><span class="marca-logo logo-lambo">L</span><span>Lamborghini</span></button>
     <button class="marca-item" type="button" onclick="filtrarMarca('Porsche','carritos-25-45')"><span class="marca-logo logo-porsche">P</span><span>Porsche</span></button>
     <button class="marca-item" type="button" onclick="filtrarMarca('Audi','carritos-25-45')"><span class="marca-logo logo-audi">A</span><span>Audi</span></button>
     <button class="marca-item" type="button" onclick="filtrarMarca('Nissan','carritos-25-45')"><span class="marca-logo logo-nissan">N</span><span>Nissan</span></button>
+    <button class="marca-item" type="button" onclick="filtrarMarca('McLaren','carritos-25-45')"><span class="marca-logo logo-mclaren">M</span><span>McLaren</span>
+</button>
+
 </div>
 </div>
 
@@ -1314,49 +1358,52 @@ body {
 
 <section id="carritos-escala" class="productos">
 
-<h2>🚗 Carritos a escala</h2>
+    <h2>🚗 Carritos a escala</h2>
 
-<div class="tarjetas">
+    <div class="tarjetas">
 
-       <article class="tarjeta">
-        <img src="fotos/escala/mercedes amg gt 1 18.png"
-             alt="Mercedes AMG GT escala"
-             onclick="verImagen(this.src)">
-        <h3>Mercedes AMG GT</h3>
-        <div class="precio">S/ 75</div>
-        <span class="disponible">Disponible</span>
-        <button class="btn-whatsapp"
-                onclick="consultar('Mercedes AMG GT',75)">
-            Consultar por WhatsApp
-        </button>
-    </article>
+        <!-- FORD MUSTANG DE TORETO - 3 FOTOS -->
+        <article class="tarjeta">
 
-</div>
+            <div class="galeria-movil">
+                <img src="fotos/carritos/ford-mustang-toreto-1.png"
+                     alt="Ford Mustang de Toretto vista lateral"
+                     onclick="verImagen(this.src)">
+
+                <img src="fotos/carritos/ford-mustang-toreto-2.png"
+                     alt="Ford Mustang de Toretto en su caja"
+                     onclick="verImagen(this.src)">
+
+                <img src="fotos/carritos/ford-mustang-toreto-3.png"
+                     alt="Ford Mustang de Toretto vista frontal"
+                     onclick="verImagen(this.src)">
+            </div>
+
+            <p class="indicador-fotos">Desliza para ver las fotos ➜</p>
+
+            <h3>Ford Mustang de Toretto</h3>
+            <div class="precio">S/ 50</div>
+            <span class="disponible">Disponible</span>
+
+            <button class="btn-whatsapp"
+                    onclick="consultar('Ford Mustang de Toretto',50)">
+                Consultar por WhatsApp
+            </button>
+
+        </article>
+
+        <!-- Aquí puedes agregar más productos -->
+
+    </div>
 
 </section>
+
 <!-- ============================= -->
 <!-- CARRITOS CLASSIC -->
 <!-- ============================= -->
 <section id="carritos-9soles" class="productos">
 
 <h2>🚗 Carritos Classic - S/ 9</h2>
-
-<div class="tarjetas">
-
-    <article class="tarjeta">
-        <img src="fotos/carritos9soles/20 dodge charger hellcat.png"
-             alt="20 Dodge Charger Hellcat"
-             onclick="verImagen(this.src)">
-        <h3>20 Dodge Charger Hellcat</h3>
-        <div class="precio">S/ 9</div>
-        <span class="disponible">Disponible</span>
-
-        <button class="btn-whatsapp"
-                onclick="consultar('20 Dodge Charger Hellcat',9)">
-            Consultar por WhatsApp
-        </button>
-    </article>
-
 
     <article class="tarjeta">
         <img src="fotos/carritos9soles/33 ford lo boy.png"
@@ -1644,7 +1691,7 @@ body {
 
 
     <article class="tarjeta">
-        <img src="fotos/carritos9soles/morgan super 3 roja.png"
+        <img src="fotos/carritos9soles/morgan super 3  roja.png"
  alt="Morgan Super 3 Roja"
  onclick="verImagen(this.src)">
         <h3>Morgan Super 3 Roja</h3>
@@ -2229,13 +2276,13 @@ body {
 
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181923.png"
-             alt="Lamborguini Centenario"
+             alt="16 Lamborghini Centenario"
              onclick="verImagen(this.src)">
-        <h3>Lamborguini Centenario</h3>
+        <h3>16 Lamborghini Centenario</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
         <button class="btn-whatsapp"
-                onclick="consultar('Lamborguini Centenario',15)">
+                onclick="consultar('16 Lamborghini Centenario Verde',15)">
             Consultar por WhatsApp
         </button>
     </article>
@@ -2405,6 +2452,45 @@ body {
         <span class="disponible">Disponible</span>
         <button class="btn-whatsapp"
                 onclick="consultar('Aston Martin Vantage GT3',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+        <article class="tarjeta">
+        <img src="fotos/carritos15soles/16 Lamborghini Centenario.jpeg"
+             alt="16 Lamborghini Centenario"
+             onclick="verImagen(this.src)">
+        <h3>16 Lamborghini Centenario</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('16 Lamborghini Centenario amarillo',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/Custom Otto.jpeg"
+             alt="Custom Otto"
+             onclick="verImagen(this.src)">
+        <h3>Custom Otto</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('Custom Otto',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/LB-Works Lamborghini Huracán Coupé.jpeg"
+             alt="LB-Works Lamborghini Huracán Coupé"
+             onclick="verImagen(this.src)">
+        <h3>LB-Works Lamborghini Huracán Coupé</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('LB-Works Lamborghini Huracán Coupé',15)">
             Consultar por WhatsApp
         </button>
     </article>
@@ -2703,6 +2789,84 @@ body {
             <span class="disponible">Disponible</span>
             <button class="btn-whatsapp"
                     onclick="consultar('Nissan Skyline GT-R BNR34',35)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+        <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/1983 Porsche 928S.jpeg"
+                 alt="1983 Porsche 928S"
+                 onclick="verImagen(this.src)">
+            <h3>1983 Porsche 928S</h3>
+            <div class="precio">S/ 20</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('1983 Porsche 928S',20)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+        <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/Ferrari SF90 Stradale.jpeg"
+                 alt="Ferrari SF90 Stradale"
+                 onclick="verImagen(this.src)">
+            <h3>Ferrari SF90 Stradale</h3>
+            <div class="precio">S/ 20</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Ferrari SF90 Stradale azul',20)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+        <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/Nissan Skyline GT-R BCNR33.jpeg"
+                 alt="Nissan Skyline GT-R BCNR33"
+                 onclick="verImagen(this.src)">
+            <h3>Nissan Skyline GT-R BCNR33</h3>
+            <div class="precio">S/ 20</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Nissan Skyline GT-R BCNR33',20)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+         <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/McLaren W1.jpeg"
+                 alt="McLaren W1"
+                 onclick="verImagen(this.src)">
+            <h3>McLaren W1</h3>
+            <div class="precio">S/ 20</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('McLaren W1',20)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+        <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/Porsche 911 Carrera T.jpeg"
+                 alt="Porsche 911 Carrera T"
+                 onclick="verImagen(this.src)">
+            <h3>Porsche 911 Carrera T</h3>
+            <div class="precio">S/ 20</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Porsche 911 Carrera T',20)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+        
+        <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/Porsche Taycan Turbo S.jpeg"
+                 alt="Porsche Taycan Turbo S"
+                 onclick="verImagen(this.src)">
+            <h3>Porsche Taycan Turbo S</h3>
+            <div class="precio">S/ 20</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Porsche Taycan Turbo S',20)">
                 Consultar por WhatsApp
             </button>
         </article>
@@ -3097,14 +3261,43 @@ function enviarPedidoWhatsApp() {
 /* =========================================
    🛒 BOTÓN CARRITO PARA TODAS LAS TARJETAS
 ========================================= */
-
+    
 const OPCIONES_COLOR = {
-    "BMW Escala 1:14": { colores:["Blanco","Rojo","Negro"], agotado:false },
-    "Moto simulación Kawasaki con muñeco Biker": { colores:["Naranja","Azul","Verde"], agotado:false },
-    "Ducati Escala 1:14": { colores:["Blanco","Rojo","Negro"], agotado:false },
-    "Ducati escala 1:12": { colores:["Blanco","Rojo","Negro"], agotado:false },
-    "Kawasaki Escala 1:14": { colores:["Blanco","Rojo","Negro"], agotado:false },
-    "Kawasaki H2R escala 1:9": { colores:["Blanco","Rojo","Negro"], agotado:false }
+    "BMW Escala 1:14": {
+        colores: [
+            "Blanco",
+            { nombre: "Rojo", agotado: true },
+             { nombre: "Negro", agotado: true }
+        ],
+        agotado: false
+    },
+    "Moto simulación Kawasaki con muñeco Biker": {
+        colores: [
+            "Naranja", 
+            { nombre: "Azul", agotado: true }, 
+            "Verde"
+        ],
+        agotado: false
+    },
+    "Ducati Escala 1:14": {
+        colores: ["Blanco",
+                  "Rojo", 
+               { nombre: "Negro", agotado: true }
+                 ],
+        agotado: false
+    },
+    "Ducati escala 1:12": {
+        colores: ["Blanco", "Rojo", "Negro"],
+        agotado: false
+    },
+    "Kawasaki Escala 1:14": {
+        colores: ["Blanco", "Rojo", "Negro"],
+        agotado: true
+    },
+    "Kawasaki H2R escala 1:9": {
+        colores: ["Blanco", "Rojo", "Negro"],
+        agotado: false
+    }
 };
 
 function activarDeslizamientoGalerias() {
@@ -3131,6 +3324,31 @@ function activarDeslizamientoGalerias() {
     });
 }
 
+/* Escribe aquí los nombres exactos de los modelos agotados.
+   Puedes incluir motos y carritos en la misma lista. */
+const MODELOS_AGOTADOS = [
+    "Honda CB750 Cafe Rojo",
+    "Honda CB750 Cafe Azul",
+    "Vairstrike",
+    "Screamliner",
+    "20 Dodge Charger Hellcat",
+    "Ford Mustang GTD",
+    "16 Lamborghini Centenario"
+];
+
+function marcarModelosAgotados() {
+    const agotados = MODELOS_AGOTADOS.map(normalizarTexto);
+    document.querySelectorAll(".tarjeta").forEach(function(tarjeta) {
+        const titulo = tarjeta.querySelector("h3");
+        if (!titulo || !agotados.includes(normalizarTexto(titulo.textContent.trim()))) return;
+        tarjeta.classList.add("modelo-agotado");
+        const estado = tarjeta.querySelector(".disponible");
+        if (estado) { estado.className = "agotado"; estado.textContent = "Agotado"; }
+        const whatsapp = tarjeta.querySelector(".btn-whatsapp");
+        if (whatsapp) { whatsapp.disabled = true; whatsapp.textContent = "Modelo agotado"; }
+    });
+}
+
 function crearSelectoresColor() {
     document.querySelectorAll(".tarjeta").forEach(function(tarjeta) {
         const titulo = tarjeta.querySelector("h3");
@@ -3139,6 +3357,8 @@ function crearSelectoresColor() {
         if (!config) return;
         if (config.agotado) {
             tarjeta.classList.add("modelo-agotado");
+            const estado = tarjeta.querySelector(".disponible");
+            if (estado) { estado.className = "agotado"; estado.textContent = "Agotado"; }
             const whatsapp = tarjeta.querySelector(".btn-whatsapp");
             if (whatsapp) { whatsapp.disabled = true; whatsapp.textContent = "Modelo agotado"; }
             return;
@@ -3233,8 +3453,33 @@ function crearBotonesCarrito() {
 function alternarHotWheels(force) { const panel=document.getElementById('panel-hotwheels'), boton=document.getElementById('botonHotwheels'); if(!panel||!boton)return; const abrir=typeof force==='boolean'?force:panel.hidden; panel.hidden=!abrir; boton.setAttribute('aria-expanded',String(abrir)); }
 function cerrarPanelHotWheels() { alternarHotWheels(false); }
 function filtrarMarca(marca, destino) { const input=document.getElementById('buscadorProductos'); if(input){ input.value=marca; buscarProductos(); } cerrarPanelHotWheels(); const seccion=document.getElementById(destino); if(seccion) seccion.scrollIntoView({behavior:'smooth',block:'start'}); }
-function normalizarTexto(t){return t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"")}
+function normalizarTexto(t){return t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/lamborguini/g,"lamborghini").replace(/[^a-z0-9]+/g," ").trim().replace(/\s+/g," ")}
 function buscarProductos(){const input=document.getElementById("buscadorProductos"), aviso=document.getElementById("sin-resultados"), contador=document.getElementById("contadorResultados"), limpiar=document.getElementById("limpiarBusqueda");if(!input)return;const q=normalizarTexto(input.value.trim());let encontrados=0,total=0;document.querySelectorAll(".productos").forEach(sec=>{let enSec=0;sec.querySelectorAll(".tarjeta").forEach(card=>{total++;const datos=[card.textContent,...[...card.querySelectorAll("img")].map(i=>i.alt)].join(" ");const ok=!q||normalizarTexto(datos).includes(q);card.classList.toggle("oculta",!ok);if(ok){encontrados++;enSec++}});sec.hidden=!!q&&!enSec});if(limpiar)limpiar.hidden=!q;if(aviso)aviso.hidden=!q||encontrados>0;if(contador)contador.textContent=q?`${encontrados} resultado${encontrados===1?"":"s"} para “${input.value.trim()}”`:`${total} productos disponibles`}
+
+function filtrarBatman(){
+    const input=document.getElementById("buscadorProductos");
+    const aviso=document.getElementById("sin-resultados");
+    const contador=document.getElementById("contadorResultados");
+    const limpiar=document.getElementById("limpiarBusqueda");
+    let encontrados=0,total=0;
+    if(input) input.value="Batman / Batmobile";
+    document.querySelectorAll(".productos").forEach(function(sec){
+        let enSec=0;
+        sec.querySelectorAll(".tarjeta").forEach(function(card){
+            total++;
+            const datos=normalizarTexto([card.textContent,...[...card.querySelectorAll("img")].map(i=>i.alt)].join(" "));
+            const ok=datos.includes("batman") || datos.includes("batmobile");
+            card.classList.toggle("oculta",!ok);
+            if(ok){encontrados++;enSec++;}
+        });
+        sec.hidden=!enSec;
+    });
+    if(limpiar) limpiar.hidden=false;
+    if(aviso) aviso.hidden=encontrados>0;
+    if(contador) contador.textContent=`${encontrados} resultado${encontrados===1?"":"s"} para “Batman / Batmobile”`;
+    const primera=document.querySelector(".productos:not([hidden])");
+    if(primera) primera.scrollIntoView({behavior:"smooth",block:"start"});
+}
 
 /* =========================================
    🚀 INICIAR
@@ -3245,6 +3490,7 @@ document.addEventListener(
     function() {
 
         activarDeslizamientoGalerias();
+        marcarModelosAgotados();
         crearSelectoresColor();
         crearBotonesCarrito();
         actualizarCarrito();
