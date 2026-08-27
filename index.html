@@ -1,8 +1,4 @@
 
-
-
-
-
 <!DOCTYPE html>
 
 <html lang="es">
@@ -1022,6 +1018,43 @@ body {
     #carritos-15soles .tarjetas,
     #carritos-25-45 .tarjetas,
     #premium .tarjetas { grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:8px !important; }
+}
+/* ===== AJUSTE DEFINITIVO HOT WHEELS ===== */
+#motos-hotwheels > .tarjetas,
+#carritos-9soles > .tarjetas,
+#carritos-15soles > .tarjetas,
+#carritos-25-45 > .tarjetas,
+#premium > .tarjetas {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    align-items: start !important;
+    gap: 10px !important;
+}
+#motos-hotwheels > .tarjetas > .tarjeta,
+#carritos-9soles > .tarjetas > .tarjeta,
+#carritos-15soles > .tarjetas > .tarjeta,
+#carritos-25-45 > .tarjetas > .tarjeta,
+#premium > .tarjetas > .tarjeta {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+}
+/* Evita que etiquetas de estado creen una columna fuera de la tarjeta. */
+.tarjeta > .agotado,
+.tarjeta > .disponible {
+    grid-column: 1 / -1 !important;
+    justify-self: center !important;
+}
+@media (max-width: 600px) {
+    #motos-hotwheels > .tarjetas,
+    #carritos-9soles > .tarjetas,
+    #carritos-15soles > .tarjetas,
+    #carritos-25-45 > .tarjetas,
+    #premium > .tarjetas {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 8px !important;
+    }
 }
 </style>
 
