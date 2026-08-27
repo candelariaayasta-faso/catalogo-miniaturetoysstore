@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 
 <html lang="es">
@@ -2981,7 +2982,7 @@ body {
         </article>
 
          <article class="tarjeta">
-            <img src="fotos/carritos25y45soles/Ferrari F40 Competizone Rojo.png"
+            <img src="fotos/carritos25y45soles/Ferrari F40 Competizone rojo.png"
                  alt="Ferrari F40 Competizone"
                  onclick="verImagen(this.src)">
             <h3>Ferrari F40 Competizone</h3>
@@ -3544,21 +3545,42 @@ const MODELOS_AGOTADOS = [
     "Honda CB750 Cafe Azul",
     "Vairstrike",
     "Screamliner",
-    "20 Dodge Charger Hellcat",
-    "Ford Mustang GTD Azul",
-    "16 Lamborghini Centenario Verde"
+    "20 Dodge Charger Hellcat"
+];
+
+/* Agotados por variante: solo afecta el color indicado. */
+const VARIANTES_AGOTADAS = [
+    { modelo: "Ford Mustang GTD", color: "Azul" },
+    { modelo: "16 Lamborghini Centenario", color: "Verde" }
 ];
 
 function marcarModelosAgotados() {
     const agotados = MODELOS_AGOTADOS.map(normalizarTexto);
     document.querySelectorAll(".tarjeta").forEach(function(tarjeta) {
         const titulo = tarjeta.querySelector("h3");
-        if (!titulo || !agotados.includes(normalizarTexto(titulo.textContent.trim()))) return;
+        if (!titulo) return;
+
+        const nombre = normalizarTexto(titulo.textContent.trim());
+        const datosTarjeta = normalizarTexto([
+            titulo.textContent,
+            ...Array.from(tarjeta.querySelectorAll("img"), img => img.alt || ""),
+            ...Array.from(tarjeta.querySelectorAll("button"), boton => boton.getAttribute("onclick") || "")
+        ].join(" "));
+
+        const modeloAgotado = agotados.includes(nombre);
+        const varianteAgotada = VARIANTES_AGOTADAS.some(function(variante) {
+            return datosTarjeta.includes(normalizarTexto(variante.modelo)) &&
+                   datosTarjeta.includes(normalizarTexto(variante.color));
+        });
+
+        if (!modeloAgotado && !varianteAgotada) return;
         tarjeta.classList.add("modelo-agotado");
         const estado = tarjeta.querySelector(".disponible");
         if (estado) { estado.className = "agotado"; estado.textContent = "Agotado"; }
         const whatsapp = tarjeta.querySelector(".btn-whatsapp");
         if (whatsapp) { whatsapp.disabled = true; whatsapp.textContent = "Modelo agotado"; }
+        const carrito = tarjeta.querySelector(".btn-carrito");
+        if (carrito) { carrito.disabled = true; carrito.textContent = "Modelo agotado"; }
     });
 }
 
