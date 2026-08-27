@@ -836,7 +836,10 @@ body{font-family:Inter,system-ui,sans-serif;background:radial-gradient(circle at
 header{padding:22px 16px 30px;background:linear-gradient(135deg,#070814,#17124d 50%,#071d49);border-bottom:4px solid transparent;border-image:linear-gradient(90deg,var(--blue),var(--pink),var(--yellow)) 1}
 .marca{display:flex;align-items:center;justify-content:center;gap:12px}.logo-principal{width:86px;height:86px;object-fit:contain;filter:drop-shadow(0 6px 12px #0008)}
 header h1{color:#fff;font-size:clamp(24px,7vw,36px);letter-spacing:-.8px}header p{color:#d9e9ff}
-.categorias{position:sticky;top:0;z-index:20;gap:10px;background:#fffffff2;box-shadow:0 5px 18px #11183f14}.categoria{color:#11183f;background:#eef4ff;border:1px solid #d9e5ff;transition:.2s}.categoria:hover{color:#fff;background:linear-gradient(135deg,var(--purple),var(--blue));transform:translateY(-2px)}
+.categorias{position:sticky;top:0;z-index:20;gap:10px;background:#fffffff2;box-shadow:0 5px 18px #11183f14}.categoria{color:#11183f;background:#eef4ff;border:1px solid #d9e5ff;transition:.2s}.categoria-batman { background:linear-gradient(135deg,#111827,#374151); color:#ffe100; border:1px solid #ffe100; }
+.categoria-batman:hover { background:linear-gradient(135deg,#ffe100,#f59e0b); color:#111827; }
+
+.categoria:hover {color:#fff;background:linear-gradient(135deg,var(--purple),var(--blue));transform:translateY(-2px)}
 .bienvenida{background:transparent}.productos{border:1px solid #e7eaf4;box-shadow:0 10px 30px #11183f12}.tarjeta{border-color:#e6e8f1;box-shadow:0 5px 18px #11183f14;transition:.2s}.tarjeta:hover{transform:translateY(-4px);box-shadow:0 12px 25px #11183f26}.tarjeta .precio{color:#4d12bb}.tarjeta .btn-carrito{background:linear-gradient(135deg,#151a4d,#5421bd)!important}
 .buscador{width:calc(100% - 20px);max-width:650px;margin:20px auto 8px}.buscador-contenedor{position:relative;display:flex;align-items:center}.icono-busqueda{position:absolute;left:17px;color:var(--purple);font-size:20px;pointer-events:none}#buscadorProductos{max-width:none;padding:15px 88px 15px 47px;border:2px solid #dce3f5;border-radius:16px;box-shadow:0 8px 22px #3322881a;font-size:15px}#buscadorProductos:focus{border-color:var(--purple);box-shadow:0 0 0 4px #7b18ff22}.btn-limpiar{position:absolute;right:10px;border:0;border-radius:10px;padding:7px 10px;background:#f0edff;color:#5414bd;cursor:pointer;font-weight:700}.btn-limpiar[hidden]{display:none}.resultados-contador{margin:8px 4px 0;color:#667085;font-size:13px;text-align:center}@media(max-width:600px){.marca{align-items:center}.logo-principal{width:70px;height:70px}header h1{font-size:24px}header p{font-size:12px}.categorias{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap}.categoria{flex:0 0 auto}}
 
@@ -979,6 +982,24 @@ body {
 .tarjeta.modelo-agotado::after { display:none !important; }
 .tarjeta.modelo-agotado::before { pointer-events:none; }
 
+/* ===== CUADRÍCULA FIJA PARA CARRITOS S/ 9 ===== */
+#carritos-9soles .tarjetas {
+    display:grid !important;
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:10px !important;
+    width:100% !important;
+}
+#carritos-9soles .tarjeta {
+    width:100% !important;
+    min-width:0 !important;
+    max-width:none !important;
+}
+@media (max-width:600px) {
+    #carritos-9soles .tarjetas {
+        grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+        gap:8px !important;
+    }
+}
 </style>
 
 </head>
@@ -1021,6 +1042,7 @@ body {
     <a href="#motos-hotwheels" class="categoria">🏍️ Motos Hot Wheels</a>
     <a href="#motos-escala" class="categoria">🏍️ Motos a escala</a>
     <a href="#carritos-escala" class="categoria">🚗 Carritos a escala</a>
+    <button class="categoria categoria-batman" type="button" onclick="filtrarBatman()">🦇 Batman</button>
     <button id="botonHotwheels" class="categoria categoria-hotwheels" type="button" aria-expanded="false" aria-controls="panel-hotwheels" onclick="alternarHotWheels()">🚘 Hot Wheels <span class="flecha-hotwheels">⌄</span></button>
     <a href="#premium" class="categoria">⭐ Premium</a>
     <a href="#funkos" class="categoria">🎁 Funkos</a>
@@ -3433,6 +3455,31 @@ function cerrarPanelHotWheels() { alternarHotWheels(false); }
 function filtrarMarca(marca, destino) { const input=document.getElementById('buscadorProductos'); if(input){ input.value=marca; buscarProductos(); } cerrarPanelHotWheels(); const seccion=document.getElementById(destino); if(seccion) seccion.scrollIntoView({behavior:'smooth',block:'start'}); }
 function normalizarTexto(t){return t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/lamborguini/g,"lamborghini").replace(/[^a-z0-9]+/g," ").trim().replace(/\s+/g," ")}
 function buscarProductos(){const input=document.getElementById("buscadorProductos"), aviso=document.getElementById("sin-resultados"), contador=document.getElementById("contadorResultados"), limpiar=document.getElementById("limpiarBusqueda");if(!input)return;const q=normalizarTexto(input.value.trim());let encontrados=0,total=0;document.querySelectorAll(".productos").forEach(sec=>{let enSec=0;sec.querySelectorAll(".tarjeta").forEach(card=>{total++;const datos=[card.textContent,...[...card.querySelectorAll("img")].map(i=>i.alt)].join(" ");const ok=!q||normalizarTexto(datos).includes(q);card.classList.toggle("oculta",!ok);if(ok){encontrados++;enSec++}});sec.hidden=!!q&&!enSec});if(limpiar)limpiar.hidden=!q;if(aviso)aviso.hidden=!q||encontrados>0;if(contador)contador.textContent=q?`${encontrados} resultado${encontrados===1?"":"s"} para “${input.value.trim()}”`:`${total} productos disponibles`}
+
+function filtrarBatman(){
+    const input=document.getElementById("buscadorProductos");
+    const aviso=document.getElementById("sin-resultados");
+    const contador=document.getElementById("contadorResultados");
+    const limpiar=document.getElementById("limpiarBusqueda");
+    let encontrados=0,total=0;
+    if(input) input.value="Batman / Batmobile";
+    document.querySelectorAll(".productos").forEach(function(sec){
+        let enSec=0;
+        sec.querySelectorAll(".tarjeta").forEach(function(card){
+            total++;
+            const datos=normalizarTexto([card.textContent,...[...card.querySelectorAll("img")].map(i=>i.alt)].join(" "));
+            const ok=datos.includes("batman") || datos.includes("batmobile");
+            card.classList.toggle("oculta",!ok);
+            if(ok){encontrados++;enSec++;}
+        });
+        sec.hidden=!enSec;
+    });
+    if(limpiar) limpiar.hidden=false;
+    if(aviso) aviso.hidden=encontrados>0;
+    if(contador) contador.textContent=`${encontrados} resultado${encontrados===1?"":"s"} para “Batman / Batmobile”`;
+    const primera=document.querySelector(".productos:not([hidden])");
+    if(primera) primera.scrollIntoView({behavior:"smooth",block:"start"});
+}
 
 /* =========================================
    🚀 INICIAR
