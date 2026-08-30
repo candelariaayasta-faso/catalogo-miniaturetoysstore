@@ -2982,7 +2982,7 @@ body {
         </article>
 
          <article class="tarjeta">
-            <img src="fotos/carritos25y45soles/Ferrari F40 Competizone rojo.png"
+            <img src="fotos/carritos25y45soles/Ferrari F40 Competizone Rojo.png"
                  alt="Ferrari F40 Competizone"
                  onclick="verImagen(this.src)">
             <h3>Ferrari F40 Competizone</h3>
@@ -3546,6 +3546,12 @@ const MODELOS_AGOTADOS = [
     "Vairstrike",
     "Screamliner",
     "20 Dodge Charger Hellcat"
+];
+
+/* Agotados por variante: solo afecta el color indicado. */
+const VARIANTES_AGOTADAS = [
+    { modelo: "Ford Mustang GTD", color: "Azul" },
+    { modelo: "16 Lamborghini Centenario", color: "Verde" }
 ];
 
 function marcarModelosAgotados() {
