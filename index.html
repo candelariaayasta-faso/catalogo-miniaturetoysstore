@@ -3548,12 +3548,6 @@ const MODELOS_AGOTADOS = [
     "20 Dodge Charger Hellcat"
 ];
 
-/* Agotados por variante: solo afecta el color indicado. */
-const VARIANTES_AGOTADAS = [
-    { modelo: "", color: "" },
-    { modelo: "", color: "" }
-];
-
 function marcarModelosAgotados() {
     const agotados = MODELOS_AGOTADOS.map(normalizarTexto);
     document.querySelectorAll(".tarjeta").forEach(function(tarjeta) {
