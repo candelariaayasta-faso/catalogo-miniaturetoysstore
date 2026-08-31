@@ -3242,6 +3242,85 @@ document.addEventListener("keydown", function(event) {
    🛒 CARRITO
 ========================================= */
 
+/* =========================================
+   📦 STOCK SOLO PARA CARRITOS HOT WHEELS
+   No se descuenta al seleccionar ni al enviar WhatsApp.
+   Tú cambias estas cantidades después de confirmar el pago.
+   Los productos Hot Wheels que no estén aquí no tienen límite.
+========================================= */
+const STOCK_HOTWHEELS = {
+    "33 Ford Lo Boy": 1,
+    "8 Crate": 0,
+    "83 Chevy Silverado Black Widow": 2,
+    "83 Chevy Silverado Celeste": 0,
+    "83 Chevy Silverado Negro": 0,
+    "BMW 2002": 0,
+    "Bone Shaker": 1,
+    "Bounce N Bass": 1,
+    "Buns of Steel": 1,
+    "Decifely Go": 1,
+    "Deora II": 1,
+    "Deora": 1,
+    "Fiat Beast of Turin": 0,
+    "Ford Model A Custom 31": 1,
+    "Instant Boost": 1,
+    "La Troca": 1,
+    "Mazda Repu": 0,
+    "Morgan Super 3 Roja": 1,
+    "Morgan Super 3 Plomo": 1,
+    "Pedal Driver": 1,
+    "Rapid Pulse": 1,
+    "Screamliner": 0,
+    "Tooned Purple Passion": 1,
+    "Vairstrike": 0,
+    "Classic Tv Series Batmobile": 2,
+    "Corvette' C7 206": 1,
+    "59 Chevy Impala": 1,
+    "2019 Audi R8 Spyder": 0,
+    "Pass N Go": 1,
+    "Ford Mustang GTD - Color: Azul": 0,
+    "Custom / Personnalisé 72 Chevy Luv": 1,
+    "Barbie Dream Camper / Roulotte": 2,
+    "Honda Odysesey": 1,
+    "95 Mazda RX-7 Drift/Déraper": 0,
+    "68 Dodge Dart": 1,
+    "Quick Chat - Color: Blanco": 1,
+    "Quick Chat - Color: Negro": 1,
+    "Quick Chat - Color: Azul": 1,
+    "Mazda RX-3": 1,
+    "Maserati Shamal": 0,
+    "20 Jeep Gladiator": 1,
+    "Audi 90": 1,
+    "Nissan Skyline 2000GT-R LBWK": 3,
+    "Ford RS200": 1,
+    "2020 Ford Mustang Shelby GT500": 1,
+    "Ford Mustang GTD": 1,
+    "Mazda RX-3": 1,
+    "Pedal Driver": 1,
+    "Rapid Pulse": 1,
+    "Ford Mustang GTD - Color: Celeste": 0,
+    "16 Lamborghini Centenario - Color: Verde": 1
+};
+
+const SECCIONES_STOCK_HOTWHEELS = [
+    "motos-hotwheels",
+    "carritos-9soles",
+    "carritos-15soles",
+    "carritos-25-45",
+    "premium"
+];
+
+function esCarritoHotWheels(tarjeta) {
+    const seccion = tarjeta.closest(".productos");
+    return !!seccion && SECCIONES_STOCK_HOTWHEELS.includes(seccion.id);
+}
+
+function obtenerStockHotWheels(nombre) {
+    return Object.prototype.hasOwnProperty.call(STOCK_HOTWHEELS, nombre)
+        ? Math.max(0, Number(STOCK_HOTWHEELS[nombre]))
+        : Infinity;
+}
+
 let carrito = cargarCarrito();
 
 function cargarCarrito() {
@@ -3252,7 +3331,7 @@ function cargarCarrito() {
                 Number.isFinite(Number(producto.precio)) && Number.isFinite(Number(producto.cantidad)) &&
                 Number(producto.cantidad) > 0;
         }).map(function(producto) {
-            return { nombre: producto.nombre, precio: Number(producto.precio), cantidad: Math.floor(Number(producto.cantidad)) };
+            return { nombre: producto.nombre, precio: Number(producto.precio), cantidad: Math.floor(Number(producto.cantidad)), controlarStock: producto.controlarStock === true };
         }) : [];
     } catch (error) {
         return [];
@@ -3263,20 +3342,24 @@ function guardarCarrito() {
     localStorage.setItem("miniatureToysCarrito", JSON.stringify(carrito));
 }
 
-function agregarAlCarrito(nombre, precio, color) {
-
+function agregarAlCarrito(nombre, precio, color, controlarStock = false) {
     const nombreCompleto = color ? `${nombre} - Color: ${color}` : nombre;
-    const productoExistente =
-        carrito.find(p => p.nombre === nombreCompleto);
+    const productoExistente = carrito.find(p => p.nombre === nombreCompleto);
+    const cantidadActual = productoExistente ? productoExistente.cantidad : 0;
+    const stockDisponible = controlarStock ? obtenerStockHotWheels(nombreCompleto) : Infinity;
+
+    if (controlarStock && cantidadActual >= stockDisponible) {
+        alert(stockDisponible === 0
+            ? `${nombreCompleto} está agotado.`
+            : `Solo quedan ${stockDisponible} unidad(es) disponibles.`);
+        return;
+    }
 
     if (productoExistente) {
         productoExistente.cantidad++;
+        productoExistente.controlarStock = controlarStock;
     } else {
-        carrito.push({
-            nombre: nombreCompleto,
-            precio: precio,
-            cantidad: 1
-        });
+        carrito.push({ nombre: nombreCompleto, precio: precio, cantidad: 1, controlarStock: controlarStock });
     }
 
     guardarCarrito();
@@ -3293,14 +3376,23 @@ function eliminarDelCarrito(index) {
 }
 
 function cambiarCantidad(index, cambio) {
-
     if (!carrito[index]) return;
 
-    carrito[index].cantidad += cambio;
+    const producto = carrito[index];
+    const nuevaCantidad = producto.cantidad + cambio;
+    const stockDisponible = producto.controlarStock
+        ? obtenerStockHotWheels(producto.nombre)
+        : Infinity;
 
-    if (carrito[index].cantidad <= 0) {
-        carrito.splice(index, 1);
+    if (producto.controlarStock && cambio > 0 && nuevaCantidad > stockDisponible) {
+        alert(stockDisponible === 0
+            ? `${producto.nombre} está agotado.`
+            : `Solo quedan ${stockDisponible} unidad(es) disponibles.`);
+        return;
     }
+
+    producto.cantidad = nuevaCantidad;
+    if (producto.cantidad <= 0) carrito.splice(index, 1);
 
     guardarCarrito();
     actualizarCarrito();
@@ -3550,8 +3642,9 @@ const MODELOS_AGOTADOS = [
 
 /* Agotados por variante: solo afecta el color indicado. */
 const VARIANTES_AGOTADAS = [
-    { modelo: "Ford Mustang GTD", color: "Azul" },
-    { modelo: "16 Lamborghini Centenario", color: "Verde" }
+    // Reactiva una variante quitando las dos barras de su línea:
+    // { modelo: "Ford Mustang GTD", color: "Azul" },
+    // { modelo: "16 Lamborghini Centenario", color: "Verde" }
 ];
 
 function marcarModelosAgotados() {
@@ -3669,7 +3762,8 @@ function crearBotonesCarrito() {
             event.stopPropagation();
 
             const opcion = tarjeta.querySelector(".color-opcion.activo");
-            agregarAlCarrito(nombre, precio, opcion ? opcion.dataset.color : "");
+            const controlarStock = esCarritoHotWheels(tarjeta);
+            agregarAlCarrito(nombre, precio, opcion ? opcion.dataset.color : "", controlarStock);
         };
 
         botonWhatsApp.insertAdjacentElement(
