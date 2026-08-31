@@ -1,7 +1,6 @@
 
 
 
-
 <!DOCTYPE html>
 
 <html lang="es">
@@ -1735,14 +1734,14 @@ body {
 
     <article class="tarjeta">
         <img src="fotos/carritos9soles/mazda rx-3.png"
-             alt="Mazda RX-3"
+             alt="Mazda RX-3 Verde"
              onclick="verImagen(this.src)">
         <h3>Mazda RX-3</h3>
         <div class="precio">S/ 9</div>
         <span class="disponible">Disponible</span>
 
         <button class="btn-whatsapp"
-                onclick="consultar('Mazda RX-3',9)">
+                onclick="consultar('Mazda RX-3 Verde',9)">
             Consultar por WhatsApp
         </button>
     </article>
@@ -2957,7 +2956,7 @@ body {
         </article>
 
          <article class="tarjeta">
-            <img src="fotos/carritos25y45soles/Ferrari F40 Competizone Rojo.png"
+            <img src="fotos/carritos25y45soles/Ferrari F40 Competizone rojo.png"
                  alt="Ferrari F40 Competizone"
                  onclick="verImagen(this.src)">
             <h3>Ferrari F40 Competizone</h3>
@@ -3250,13 +3249,15 @@ const STOCK_HOTWHEELS = {
     "68 Dodge Dart": 1,
     "Quick Chat - Color: Blanco": 1,
     "Quick Chat - Color: Negro": 1,
-    "Quick Chat - Color: Azul": 1,
+    "Quick Chat - Color: Rojo": 1,
     "20 Jeep Gladiator": 1,
     "Audi 90": 1,
     "Nissan Skyline 2000GT-R LBWK": 3,
     "Ford RS200": 1,
     "2020 Ford Mustang Shelby GT500 - Color: Plomo": 1,
-    "Ford Mustang GTD": 1,
+    "Ford Mustang GTD - Color: Azul": 0,
+    "Ford Mustang GTD - Color: Celeste": 0,
+    "Mazda RX-3 - Color: Negro": 1,
     "Mazda RX-3 - Color: Plomo": 1,
     "Pedal Driver": 1,
     "Rapid Pulse": 1,
@@ -3268,13 +3269,12 @@ const STOCK_HOTWHEELS = {
     "1985 Honda CR-X": 1,
     "98 Honda Prelude": 1,
     "2018 Honda Civic Typer R": 1,
-    "Mazda RX-3 - Color: Negro": 1,
     "68 Dodge Dart": 1,
     "Custom / Personnalisé 66 Toronado": 1,
     "Ford F-150 Lightning Supertruck": 1,
     "Nissan Skyline 2000 GT-R": 1,
     "20 Dodge Charger Hellcat": 1,
-    "16 Cadillac ATS- V R": 1,
+    "16 Cadillac ATS- V R": 2,
     "16 Lamborghini Centenario - Color: Verde": 1,
     "96 Dodge Viper GTS": 1,
     "Honda Civic Custom / Personnalizé": 1,
@@ -3296,7 +3296,7 @@ const STOCK_HOTWHEELS = {
     "Visa Cash App Racing Bulls Formula One": 2,
     "Kick Sauber F1": 3,
     "Scuderia Ferrari HP": 4,
-    "Aston Martin Aramco Formula One": 5,
+    "Aston Martin Aramco Formula One": 9,
     "Dino 206 Gt": 4,
     "Ferrari SF90 Stradale": 1,
     "Ferrari 365 GTB4 Competizone - Color: Blanco": 1,
@@ -3328,7 +3328,6 @@ const STOCK_HOTWHEELS = {
 };
 
 const SECCIONES_STOCK_HOTWHEELS = [
-    "motos-hotwheels",
     "carritos-9soles",
     "carritos-15soles",
     "carritos-25-45",
@@ -3677,12 +3676,11 @@ const MODELOS_AGOTADOS = [
 
 /* Agotados por variante: solo afecta el color indicado. */
 const VARIANTES_AGOTADAS = [
-    // Reactiva una variante quitando las dos barras de su línea:
-    // { modelo: "Honda CB750 Cafe", color: "Rojo" },
-    // { modelo: "Ford Mustang GTD", color: "Azul" },
-    // { modelo: "Ford Mustang GTD", color: "Celeste" },
-    // { modelo: "16 Lamborghini Centenario", color: "Verde" },
-    // { modelo: "McLaren W1", color: "Celeste" }
+    { modelo: "Honda CB750 Cafe", color: "Rojo" },
+    { modelo: "Ford Mustang GTD", color: "Azul" },
+    { modelo: "Ford Mustang GTD", color: "Celeste" },
+    { modelo: "Mazda RX-3", color: "Azul" },
+    { modelo: "Mazda RX-3", color: "Verde" }
 ];
 
 function marcarModelosAgotados() {
@@ -3800,8 +3798,17 @@ function crearBotonesCarrito() {
             event.stopPropagation();
 
             const opcion = tarjeta.querySelector(".color-opcion.activo");
+            const imagen = tarjeta.querySelector("img");
+            let color = opcion ? opcion.dataset.color : "";
+            if (!color && imagen && imagen.alt) {
+                const altNormalizado = normalizarTexto(imagen.alt);
+                const nombreNormalizado = normalizarTexto(nombre);
+                if (altNormalizado.startsWith(nombreNormalizado + " ")) {
+                    color = imagen.alt.trim().slice(nombre.trim().length).trim();
+                }
+            }
             const controlarStock = esCarritoHotWheels(tarjeta);
-            agregarAlCarrito(nombre, precio, opcion ? opcion.dataset.color : "", controlarStock);
+            agregarAlCarrito(nombre, precio, color, controlarStock);
         };
 
         botonWhatsApp.insertAdjacentElement(
