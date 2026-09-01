@@ -1000,6 +1000,65 @@ body {
         gap:8px !important;
     }
 }
+/* ===== CORRECCIONES FINALES DEL CATÁLOGO ===== */
+.batman-panel-btn { color:#ffe100; background:linear-gradient(135deg,#111827,#374151); border:1px solid #ffe100; padding:8px 11px; border-radius:999px; font-size:12px; font-weight:700; cursor:pointer; transition:.2s; }
+.batman-panel-btn:hover,.batman-panel-btn:focus-visible { background:linear-gradient(135deg,#ffe100,#f59e0b); color:#111827; transform:translateY(-2px); }
+#motos-hotwheels .tarjetas,
+#carritos-9soles .tarjetas,
+#carritos-15soles .tarjetas,
+#carritos-25-45 .tarjetas,
+#premium .tarjetas { display:grid !important; grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:10px !important; width:100% !important; }
+#motos-hotwheels .tarjeta,
+#carritos-9soles .tarjeta,
+#carritos-15soles .tarjeta,
+#carritos-25-45 .tarjeta,
+#premium .tarjeta { width:100% !important; min-width:0 !important; max-width:none !important; }
+.tarjeta > .agotado { grid-column:1 / -1 !important; justify-self:center; }
+.tarjeta.modelo-agotado .btn-whatsapp { grid-column:1 / -1 !important; }
+@media (max-width:600px) {
+    #motos-hotwheels .tarjetas,
+    #carritos-9soles .tarjetas,
+    #carritos-15soles .tarjetas,
+    #carritos-25-45 .tarjetas,
+    #premium .tarjetas { grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:8px !important; }
+}
+/* ===== AJUSTE DEFINITIVO HOT WHEELS ===== */
+#motos-hotwheels > .tarjetas,
+#carritos-9soles > .tarjetas,
+#carritos-15soles > .tarjetas,
+#carritos-25-45 > .tarjetas,
+#premium > .tarjetas {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    align-items: start !important;
+    gap: 10px !important;
+}
+#motos-hotwheels > .tarjetas > .tarjeta,
+#carritos-9soles > .tarjetas > .tarjeta,
+#carritos-15soles > .tarjetas > .tarjeta,
+#carritos-25-45 > .tarjetas > .tarjeta,
+#premium > .tarjetas > .tarjeta {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+}
+/* Evita que etiquetas de estado creen una columna fuera de la tarjeta. */
+.tarjeta > .agotado,
+.tarjeta > .disponible {
+    grid-column: 1 / -1 !important;
+    justify-self: center !important;
+}
+@media (max-width: 600px) {
+    #motos-hotwheels > .tarjetas,
+    #carritos-9soles > .tarjetas,
+    #carritos-15soles > .tarjetas,
+    #carritos-25-45 > .tarjetas,
+    #premium > .tarjetas {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 8px !important;
+    }
+}
 </style>
 
 </head>
@@ -1042,7 +1101,6 @@ body {
     <a href="#motos-hotwheels" class="categoria">🏍️ Motos Hot Wheels</a>
     <a href="#motos-escala" class="categoria">🏍️ Motos a escala</a>
     <a href="#carritos-escala" class="categoria">🚗 Carritos a escala</a>
-    <button class="categoria categoria-batman" type="button" onclick="filtrarBatman()">🦇 Batman</button>
     <button id="botonHotwheels" class="categoria categoria-hotwheels" type="button" aria-expanded="false" aria-controls="panel-hotwheels" onclick="alternarHotWheels()">🚘 Hot Wheels <span class="flecha-hotwheels">⌄</span></button>
     <a href="#premium" class="categoria">⭐ Premium</a>
     <a href="#funkos" class="categoria">🎁 Funkos</a>
@@ -1054,6 +1112,7 @@ body {
     <a href="#carritos-9soles" onclick="cerrarPanelHotWheels()">Clásicos · S/ 9</a>
     <a href="#carritos-15soles" onclick="cerrarPanelHotWheels()">Intermedios · S/ 15</a>
     <a href="#carritos-25-45" onclick="cerrarPanelHotWheels()">Premium · S/ 25–45</a>
+    <button class="batman-panel-btn" type="button" onclick="filtrarBatman(); cerrarPanelHotWheels();">🦇 Batman / Batmobile</button>
 </div>
 
 <div class="marcas-hotwheels" aria-label="Filtrar carritos por marca">
@@ -1166,7 +1225,7 @@ body {
         </button>
     </article>
 
-    article class="tarjeta">
+    <article class="tarjeta">
         <img src="fotos/hotwheels/Tred Shredder.png"
              alt="Tred Shredder"
              onclick="verImagen(this.src)">
@@ -1418,6 +1477,7 @@ body {
 
 <h2>🚗 Carritos Classic - S/ 9</h2>
 
+<div class="tarjetas">
     <article class="tarjeta">
         <img src="fotos/carritos9soles/33 ford lo boy.png"
              alt="33 Ford Lo Boy"
@@ -1675,14 +1735,14 @@ body {
 
     <article class="tarjeta">
         <img src="fotos/carritos9soles/mazda rx-3.png"
-             alt="Mazda RX-3"
+             alt="Mazda RX-3 Verde"
              onclick="verImagen(this.src)">
         <h3>Mazda RX-3</h3>
         <div class="precio">S/ 9</div>
         <span class="disponible">Disponible</span>
 
         <button class="btn-whatsapp"
-                onclick="consultar('Mazda RX-3',9)">
+                onclick="consultar('Mazda RX-3 Verde',9)">
             Consultar por WhatsApp
         </button>
     </article>
@@ -1805,12 +1865,11 @@ body {
                 onclick="consultar('Vairstrike',9)">
             Consultar por WhatsApp
         </button>
-    </article>
-
-</div>
+    </article></div>
 
 </section>
-    <!-- ============================= -->
+
+<!-- ============================= -->
 <!-- CARRITOS INTERMEDIO -->
 <!-- ============================= -->
     <section id="carritos-15soles" class="productos">
@@ -1886,13 +1945,13 @@ body {
 
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181620.png"
-             alt="Ford Mustang GTD"
+             alt="Ford Mustang GTD Azul"
              onclick="verImagen(this.src)">
         <h3>Ford Mustang GTD</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
         <button class="btn-whatsapp"
-                onclick="consultar('Ford Mustang GTD',15)">
+                onclick="consultar('Ford Mustang GTD Azul',15)">
             Consultar por WhatsApp
         </button>
     </article>
@@ -1964,26 +2023,26 @@ body {
 
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181654.png"
-             alt="Quick Chat"
+             alt="Quick Chat Negro"
              onclick="verImagen(this.src)">
         <h3>Quick Chat</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
         <button class="btn-whatsapp"
-                onclick="consultar('Quick Chat',15)">
+                onclick="consultar('Quick Chat Negro',15)">
             Consultar por WhatsApp
         </button>
     </article>
 
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181659.png"
-             alt="Mazda RX-3"
+             alt="Mazda RX-3 Negro"
              onclick="verImagen(this.src)">
         <h3>Mazda RX-3</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
         <button class="btn-whatsapp"
-                onclick="consultar('Mazda RX-3',15)">
+                onclick="consultar('Mazda RX-3 Negro',15)">
             Consultar por WhatsApp
         </button>
     </article>
@@ -2055,39 +2114,39 @@ body {
 
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181741.png"
-             alt="2020 Ford Mustang Shelby GT500"
+             alt="2020 Ford Mustang Shelby GT500 Plomo"
              onclick="verImagen(this.src)">
         <h3>2020 Ford Mustang Shelby GT500</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
         <button class="btn-whatsapp"
-                onclick="consultar('2020 Ford Mustang Shelby GT500',15)">
+                onclick="consultar('2020 Ford Mustang Shelby GT500 Plomo',15)">
             Consultar por WhatsApp
         </button>
     </article>
 
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181747.png"
-             alt="Ford Mustang GTD"
+             alt="Ford Mustang GTD celeste"
              onclick="verImagen(this.src)">
         <h3>Ford Mustang GTD</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
         <button class="btn-whatsapp"
-                onclick="consultar('Ford Mustang GTD',15)">
+                onclick="consultar('Ford Mustang GTD celeste',15)">
             Consultar por WhatsApp
         </button>
     </article>
 
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181758.png"
-             alt="Mazda RX-3"
+             alt="Mazda RX-3 Plomo"
              onclick="verImagen(this.src)">
         <h3>Mazda RX-3</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
         <button class="btn-whatsapp"
-                onclick="consultar('Mazda RX-3',15)">
+                onclick="consultar('Mazda RX-3 Plomo',15)">
             Consultar por WhatsApp
         </button>
     </article>
@@ -2135,7 +2194,7 @@ body {
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181818.png"
              alt="BWM 835 CSi"
              onclick="verImagen(this.src)">
-        <h3>BWM 835 CSi</h3>
+        <h3>BWM 635 CSi</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
         <button class="btn-whatsapp"
@@ -2198,13 +2257,13 @@ body {
 
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181846.png"
-             alt="Mazda RX-3"
+             alt="Mazda RX-3 Azul"
              onclick="verImagen(this.src)">
         <h3>Mazda RX-3</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
         <button class="btn-whatsapp"
-                onclick="consultar('Mazda RX-3',15)">
+                onclick="consultar('Mazda RX-3 Azul',15)">
             Consultar por WhatsApp
         </button>
     </article>
@@ -2302,13 +2361,13 @@ body {
 
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181928.png"
-             alt="Quick Chat"
+             alt="Quick Chat Blanco"
              onclick="verImagen(this.src)">
         <h3>Quick Chat</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
         <button class="btn-whatsapp"
-                onclick="consultar('Quick Chat',15)">
+                onclick="consultar('Quick Chat Blanco',15)">
             Consultar por WhatsApp
         </button>
     </article>
@@ -2328,13 +2387,13 @@ body {
 
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181941.png"
-             alt="Ford Mustang GTD"
+             alt="Ford Mustang GTD Azul"
              onclick="verImagen(this.src)">
         <h3>Ford Mustang GTD</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
         <button class="btn-whatsapp"
-                onclick="consultar('Ford Mustang GTD',15)">
+                onclick="consultar('Ford Mustang GTD Azul',15)">
             Consultar por WhatsApp
         </button>
     </article>
@@ -2366,19 +2425,6 @@ body {
     </article>
 
     <article class="tarjeta">
-        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181955.png"
-             alt="2020 Ford Mustang Shelby GT500"
-             onclick="verImagen(this.src)">
-        <h3>2020 Ford Mustang Shelby GT500</h3>
-        <div class="precio">S/ 15</div>
-        <span class="disponible">Disponible</span>
-        <button class="btn-whatsapp"
-                onclick="consultar('2020 Ford Mustang Shelby GT500',15)">
-            Consultar por WhatsApp
-        </button>
-    </article>
-
-    <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 182000.png"
              alt="Feline Lucky"
              onclick="verImagen(this.src)">
@@ -2400,19 +2446,6 @@ body {
         <span class="disponible">Disponible</span>
         <button class="btn-whatsapp"
                 onclick="consultar('96 Porsche Carrera',15)">
-            Consultar por WhatsApp
-        </button>
-    </article>
-
-    <article class="tarjeta">
-        <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 182008.png"
-             alt="Ferrari 365 GTB4 Competizione"
-             onclick="verImagen(this.src)">
-        <h3>Ferrari 365 GTB4 Competizione</h3>
-        <div class="precio">S/ 15</div>
-        <span class="disponible">Disponible</span>
-        <button class="btn-whatsapp"
-                onclick="consultar('Ferrari 365 GTB4 Competizione',15)">
             Consultar por WhatsApp
         </button>
     </article>
@@ -2538,7 +2571,7 @@ body {
                  alt="Batmobile"
                  onclick="verImagen(this.src)">
             <h3>Batmobile</h3>
-            <div class="precio">S/ 20/div>
+            <div class="precio">S/ 20</div>
             <span class="disponible">Disponible</span>
             <button class="btn-whatsapp"
                     onclick="consultar('Batmobile',20)">
@@ -2691,13 +2724,13 @@ body {
 
         <article class="tarjeta">
             <img src="fotos/carritos25y45soles/Captura de pantalla 2026-08-20 201450.png"
-                 alt="Ferrari 365 GTB4 Competizone"
+                 alt="Ferrari 365 GTB4 Competizone Blanco"
                  onclick="verImagen(this.src)">
             <h3>Ferrari 365 GTB4 Competizone</h3>
             <div class="precio">S/20</div>
             <span class="disponible">Disponible</span>
             <button class="btn-whatsapp"
-                    onclick="consultar('Ferrari 365 GTB4 Competizone',20)">
+                    onclick="consultar('Ferrari 365 GTB4 Competizone Blanco',20)">
                 Consultar por WhatsApp
             </button>
         </article>
@@ -2730,13 +2763,13 @@ body {
 
         <article class="tarjeta">
             <img src="fotos/carritos25y45soles/Captura de pantalla 2026-08-20 201517.png"
-                 alt="Ferrari 365 GTB4 Competizione"
+                 alt="Ferrari 365 GTB4 Competizione Amarillo"
                  onclick="verImagen(this.src)">
             <h3>Ferrari 365 GTB4 Competizione</h3>
             <div class="precio">S/20</div>
             <span class="disponible">Disponible</span>
             <button class="btn-whatsapp"
-                    onclick="consultar('Ferrari 365 GTB4 Competizione',20)">
+                    onclick="consultar('Ferrari 365 GTB4 Competizione Amarillo',20)">
                 Consultar por WhatsApp
             </button>
         </article>
@@ -2924,7 +2957,7 @@ body {
         </article>
 
          <article class="tarjeta">
-            <img src="fotos/carritos25y45soles/Ferrari F40 Competizone Rojo.png"
+            <img src="fotos/carritos25y45soles/Ferrari F40 Competizone rojo.png"
                  alt="Ferrari F40 Competizone"
                  onclick="verImagen(this.src)">
             <h3>Ferrari F40 Competizone</h3>
@@ -3184,6 +3217,135 @@ document.addEventListener("keydown", function(event) {
    🛒 CARRITO
 ========================================= */
 
+/* =========================================
+   📦 STOCK SOLO PARA CARRITOS HOT WHEELS
+   No se descuenta al seleccionar ni al enviar WhatsApp.
+   Tú cambias estas cantidades después de confirmar el pago.
+   Los productos Hot Wheels que no estén aquí no tienen límite.
+========================================= */
+const STOCK_HOTWHEELS = {
+    "33 Ford Lo Boy": 1,
+    "83 Chevy Silverado Black Widow": 2,
+    "Bone Shaker": 1,
+    "Bounce N Bass": 1,
+    "Buns of Steel": 1,
+    "Decifely Go": 1,
+    "Deora II": 1,
+    "Deora": 1,
+    "Ford Model A Custom 31": 1,
+    "Instant Boost": 1,
+    "La Troca": 1,
+    "Morgan Super 3 Roja": 1,
+    "Morgan Super 3 Plomo": 1,
+    "Pedal Driver": 1,
+    "Rapid Pulse": 1,
+    "Tooned Purple Passion": 1,
+    "Classic Tv Series Batmobile": 2,
+    "Corvette' C7 206": 1,
+    "59 Chevy Impala": 1,
+    "Pass N Go": 1,
+    "Custom / Personnalisé 72 Chevy Luv": 1,
+    "Barbie Dream Camper / Roulotte": 2,
+    "Honda Odysesey": 1,
+    "68 Dodge Dart": 1,
+    "Quick Chat - Color: Blanco": 1,
+    "Quick Chat - Color: Negro": 1,
+    "Quick Chat - Color: Rojo": 1,
+    "20 Jeep Gladiator": 1,
+    "Audi 90": 1,
+    "Nissan Skyline 2000GT-R LBWK": 3,
+    "Ford RS200": 1,
+    "2020 Ford Mustang Shelby GT500 - Color: Plomo": 1,
+    "Ford Mustang GTD - Color: Azul": 0,
+    "Ford Mustang GTD - Color: Celeste": 0,
+    "Mazda RX-3 - Color: Negro": 1,
+    "Mazda RX-3 - Color: Plomo": 1,
+    "Pedal Driver": 1,
+    "Rapid Pulse": 1,
+    "2016 Ford GT Race / Course": 1,
+    "73 Honda Civic Custom/Personnalisé": 1,
+    "64 Impala": 1,
+    "BWM 635 CSi": 1,
+    "90 Honda Civic EF": 1,
+    "1985 Honda CR-X": 1,
+    "98 Honda Prelude": 1,
+    "2018 Honda Civic Typer R": 1,
+    "68 Dodge Dart": 1,
+    "Custom / Personnalisé 66 Toronado": 1,
+    "Ford F-150 Lightning Supertruck": 1,
+    "Nissan Skyline 2000 GT-R": 1,
+    "20 Dodge Charger Hellcat": 1,
+    "16 Cadillac ATS- V R": 2,
+    "16 Lamborghini Centenario - Color: Verde": 1,
+    "96 Dodge Viper GTS": 1,
+    "Honda Civic Custom / Personnalizé": 1,
+    "2020 Ford Mustang Shelby GT500 - Color: Rojo": 2,
+    "Feline Lucky": 1,
+    "96 Porsche Carrera": 1,
+    "Ferrari 365 GTB4 Competizione - Color: Amarillo": 1,
+    "Gordon Murray Automotive T.33": 2,
+    "Pagani Huayra Roadster": 2,
+    "Aston Martin Vantage GT3": 5,
+    "16 Lamborghini Centenario - Color: Amarillo": 1,
+    "The Dark Knight Batmobile": 2,
+    "Batmobile": 1,
+    "Tv Series / Serie Tele Batmobile": 1,
+    "1966 Bat Boat / Bateau": 1,
+    "Spider - Mobile": 4,
+    "Standard Kart": 2,
+    "Optimus Prime": 4,
+    "Visa Cash App Racing Bulls Formula One": 2,
+    "Kick Sauber F1": 3,
+    "Scuderia Ferrari HP": 4,
+    "Aston Martin Aramco Formula One": 9,
+    "Dino 206 Gt": 4,
+    "Ferrari SF90 Stradale": 1,
+    "Ferrari 365 GTB4 Competizone - Color: Blanco": 1,
+    "Ferrari 12 Cilindri": 1,
+    "Ferrari F40 Competizone - Color: Amarillo ": 3,
+    "The Simpsons Family Car": 8,
+    "FSubaru Impreza WRX": 5,
+    "20 Toyota GR Supra": 2,
+    "Nissan Skyline GT-R BNR34": 3,
+    "1983 Porsche 928S": 1,
+    "Ferrari SF90 Stradale - Color: Azul": 1,
+    "Nissan Skyline GT-R BCNR33": 1,
+    "Porsche 911 Carrera T": 1,
+    "Porsche Taycan Turbo S": 1,
+    "17 Ford F-150 Raptor": 6,
+    "Batman & Robin Batmobile": 1,
+    "Batman ARKHAM Knight Batmobile": 1,
+    "Batman The Animated Series": 1,
+    "Ferrari F40 Competizone - Color: Rojo": 1,
+    "Ferrari SF90 Stradale - Color: Azul": 1,
+    "Ferrari SF90 Stradale - Color: Gris": 1,
+    "Ferrari SF90 Stradale - Color: Rojo": 1,
+    "Ferrari SF90 Stradale - Color: Negro": 1,
+    "McLaren F1 Rojo": 1,
+    "McLaren Speedtail": 1,
+    "McLaren W1 - Color: Naranja": 1,
+    "Toyota GR86 CUP": 1,
+    "Nissan Skyline GT-R BCNR33": 1,
+};
+
+const SECCIONES_STOCK_HOTWHEELS = [
+    "carritos-9soles",
+    "carritos-15soles",
+    "carritos-25-45",
+    "premium"
+];
+
+function esCarritoHotWheels(tarjeta) {
+    const seccion = tarjeta.closest(".productos");
+    return !!seccion && SECCIONES_STOCK_HOTWHEELS.includes(seccion.id);
+}
+
+function obtenerStockHotWheels(nombre) {
+    return Object.prototype.hasOwnProperty.call(STOCK_HOTWHEELS, nombre)
+        ? Math.max(0, Number(STOCK_HOTWHEELS[nombre]))
+        : Infinity;
+}
+
 let carrito = cargarCarrito();
 
 function cargarCarrito() {
@@ -3194,7 +3356,7 @@ function cargarCarrito() {
                 Number.isFinite(Number(producto.precio)) && Number.isFinite(Number(producto.cantidad)) &&
                 Number(producto.cantidad) > 0;
         }).map(function(producto) {
-            return { nombre: producto.nombre, precio: Number(producto.precio), cantidad: Math.floor(Number(producto.cantidad)) };
+            return { nombre: producto.nombre, precio: Number(producto.precio), cantidad: Math.floor(Number(producto.cantidad)), controlarStock: producto.controlarStock === true };
         }) : [];
     } catch (error) {
         return [];
@@ -3205,20 +3367,24 @@ function guardarCarrito() {
     localStorage.setItem("miniatureToysCarrito", JSON.stringify(carrito));
 }
 
-function agregarAlCarrito(nombre, precio, color) {
-
+function agregarAlCarrito(nombre, precio, color, controlarStock = false) {
     const nombreCompleto = color ? `${nombre} - Color: ${color}` : nombre;
-    const productoExistente =
-        carrito.find(p => p.nombre === nombreCompleto);
+    const productoExistente = carrito.find(p => p.nombre === nombreCompleto);
+    const cantidadActual = productoExistente ? productoExistente.cantidad : 0;
+    const stockDisponible = controlarStock ? obtenerStockHotWheels(nombreCompleto) : Infinity;
+
+    if (controlarStock && cantidadActual >= stockDisponible) {
+        alert(stockDisponible === 0
+            ? `${nombreCompleto} está agotado.`
+            : `Solo quedan ${stockDisponible} unidad(es) disponibles.`);
+        return;
+    }
 
     if (productoExistente) {
         productoExistente.cantidad++;
+        productoExistente.controlarStock = controlarStock;
     } else {
-        carrito.push({
-            nombre: nombreCompleto,
-            precio: precio,
-            cantidad: 1
-        });
+        carrito.push({ nombre: nombreCompleto, precio: precio, cantidad: 1, controlarStock: controlarStock });
     }
 
     guardarCarrito();
@@ -3235,14 +3401,23 @@ function eliminarDelCarrito(index) {
 }
 
 function cambiarCantidad(index, cambio) {
-
     if (!carrito[index]) return;
 
-    carrito[index].cantidad += cambio;
+    const producto = carrito[index];
+    const nuevaCantidad = producto.cantidad + cambio;
+    const stockDisponible = producto.controlarStock
+        ? obtenerStockHotWheels(producto.nombre)
+        : Infinity;
 
-    if (carrito[index].cantidad <= 0) {
-        carrito.splice(index, 1);
+    if (producto.controlarStock && cambio > 0 && nuevaCantidad > stockDisponible) {
+        alert(stockDisponible === 0
+            ? `${producto.nombre} está agotado.`
+            : `Solo quedan ${stockDisponible} unidad(es) disponibles.`);
+        return;
     }
+
+    producto.cantidad = nuevaCantidad;
+    if (producto.cantidad <= 0) carrito.splice(index, 1);
 
     guardarCarrito();
     actualizarCarrito();
@@ -3483,25 +3658,60 @@ function activarDeslizamientoGalerias() {
 /* Escribe aquí los nombres exactos de los modelos agotados.
    Puedes incluir motos y carritos en la misma lista. */
 const MODELOS_AGOTADOS = [
-    "Honda CB750 Cafe Rojo",
-    "Honda CB750 Cafe Azul",
     "Vairstrike",
     "Screamliner",
-    "20 Dodge Charger Hellcat",
-    "Ford Mustang GTD",
-    "16 Lamborghini Centenario"
+    "8 Crate",
+    "83 Chevy Silverado Celeste",
+    "83 Chevy Silverado Negro",
+    "BMW 2002",
+    "Fiat Beast of Turin",
+    "Mazda Repu",
+    "2019 Audi R8 Spyder",
+    "95 Mazda RX-7 Drift/Déraper",
+    "Maserati Shamal",
+    "Mazda RX-3 azul",
+    "69 Mazda Savanna RX-7 FC3S",
+    "Custom Otto",
+    "LB-Works Lamborghini Huracán Coupé"
+];
+
+/* Agotados por variante: solo afecta el color indicado. */
+const VARIANTES_AGOTADAS = [
+    { modelo: "Honda CB750 Cafe", color: "Rojo" },
+    { modelo: "Ford Mustang GTD", color: "Azul" },
+    { modelo: "Ford Mustang GTD", color: "Celeste" },
+    { modelo: "Mazda RX-3", color: "Azul" },
+    { modelo: "Mazda RX-3", color: "Verde" },
+    { modelo: "McLaren W1", color: "Celeste" }
 ];
 
 function marcarModelosAgotados() {
     const agotados = MODELOS_AGOTADOS.map(normalizarTexto);
     document.querySelectorAll(".tarjeta").forEach(function(tarjeta) {
         const titulo = tarjeta.querySelector("h3");
-        if (!titulo || !agotados.includes(normalizarTexto(titulo.textContent.trim()))) return;
+        if (!titulo) return;
+
+        const nombre = normalizarTexto(titulo.textContent.trim());
+        const datosTarjeta = normalizarTexto([
+            titulo.textContent,
+            ...Array.from(tarjeta.querySelectorAll("img"), img => img.alt || ""),
+            ...Array.from(tarjeta.querySelectorAll("button"), boton => boton.getAttribute("onclick") || "")
+        ].join(" "));
+
+        const modeloAgotado = agotados.includes(nombre);
+        const varianteAgotada = VARIANTES_AGOTADAS.some(function(variante) {
+            return datosTarjeta.includes(normalizarTexto(variante.modelo)) &&
+                   datosTarjeta.includes(normalizarTexto(variante.color));
+        });
+
+        if (!modeloAgotado && !varianteAgotada) return;
         tarjeta.classList.add("modelo-agotado");
         const estado = tarjeta.querySelector(".disponible");
         if (estado) { estado.className = "agotado"; estado.textContent = "Agotado"; }
         const whatsapp = tarjeta.querySelector(".btn-whatsapp");
         if (whatsapp) { whatsapp.disabled = true; whatsapp.textContent = "Modelo agotado"; }
+        const carrito = tarjeta.querySelector(".btn-carrito");
+        if (carrito) { carrito.disabled = true; carrito.textContent = "Modelo agotado"; }
     });
 }
 
@@ -3590,7 +3800,17 @@ function crearBotonesCarrito() {
             event.stopPropagation();
 
             const opcion = tarjeta.querySelector(".color-opcion.activo");
-            agregarAlCarrito(nombre, precio, opcion ? opcion.dataset.color : "");
+            const imagen = tarjeta.querySelector("img");
+            let color = opcion ? opcion.dataset.color : "";
+            if (!color && imagen && imagen.alt) {
+                const altNormalizado = normalizarTexto(imagen.alt);
+                const nombreNormalizado = normalizarTexto(nombre);
+                if (altNormalizado.startsWith(nombreNormalizado + " ")) {
+                    color = imagen.alt.trim().slice(nombre.trim().length).trim();
+                }
+            }
+            const controlarStock = esCarritoHotWheels(tarjeta);
+            agregarAlCarrito(nombre, precio, color, controlarStock);
         };
 
         botonWhatsApp.insertAdjacentElement(
