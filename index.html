@@ -2,6 +2,8 @@
 
 
 
+
+
 <!DOCTYPE html>
 
 <html lang="es">
@@ -1006,28 +1008,24 @@ body {
 #motos-hotwheels .tarjetas,
 #carritos-9soles .tarjetas,
 #carritos-15soles .tarjetas,
-#carritos-25-45 .tarjetas,
-#premium .tarjetas { display:grid !important; grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:10px !important; width:100% !important; }
+#carritos-25-45 .tarjetas { display:grid !important; grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:10px !important; width:100% !important; }
 #motos-hotwheels .tarjeta,
 #carritos-9soles .tarjeta,
 #carritos-15soles .tarjeta,
-#carritos-25-45 .tarjeta,
-#premium .tarjeta { width:100% !important; min-width:0 !important; max-width:none !important; }
+#carritos-25-45 .tarjeta { width:100% !important; min-width:0 !important; max-width:none !important; }
 .tarjeta > .agotado { grid-column:1 / -1 !important; justify-self:center; }
 .tarjeta.modelo-agotado .btn-whatsapp { grid-column:1 / -1 !important; }
 @media (max-width:600px) {
     #motos-hotwheels .tarjetas,
     #carritos-9soles .tarjetas,
     #carritos-15soles .tarjetas,
-    #carritos-25-45 .tarjetas,
-    #premium .tarjetas { grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:8px !important; }
+    #carritos-25-45 .tarjetas { grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:8px !important; }
 }
 /* ===== AJUSTE DEFINITIVO HOT WHEELS ===== */
 #motos-hotwheels > .tarjetas,
 #carritos-9soles > .tarjetas,
 #carritos-15soles > .tarjetas,
-#carritos-25-45 > .tarjetas,
-#premium > .tarjetas {
+#carritos-25-45 > .tarjetas {
     display: grid !important;
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     align-items: start !important;
@@ -1036,8 +1034,7 @@ body {
 #motos-hotwheels > .tarjetas > .tarjeta,
 #carritos-9soles > .tarjetas > .tarjeta,
 #carritos-15soles > .tarjetas > .tarjeta,
-#carritos-25-45 > .tarjetas > .tarjeta,
-#premium > .tarjetas > .tarjeta {
+#carritos-25-45 > .tarjetas > .tarjeta {
     width: 100% !important;
     min-width: 0 !important;
     max-width: 100% !important;
@@ -1053,8 +1050,7 @@ body {
     #motos-hotwheels > .tarjetas,
     #carritos-9soles > .tarjetas,
     #carritos-15soles > .tarjetas,
-    #carritos-25-45 > .tarjetas,
-    #premium > .tarjetas {
+    #carritos-25-45 > .tarjetas {
         grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
         gap: 8px !important;
     }
@@ -1102,7 +1098,6 @@ body {
     <a href="#motos-escala" class="categoria">🏍️ Motos a escala</a>
     <a href="#carritos-escala" class="categoria">🚗 Carritos a escala</a>
     <button id="botonHotwheels" class="categoria categoria-hotwheels" type="button" aria-expanded="false" aria-controls="panel-hotwheels" onclick="alternarHotWheels()">🚘 Hot Wheels <span class="flecha-hotwheels">⌄</span></button>
-    <a href="#premium" class="categoria">⭐ Premium</a>
     <a href="#funkos" class="categoria">🎁 Funkos</a>
 </nav>
 
@@ -2867,13 +2862,13 @@ body {
 
          <article class="tarjeta">
             <img src="fotos/carritos25y45soles/McLaren W1.jpeg"
-                 alt="McLaren W1"
+                 alt="McLaren W1 Celeste"
                  onclick="verImagen(this.src)">
             <h3>McLaren W1</h3>
             <div class="precio">S/ 20</div>
             <span class="disponible">Disponible</span>
             <button class="btn-whatsapp"
-                    onclick="consultar('McLaren W1',20)">
+                    onclick="consultar('McLaren W1 Celeste',20)">
                 Consultar por WhatsApp
             </button>
         </article>
@@ -3062,46 +3057,6 @@ body {
 
     </div>
 </section>
-<!-- ==========================================
-     PREMIUM
-========================================== -->
-
-<section id="premium" class="productos">
-
-<h2>⭐ Hot Wheels Premium</h2>
-
-<div class="tarjetas">
-
-    <article class="tarjeta">
-        <img src="fotos/hotwheels/premium/formula.png"
-             alt="Hot Wheels Formula"
-             onclick="verImagen(this.src)">
-        <h3>Hot Wheels Formula</h3>
-        <div class="precio">S/ 15</div>
-        <span class="disponible">Disponible</span>
-        <button class="btn-whatsapp"
-                onclick="consultar('Hot Wheels Formula',15)">
-            Consultar por WhatsApp
-        </button>
-    </article>
-
-    <article class="tarjeta">
-        <img src="fotos/hotwheels/premium/ferrari.png"
-             alt="Ferrari Hot Wheels"
-             onclick="verImagen(this.src)">
-        <h3>Ferrari</h3>
-        <div class="precio">S/ 15</div>
-        <span class="disponible">Disponible</span>
-        <button class="btn-whatsapp"
-                onclick="consultar('Ferrari Hot Wheels',15)">
-            Consultar por WhatsApp
-        </button>
-    </article>
-
-</div>
-
-</section>
-
 <!-- ==========================================
      FUNKOS
 ========================================== -->
@@ -3325,14 +3280,14 @@ const STOCK_HOTWHEELS = {
     "McLaren Speedtail": 1,
     "McLaren W1 - Color: Naranja": 1,
     "Toyota GR86 CUP": 1,
+    "Custom Otto": 2,
     "Nissan Skyline GT-R BCNR33": 1,
 };
 
 const SECCIONES_STOCK_HOTWHEELS = [
     "carritos-9soles",
     "carritos-15soles",
-    "carritos-25-45",
-    "premium"
+    "carritos-25-45"
 ];
 
 function esCarritoHotWheels(tarjeta) {
@@ -3595,26 +3550,15 @@ function enviarPedidoWhatsApp() {
     
 const OPCIONES_COLOR = {
     "BMW Escala 1:14": {
-        colores: [
-            "Blanco",
-            { nombre: "Rojo", agotado: true },
-             { nombre: "Negro", agotado: true }
-        ],
+        colores: ["Blanco", "Rojo", "Negro"],
         agotado: false
     },
     "Moto simulación Kawasaki con muñeco Biker": {
-        colores: [
-            "Naranja", 
-            { nombre: "Azul", agotado: true }, 
-            "Verde"
-        ],
+        colores: ["Azul", "Naranja", "Verde"],
         agotado: false
     },
     "Ducati Escala 1:14": {
-        colores: ["Blanco",
-                  "Rojo", 
-               { nombre: "Negro", agotado: true }
-                 ],
+       colores: ["Blanco", "Rojo", "Negro"],
         agotado: false
     },
     "Ducati escala 1:12": {
@@ -3622,10 +3566,6 @@ const OPCIONES_COLOR = {
         agotado: false
     },
     "Kawasaki Escala 1:14": {
-        colores: ["Blanco", "Rojo", "Negro"],
-        agotado: true
-    },
-    "Kawasaki H2R escala 1:9": {
         colores: ["Blanco", "Rojo", "Negro"],
         agotado: false
     }
@@ -3671,8 +3611,8 @@ const MODELOS_AGOTADOS = [
     "Maserati Shamal",
     "Mazda RX-3 azul",
     "69 Mazda Savanna RX-7 FC3S",
-    "Custom Otto",
-    "LB-Works Lamborghini Huracán Coupé"
+    "LB-Works Lamborghini Huracán Coupé",
+    "McLaren W1 celeste"
 ];
 
 /* Agotados por variante: solo afecta el color indicado. */
