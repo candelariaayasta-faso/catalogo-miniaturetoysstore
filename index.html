@@ -3595,26 +3595,15 @@ function enviarPedidoWhatsApp() {
     
 const OPCIONES_COLOR = {
     "BMW Escala 1:14": {
-        colores: [
-            "Blanco",
-            { nombre: "Rojo", agotado: true },
-             { nombre: "Negro", agotado: true }
-        ],
+        ccolores: ["Blanco", "Rojo", "Negro"],
         agotado: false
     },
     "Moto simulación Kawasaki con muñeco Biker": {
-        colores: [
-            "Naranja", 
-            { nombre: "Azul", agotado: true }, 
-            "Verde"
-        ],
+        colores: ["Azul", "Naranja", "Verde"],
         agotado: false
     },
     "Ducati Escala 1:14": {
-        colores: ["Blanco",
-                  "Rojo", 
-               { nombre: "Negro", agotado: true }
-                 ],
+       colores: ["Blanco", "Rojo", "Negro"],
         agotado: false
     },
     "Ducati escala 1:12": {
@@ -3623,7 +3612,7 @@ const OPCIONES_COLOR = {
     },
     "Kawasaki Escala 1:14": {
         colores: ["Blanco", "Rojo", "Negro"],
-        agotado: true
+        agotado: false
     },
     "Kawasaki H2R escala 1:9": {
         colores: ["Blanco", "Rojo", "Negro"],
@@ -3673,6 +3662,7 @@ const MODELOS_AGOTADOS = [
     "69 Mazda Savanna RX-7 FC3S",
     "Custom Otto",
     "LB-Works Lamborghini Huracán Coupé"
+    "McLaren W1 celeste"
 ];
 
 /* Agotados por variante: solo afecta el color indicado. */
