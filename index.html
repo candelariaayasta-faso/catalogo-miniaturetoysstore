@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 
 <html lang="es">
@@ -234,6 +235,17 @@ header p {
 
     .productos h2 {
         font-size: 21px;
+    }
+
+    #premium .tarjetas {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 8px !important;
+    }
+
+    #premium .tarjeta {
+        width: 100% !important;
+        min-width: 0 !important;
     }
 
     .tarjetas {
@@ -1094,6 +1106,7 @@ body {
     <a href="#motos-escala" class="categoria">🏍️ Motos a escala</a>
     <a href="#carritos-escala" class="categoria">🚗 Carritos a escala</a>
     <button id="botonHotwheels" class="categoria categoria-hotwheels" type="button" aria-expanded="false" aria-controls="panel-hotwheels" onclick="alternarHotWheels()">🚘 Hot Wheels <span class="flecha-hotwheels">⌄</span></button>
+    <a href="#premium" class="categoria">⭐ Premium</a>
     <a href="#funkos" class="categoria">🎁 Funkos</a>
 </nav>
 
@@ -1252,7 +1265,7 @@ body {
         </div>
 
         <h3>BMW Escala 1:14</h3>
-        <div class="precio">S/ 30</div>
+        <div class="precio">S/ 35</div>
         <span class="disponible">Disponible</span>
 
         <button class="btn-whatsapp"
@@ -1338,7 +1351,7 @@ body {
 <p class="indicador-fotos">Desliza para ver las fotos ➜</p>
 
 <h3>Kawasaki Escala 1:14</h3>
-<div class="precio">S/ 30</div>
+<div class="precio">S/ 35</div>
 <span class="disponible">Disponible</span>
 
 <button class="btn-whatsapp"
@@ -1843,6 +1856,77 @@ body {
         </button>
     </article>
 
+    
+     <article class="tarjeta">
+        <img src="fotos/carritos9soles/41 Willys.png"
+             alt="41 Willys"
+             onclick="verImagen(this.src)">
+        <h3>41 Willys</h3>
+        <div class="precio">S/ 9</div>
+        <span class="disponible">Disponible</span>
+
+        <button class="btn-whatsapp"
+                onclick="consultar('41 Willys',9)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos9soles/Alpha Romeo Giulia TI Super.png"
+             alt="Alpha Romeo Giulia TI Super"
+             onclick="verImagen(this.src)">
+        <h3>Alpha Romeo Giulia TI Super</h3>
+        <div class="precio">S/ 9</div>
+        <span class="disponible">Disponible</span>
+
+        <button class="btn-whatsapp"
+                onclick="consultar('Alpha Romeo Giulia TI Super',9)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos9soles/RD - 06.png"
+             alt="RD - 06"
+             onclick="verImagen(this.src)">
+        <h3>RD - 06</h3>
+        <div class="precio">S/ 9</div>
+        <span class="disponible">Disponible</span>
+
+        <button class="btn-whatsapp"
+                onclick="consultar('RD - 06',9)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos9soles/Solar reflex.png"
+             alt="Solar reflex"
+             onclick="verImagen(this.src)">
+        <h3>4Solar Reflex</h3>
+        <div class="precio">S/ 9</div>
+        <span class="disponible">Disponible</span>
+
+        <button class="btn-whatsapp"
+                onclick="consultar('Solar reflex',9)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos9soles/classique 55 nomad.png"
+             alt="classique 55 nomad"
+             onclick="verImagen(this.src)">
+        <h3>Classique 55 Nomad</h3>
+        <div class="precio">S/ 9</div>
+        <span class="disponible">Disponible</span>
+
+        <button class="btn-whatsapp"
+                onclick="consultar('classique 55 nomad',9)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
 
     <article class="tarjeta">
         <img src="fotos/carritos9soles/vairstrike.png"
@@ -1856,7 +1940,8 @@ body {
                 onclick="consultar('Vairstrike',9)">
             Consultar por WhatsApp
         </button>
-    </article></div>
+    </article>
+</div>
 
 </section>
 
@@ -2531,6 +2616,45 @@ body {
             Consultar por WhatsApp
         </button>
     </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/rodger dodger"
+             alt="rodger dodger"
+             onclick="verImagen(this.src)">
+        <h3>Rodger Dodger</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('rodger dodger',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/mazda autozam.png"
+             alt="mazda autozam"
+             onclick="verImagen(this.src)">
+        <h3>Mazda Autozam</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('mazda autozam',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/carritos15soles/pagani zonda cinque"
+             alt="pagani zonda cinque"
+             onclick="verImagen(this.src)">
+        <h3>Pagani Zonda Cinque</h3>
+        <div class="precio">S/ 15</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('pagani zonda cinque',15)">
+            Consultar por WhatsApp
+        </button>
+    </article>
 </div>
 
 </section>
@@ -3040,7 +3164,7 @@ body {
 
          <article class="tarjeta">
             <img src="fotos/carritos25y45soles/Toyota GR86 CUP.png"
-                 alt="Toyota GR86 CUPr"
+                 alt="Toyota GR86 CUP"
                  onclick="verImagen(this.src)">
             <h3>Toyota GR86 CUP</h3>
             <div class="precio">S/ 20</div>
@@ -3051,8 +3175,270 @@ body {
             </button>
         </article>
 
+        <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/94 toyota supra.png"
+                 alt="94 toyota supra"
+                 onclick="verImagen(this.src)">
+            <h3>94 Toyota Supra</h3>
+            <div class="precio">S/ 20</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('94 toyota supra',20)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+        
+
+        <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/70 Dodge Charger.png"
+                 alt="70 Dodge Charger"
+                 onclick="verImagen(this.src)">
+            <h3>70 Dodge Charger</h3>
+            <div class="precio">S/ 20</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('70 Dodge Charger',20)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+        
+
+        <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/chevy el camino.png"
+                 alt="chevy el camino"
+                 onclick="verImagen(this.src)">
+            <h3>Chevy El Camino</h3>
+            <div class="precio">S/ 20</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('chevy el camino',20)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+
+        <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/1983 Porsche 928S.png"
+                 alt="1983 Porsche 928S"
+                 onclick="verImagen(this.src)">
+            <h3>1983 Porsche 928S</h3>
+            <div class="precio">S/ 20</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('1983 Porsche 928S',20)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+
+        <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/Lotus Sport Elise.png"
+                 alt="Lotus Sport Elise"
+                 onclick="verImagen(this.src)">
+            <h3>Lotus Sport Elise</h3>
+            <div class="precio">S/ 20</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Lotus Sport Elise',20)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+
+        <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/La Liebre.png"
+                 alt="La Liebre"
+                 onclick="verImagen(this.src)">
+            <h3>La Liebre</h3>
+            <div class="precio">S/ 20</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('La Liebre',20)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+
+        <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/Cadillac Celestiq.png"
+                 alt="Cadillac Celestiq"
+                 onclick="verImagen(this.src)">
+            <h3>Cadillac Celestiq</h3>
+            <div class="precio">S/ 20</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Cadillac Celestiq',20)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+
+        <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/Batman y Robin Batmobile Azul.png"
+                 alt="Batman y Robin Batmobile Azul"
+                 onclick="verImagen(this.src)">
+            <h3>Batman y Robin Batmobile Azul</h3>
+            <div class="precio">S/ 20</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Batman y Robin Batmobile Azul',20)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+
+        <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/Batmobile Negro.png"
+                 alt="Batmobile Negro"
+                 onclick="verImagen(this.src)">
+            <h3>Batmobile Negro</h3>
+            <div class="precio">S/ 20</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Batmobile Negro',20)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+
+        <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/Porsche 911 Rallye.png"
+                 alt="Porsche 911 Rallye"
+                 onclick="verImagen(this.src)">
+            <h3>Porsche 911 Rallye</h3>
+            <div class="precio">S/ 20</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Porsche 911 Rallye',20)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+
+        <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/17 Audi RS 6 Avant.png"
+                 alt="17 Audi RS 6 Avant"
+                 onclick="verImagen(this.src)">
+            <h3>17 Audi RS 6 Avant</h3>
+            <div class="precio">S/ 20</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('17 Audi RS 6 Avant',20)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+
+        <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/McLaren P1.png"
+                 alt="McLaren P1"
+                 onclick="verImagen(this.src)">
+            <h3>McLaren P1</h3>
+            <div class="precio">S/ 20</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('McLaren P1',20)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+
+        <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/71 Lamborghini Miura SV Negro.png"
+                 alt="71 Lamborghini Miura SV Negro"
+                 onclick="verImagen(this.src)">
+            <h3>71 Lamborghini Miura SV</h3>
+            <div class="precio">S/ 20</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('71 Lamborghini Miura SV Negro',20)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+
+        <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/71 Lamborghini Miura SV Rojo.png"
+                 alt="71 Lamborghini Miura SV Rojo"
+                 onclick="verImagen(this.src)">
+            <h3>71 Lamborghini Miura SV</h3>
+            <div class="precio">S/ 20</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('71 Lamborghini Miura SV Rojo',20)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+
+        <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/Chevy Blazer 4x4.png"
+                 alt="Chevy Blazer 4x4"
+                 onclick="verImagen(this.src)">
+            <h3>Chevy Blazer 4x4</h3>
+            <div class="precio">S/ 20</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('Chevy Blazer 4x4',20)">
+                Consultar por WhatsApp
+            </button>
+        </article>
+
+
+        <article class="tarjeta">
+            <img src="fotos/carritos25y45soles/70 Dodge Power Wagon.png"
+                 alt="70 Dodge Power Wagon"
+                 onclick="verImagen(this.src)">
+            <h3>70 Dodge Power Wagon</h3>
+            <div class="precio">S/ 20</div>
+            <span class="disponible">Disponible</span>
+            <button class="btn-whatsapp"
+                    onclick="consultar('70 Dodge Power Wagon',20)">
+                Consultar por WhatsApp
+            </button>
+        </article>
     </div>
 </section>
+<!-- ==========================================
+     PREMIUM
+========================================== -->
+
+<section id="premium" class="productos">
+
+<h2>⭐ Hot Wheels Premium</h2>
+
+<div class="tarjetas">
+
+    <article class="tarjeta">
+        <img src="fotos/hotwheels/premium/mario kart rojo.png"
+             alt="mario kart rojo"
+             onclick="verImagen(this.src)">
+        <h3>Mario Kart</h3>
+        <div class="precio">S/ 40</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('mario kart rojo',40)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+    <article class="tarjeta">
+        <img src="fotos/hotwheels/premium/mario kart amarillo.png"
+             alt="mario kart amarillo"
+             onclick="verImagen(this.src)">
+        <h3>Mario Kart</h3>
+        <div class="precio">S/ 40</div>
+        <span class="disponible">Disponible</span>
+        <button class="btn-whatsapp"
+                onclick="consultar('mario kart amarillos',40)">
+            Consultar por WhatsApp
+        </button>
+    </article>
+
+</div>
+
+</section>
+
 <!-- ==========================================
      FUNKOS
 ========================================== -->
@@ -3278,12 +3664,37 @@ const STOCK_HOTWHEELS = {
     "Toyota GR86 CUP": 1,
     "Custom Otto": 2,
     "Nissan Skyline GT-R BCNR33": 1,
+    "clasique 55 nomad": 1,
+    "41 Willys": 1,
+    "Alpha Romeo Giulia Ti Super": 1,
+    "RD - 06": 1,
+    "Solar reflex": 1,
+    "mazda autozam": 1,
+    "pagani zonda cinque": 1,
+    "rodger dodger": 1,
+    "94 toyota supra": 1,
+   "70 Dodge Power Wagon": 1,
+   "Chevy Blazer 4x4": 1,
+   "71 Lamborghini Miura SV Rojo": 1,
+   "71 Lamborghini Miura SV Negro": 1,
+   "McLaren P1": 1,
+   "17 Audi RS 6 Avant": 1,
+   "Porsche 911 Rallye": 1,
+   "Batmobile Negro": 1,
+   "Batman y Robin Batmobile Azul": 1,
+   "Cadillac Celestiq": 1,
+   "La Liebre": 1,
+   "Lotus Sport Elise": 1,
+   "1983 Porsche 928S": 1,
+   "chevy el camino": 1,
+   "70 Dodge Charger": 1,
 };
 
 const SECCIONES_STOCK_HOTWHEELS = [
     "carritos-9soles",
     "carritos-15soles",
-    "carritos-25-45"
+    "carritos-25-45",
+    "premium"
 ];
 
 function esCarritoHotWheels(tarjeta) {
@@ -3613,7 +4024,6 @@ const MODELOS_AGOTADOS = [
 
 /* Agotados por variante: solo afecta el color indicado. */
 const VARIANTES_AGOTADAS = [
-    { modelo: "Honda CB750 Cafe", color: "Rojo" },
     { modelo: "Ford Mustang GTD", color: "Azul" },
     { modelo: "Ford Mustang GTD", color: "Celeste" },
     { modelo: "Mazda RX-3", color: "Azul" },
