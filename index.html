@@ -1,6 +1,7 @@
 
 
 
+
 <!DOCTYPE html>
 
 <html lang="es">
@@ -206,9 +207,53 @@ header p {
 }
 
 #visor img {
-    max-width: 95%;
-    max-height: 90%;
+    display: block;
+    width: auto;
+    max-width: min(94vw, 1100px);
+    max-height: 84vh;
     object-fit: contain;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 12px 45px rgba(0,0,0,.45);
+}
+
+.visor-contenido {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 94vw;
+    max-height: 88vh;
+}
+
+.visor-flecha {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    width: 46px;
+    height: 46px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(9,11,34,.82);
+    color: #fff;
+    font-size: 38px;
+    line-height: 36px;
+    cursor: pointer;
+}
+
+.visor-flecha:hover { background: linear-gradient(135deg, #09aaf5, #ed0bd2); }
+.visor-anterior { left: 14px; }
+.visor-siguiente { right: 14px; }
+.contador-visor { margin-top: 8px; color: #fff; font-size: 13px; font-weight: 700; text-shadow: 0 1px 5px #000; }
+
+@media (max-width: 600px) {
+    #visor { padding: 18px 8px; }
+    #visor img { max-width: 92vw; max-height: 78vh; }
+    .visor-flecha { width: 36px; height: 36px; font-size: 30px; line-height: 28px; }
+    .visor-anterior { left: 5px; }
+    .visor-siguiente { right: 5px; }
 }
 
 #visor .cerrar {
@@ -1154,7 +1199,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/hotwheels/1966 triumph tiger 100.jpeg"
              alt="1966 Triumph Tiger 100"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>1966 Triumph Tiger 100</h3>
         <div class="precio">S/ 30</div>
         <span class="disponible">Disponible</span>
@@ -1167,7 +1212,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/hotwheels/honda cb750 cafe azul.jpeg"
              alt="Honda CB750 Café Azul"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Honda CB750 Café Azul</h3>
         <div class="precio">S/ 25</div>
         <span class="disponible">Disponible</span>
@@ -1180,7 +1225,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/hotwheels/honda cb750 cafe rojo.jpeg"
              alt="Honda CB750 Café Rojo"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Honda CB750 Café Rojo</h3>
         <div class="precio">S/ 25</div>
         <span class="disponible">Disponible</span>
@@ -1193,7 +1238,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/hotwheels/honda motocompo amarilla.jpeg"
              alt="Honda Motocompo Amarilla"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Honda Motocompo Amarilla</h3>
         <div class="precio">S/ 12</div>
         <span class="disponible">Disponible</span>
@@ -1206,7 +1251,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/hotwheels/honda motocompo roja.jpeg"
              alt="Honda Motocompo Roja"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Honda Motocompo Roja</h3>
         <div class="precio">S/ 12</div>
         <span class="disponible">Disponible</span>
@@ -1219,7 +1264,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/hotwheels/honda vfr750r rc30.jpeg"
              alt="Honda VFR750R RC30"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Honda VFR750R RC30</h3>
         <div class="precio">S/ 30</div>
         <span class="disponible">Disponible</span>
@@ -1232,7 +1277,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/hotwheels/Tred Shredder.png"
              alt="Tred Shredder"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Tred Shredder</h3>
         <div class="precio">S/ 20</div>
         <span class="disponible">Disponible</span>
@@ -1261,7 +1306,7 @@ body {
         <div class="galeria-movil">
             <img src="fotos/escala/BMW.jpeg"
                  alt="BMW"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
         </div>
 
         <h3>BMW Escala 1:14</h3>
@@ -1280,7 +1325,7 @@ body {
         <div class="galeria-movil">
             <img src="fotos/escala/biker.jpeg"
                  alt="Biker"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
         </div>
 
         <h3>Moto simulación Kawasaki con muñeco Biker</h3>
@@ -1299,7 +1344,7 @@ body {
         <div class="galeria-movil">
             <img src="fotos/escala/ducati.jpeg"
                  alt="Ducati"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
         </div>
 
         <h3>Ducati Escala 1:14</h3>
@@ -1318,7 +1363,7 @@ body {
         <div class="galeria-movil">
             <img src="fotos/escala/dukati escala 1 12.png"
                  alt="Ducati escala 1:12"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
         </div>
 
         <h3>Ducati escala 1:12</h3>
@@ -1340,11 +1385,11 @@ body {
 
     <img src="fotos/escala/kawasaki.jpeg"
          alt="Kawasaki"
-         onclick="verImagen(this.src)">
+         onclick="verImagen(this)">
 
     <img src="fotos/escala/kawasaki blanca.jpeg"
          alt="Kawasaki blanca"
-         onclick="verImagen(this.src)">
+         onclick="verImagen(this)">
 
 </div>
 
@@ -1369,15 +1414,15 @@ body {
 
     <img src="fotos/escala/kawasaki lado 1.png"
          alt="Kawasaki lado 1"
-         onclick="verImagen(this.src)">
+         onclick="verImagen(this)">
 
     <img src="fotos/escala/kawasaki lado 2.png"
          alt="Kawasaki lado 2"
-         onclick="verImagen(this.src)">
+         onclick="verImagen(this)">
 
     <img src="fotos/escala/kawasaki lado 3.png"
          alt="Kawasaki lado 3"
-         onclick="verImagen(this.src)">
+         onclick="verImagen(this)">
 
 </div>
 
@@ -1402,11 +1447,11 @@ body {
 
     <img src="fotos/escala/yamaha1.png"
          alt="Yamaha"
-         onclick="verImagen(this.src)">
+         onclick="verImagen(this)">
 
     <img src="fotos/escala/yamaha 2.png"
          alt="Yamaha"
-         onclick="verImagen(this.src)">
+         onclick="verImagen(this)">
 
 </div>
 
@@ -1425,6 +1470,219 @@ body {
 
 </div>
 
+      <!-- KAWASAKI ESCALA 1:12 - 4 FOTOS -->
+
+<article class="tarjeta">
+
+<div class="galeria-movil">
+
+    <img src="fotos/escala/kawasaki 1 12 lado 1.jpeg"
+         alt="Kawasaki Ninja 1:12 - vista 1"
+         onclick="verImagen(this)">
+
+    <img src="fotos/escala/kawasaki 1 12 lado 2.jpeg"
+         alt="Kawasaki Ninja 1:12 - vista 2"
+         onclick="verImagen(this)">
+    
+    <img src="fotos/escala/kawasaki 1 12 lado 3.jpeg"
+         alt="Kawasaki Ninja 1:12 - vista 3"
+         onclick="verImagen(this)">
+
+    <img src="fotos/escala/kawasaki 1 12 lado 4.jpeg"
+         alt="Kawasaki Ninja 1:12 - vista 4"
+         onclick="verImagen(this)">
+
+    
+</div>
+
+<p class="indicador-fotos">Desliza para ver las fotos ➜</p>
+
+<h3>Kawasaki Ninja Escala 1:12</h3>
+<div class="precio">S/ 80</div>
+<span class="disponible">Disponible</span>
+
+<button class="btn-whatsapp"
+        onclick="consultar('Kawasaki Ninja Escala 1:12',80)">
+    Consultar por WhatsApp
+</button>
+
+</article>
+
+      <!-- DUCATI ESCALA 1:12 - 8 FOTOS -->
+
+<article class="tarjeta">
+
+<div class="galeria-movil">
+
+    <img src="fotos/escala/ducati negra 1 12 lado 1.jpeg"
+         alt="Ducati negra - vista 1"
+         onclick="verImagen(this)">
+
+    <img src="fotos/escala/ducati negra 1 12 lado 2.jpeg"
+         alt="Ducati negra - vista 2"
+         onclick="verImagen(this)">
+    
+    <img src="fotos/escala/ducati negra 1 12 lado 3.jpeg"
+         alt="Ducati negra - vista 3"
+         onclick="verImagen(this)">
+
+    <img src="fotos/escala/ducati negra 1 12 lado 4.jpeg"
+         alt="Ducati negra - vista 4"
+         onclick="verImagen(this)">
+
+    <img src="fotos/escala/ducati roja 1 12 lado 1.jpeg"
+         alt="Ducati roja - vista 1"
+         onclick="verImagen(this)">
+
+    <img src="fotos/escala/ducati roja 1 12 lado 2.jpeg"
+         alt="Ducati roja - vista 2"
+         onclick="verImagen(this)">
+    
+    <img src="fotos/escala/ducati roja 1 12 lado 3.jpeg"
+         alt="Ducati roja - vista 3"
+         onclick="verImagen(this)">
+
+    <img src="fotos/escala/ducati roja 1 12 lado 4.jpeg"
+         alt="Ducati roja - vista 4"
+         onclick="verImagen(this)">
+
+    
+</div>
+
+<p class="indicador-fotos">Desliza para ver las fotos ➜</p>
+
+<h3>Ducati Escala 1:12</h3>
+<div class="precio">S/ 80</div>
+<span class="disponible">Disponible</span>
+
+<button class="btn-whatsapp"
+        onclick="consultar('ducati Escala 1:12',80)">
+    Consultar por WhatsApp
+</button>
+
+</article>
+
+         <!-- SUSUKI ESCALA 1:12 - 15 FOTOS -->
+
+<article class="tarjeta">
+
+<div class="galeria-movil">
+
+    <img src="fotos/escala/susuki azul 1 12 lado 1.jpeg"
+         alt="Susuki azul - vista 1"
+         onclick="verImagen(this)">
+
+    <img src="fotos/escala/susuki azul 1 12 lado 2.jpeg"
+         alt="Susuki azul - vista 2"
+         onclick="verImagen(this)">
+    
+    <img src="fotos/escala/susuki azul 1 12 lado 3.jpeg"
+         alt="Susuki azul - vista 3"
+         onclick="verImagen(this)">
+
+    <img src="fotos/escala/susuki azul 1 12 lado 4.jpeg"
+         alt="Susuki azul - vista 4"
+         onclick="verImagen(this)">
+
+    <img src="fotos/escala/susuki azul 1 12 lado 5.jpeg"
+         alt="Susuki azul - vista 5"
+         onclick="verImagen(this)">
+
+    <img src="fotos/escala/susuki blanca 1 12 lado 1.jpeg"
+         alt="Susuki blanca - vista 1"
+         onclick="verImagen(this)">
+
+    <img src="fotos/escala/susuki blanca 1 12 lado 2.jpeg"
+         alt="Susuki blanca - vista 2"
+         onclick="verImagen(this)">
+    
+    <img src="fotos/escala/susuki blanca 1 12 lado 3.jpeg"
+         alt="Susuki blanca - vista 3"
+         onclick="verImagen(this)">
+
+    <img src="fotos/escala/susuki blanca 1 12 lado 4.jpeg"
+         alt="Susuki blanca - vista 4"
+         onclick="verImagen(this)">
+
+    <img src="fotos/escala/susuki blanca 1 12 lado 5.jpeg"
+         alt="Susuki blanca - vista 5"
+         onclick="verImagen(this)">
+
+    <img src="fotos/escala/susuki negra 1 12 lado 1.jpeg"
+         alt="Susuki negra - vista 1"
+         onclick="verImagen(this)">
+
+    <img src="fotos/escala/susuki negra 1 12 lado 2.jpeg"
+         alt="Susuki negra - vista 2"
+         onclick="verImagen(this)">
+    
+    <img src="fotos/escala/susuki negra 1 12 lado 3.jpeg"
+         alt="Susuki negra - vista 3"
+         onclick="verImagen(this)">
+
+    <img src="fotos/escala/susuki negra 1 12 lado 4.jpeg"
+         alt="Susuki negra - vista 4"
+         onclick="verImagen(this)">
+
+    <img src="fotos/escala/susuki negra 1 12 lado 5.jpeg"
+         alt="Susuki negra - vista 5"
+         onclick="verImagen(this)">
+    
+</div>
+
+<p class="indicador-fotos">Desliza para ver las fotos ➜</p>
+
+<h3>Susuki Escala 1:12</h3>
+<div class="precio">S/ 80</div>
+<span class="disponible">Disponible</span>
+
+<button class="btn-whatsapp"
+        onclick="consultar('Susuki Escala 1:12',80)">
+    Consultar por WhatsApp
+</button>
+
+</article>
+
+        <!-- KAWASAKI NINJA ZX - 10 R VERDE ESCALA 1:12 - 4 FOTOS -->
+
+<article class="tarjeta">
+
+<div class="galeria-movil">
+
+    <img src="fotos/escala/kawasaki verde 1 12 lado 1.jpeg"
+         alt="Kawasaki verde - vista 1"
+         onclick="verImagen(this)">
+
+    <img src="fotos/escala/kawasaki verde 1 12 lado 2.jpeg"
+         alt="Kawasaki verde - vista 2"
+         onclick="verImagen(this)">
+    
+    <img src="fotos/escala/kawasaki verde 1 12 lado 3.jpeg"
+         alt="Kawasaki verde - vista 3"
+         onclick="verImagen(this)">
+
+    <img src="fotos/escala/kawasaki verde 1 12 lado 4.jpeg"
+         alt="Kawasaki verde - vista 4"
+         onclick="verImagen(this)">
+
+    <img src="fotos/escala/kawasaki verde 1 12 lado 5.jpeg"
+         alt="Kawasaki verde - vista 5"
+         onclick="verImagen(this)">
+    
+</div>
+
+<p class="indicador-fotos">Desliza para ver las fotos ➜</p>
+
+<h3>KAWASAKI NINJA ZX - 10 R VERDE Escala 1:12</h3>
+<div class="precio">S/ 80</div>
+<span class="disponible">Disponible</span>
+
+<button class="btn-whatsapp"
+        onclick="consultar('KAWASAKI NINJA ZX - 10 R VERDE Escala 1:12',80)">
+    Consultar por WhatsApp
+</button>
+
+</article>
 
 </section>
 
@@ -1444,15 +1702,15 @@ body {
             <div class="galeria-movil">
                 <img src="fotos/carritos/ford-mustang-toreto-1.png"
                      alt="Ford Mustang de Toretto vista lateral"
-                     onclick="verImagen(this.src)">
+                     onclick="verImagen(this)">
 
                 <img src="fotos/carritos/ford-mustang-toreto-2.png"
                      alt="Ford Mustang de Toretto en su caja"
-                     onclick="verImagen(this.src)">
+                     onclick="verImagen(this)">
 
                 <img src="fotos/carritos/ford-mustang-toreto-3.png"
                      alt="Ford Mustang de Toretto vista frontal"
-                     onclick="verImagen(this.src)">
+                     onclick="verImagen(this)">
             </div>
 
             <p class="indicador-fotos">Desliza para ver las fotos ➜</p>
@@ -1485,7 +1743,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos9soles/33 ford lo boy.png"
              alt="33 Ford Lo Boy"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>33 Ford Lo Boy</h3>
         <div class="precio">S/ 9</div>
         <span class="disponible">Disponible</span>
@@ -1500,7 +1758,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos9soles/8 crate.png"
              alt="8 Crate"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>8 Crate</h3>
         <div class="precio">S/ 9</div>
         <span class="disponible">Disponible</span>
@@ -1515,7 +1773,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos9soles/83 chevy silverado black widow.png"
              alt="83 Chevy Silverado Black Widow"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>83 Chevy Silverado Black Widow</h3>
         <div class="precio">S/ 9</div>
         <span class="disponible">Disponible</span>
@@ -1530,7 +1788,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos9soles/83 chevy silverado celeste.png"
              alt="83 Chevy Silverado Celeste"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>83 Chevy Silverado Celeste</h3>
         <div class="precio">S/ 9</div>
         <span class="disponible">Disponible</span>
@@ -1545,7 +1803,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos9soles/83 chevy silverado negro.png"
              alt="83 Chevy Silverado Negro"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>83 Chevy Silverado Negro</h3>
         <div class="precio">S/ 9</div>
         <span class="disponible">Disponible</span>
@@ -1560,7 +1818,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos9soles/bmw 2002.png"
              alt="BMW 2002"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>BMW 2002</h3>
         <div class="precio">S/ 9</div>
         <span class="disponible">Disponible</span>
@@ -1575,7 +1833,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos9soles/bone shaker.png"
              alt="Bone Shaker"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Bone Shaker</h3>
         <div class="precio">S/ 9</div>
         <span class="disponible">Disponible</span>
@@ -1590,7 +1848,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos9soles/bounce´n bass.png"
              alt="Bounce N Bass"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Bounce N Bass</h3>
         <div class="precio">S/ 9</div>
         <span class="disponible">Disponible</span>
@@ -1605,7 +1863,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos9soles/buns of steel.png"
              alt="Buns of Steel"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Buns of Steel</h3>
         <div class="precio">S/ 9</div>
         <span class="disponible">Disponible</span>
@@ -1620,7 +1878,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos9soles/decifely go.png"
              alt="Decifely Go"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Decifely Go</h3>
         <div class="precio">S/ 9</div>
         <span class="disponible">Disponible</span>
@@ -1635,7 +1893,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos9soles/deora ii.png"
              alt="Deora II"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Deora II</h3>
         <div class="precio">S/ 9</div>
         <span class="disponible">Disponible</span>
@@ -1650,7 +1908,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos9soles/deora too´nd.png"
  alt="Deora"
- onclick="verImagen(this.src)">
+ onclick="verImagen(this)">
         <h3>Deora</h3>
         <div class="precio">S/ 9</div>
         <span class="disponible">Disponible</span>
@@ -1665,7 +1923,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos9soles/fiat beast of turin.png"
              alt="Fiat Beast of Turin"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Fiat Beast of Turin</h3>
         <div class="precio">S/ 9</div>
         <span class="disponible">Disponible</span>
@@ -1680,7 +1938,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos9soles/ford model a custom 31.png"
              alt="Ford Model A Custom 31"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Ford Model A Custom 31</h3>
         <div class="precio">S/ 9</div>
         <span class="disponible">Disponible</span>
@@ -1695,7 +1953,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos9soles/instant boost.png"
              alt="Instant Boost"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Instant Boost</h3>
         <div class="precio">S/ 9</div>
         <span class="disponible">Disponible</span>
@@ -1710,7 +1968,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos9soles/la troca.png"
              alt="La Troca"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>La Troca</h3>
         <div class="precio">S/ 9</div>
         <span class="disponible">Disponible</span>
@@ -1725,7 +1983,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos9soles/mazda repu.png"
              alt="Mazda Repu"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Mazda Repu</h3>
         <div class="precio">S/ 9</div>
         <span class="disponible">Disponible</span>
@@ -1740,7 +1998,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos9soles/mazda rx-3.png"
              alt="Mazda RX-3 Verde"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Mazda RX-3</h3>
         <div class="precio">S/ 9</div>
         <span class="disponible">Disponible</span>
@@ -1755,7 +2013,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos9soles/mid mill.png"
              alt="Mid Mill"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Mid Mill</h3>
         <div class="precio">S/ 9</div>
         <span class="disponible">Disponible</span>
@@ -1770,7 +2028,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos9soles/morgan super 3  roja.png"
  alt="Morgan Super 3 Roja"
- onclick="verImagen(this.src)">
+ onclick="verImagen(this)">
         <h3>Morgan Super 3 Roja</h3>
         <div class="precio">S/ 9</div>
         <span class="disponible">Disponible</span>
@@ -1785,7 +2043,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos9soles/morgan super 3 plomo.png"
              alt="Morgan Super 3 Plomo"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Morgan Super 3 Plomo</h3>
         <div class="precio">S/ 9</div>
         <span class="disponible">Disponible</span>
@@ -1800,7 +2058,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos9soles/pedal driver.png"
              alt="Pedal Driver"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Pedal Driver</h3>
         <div class="precio">S/ 9</div>
         <span class="disponible">Disponible</span>
@@ -1815,7 +2073,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos9soles/rapid pulse.png"
              alt="Rapid Pulse"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Rapid Pulse</h3>
         <div class="precio">S/ 9</div>
         <span class="disponible">Disponible</span>
@@ -1830,7 +2088,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos9soles/screamliner.png"
              alt="Screamliner"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Screamliner</h3>
         <div class="precio">S/ 9</div>
         <span class="disponible">Disponible</span>
@@ -1845,7 +2103,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos9soles/tooned purple passion.png"
              alt="Tooned Purple Passion"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Tooned Purple Passion</h3>
         <div class="precio">S/ 9</div>
         <span class="disponible">Disponible</span>
@@ -1860,7 +2118,7 @@ body {
      <article class="tarjeta">
         <img src="fotos/carritos9soles/41 Willys.png"
              alt="41 Willys"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>41 Willys</h3>
         <div class="precio">S/ 9</div>
         <span class="disponible">Disponible</span>
@@ -1874,7 +2132,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos9soles/Alpha Romeo Giulia TI Super.png"
              alt="Alpha Romeo Giulia TI Super"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Alpha Romeo Giulia TI Super</h3>
         <div class="precio">S/ 9</div>
         <span class="disponible">Disponible</span>
@@ -1888,7 +2146,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos9soles/RD - 06.png"
              alt="RD - 06"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>RD - 06</h3>
         <div class="precio">S/ 9</div>
         <span class="disponible">Disponible</span>
@@ -1902,7 +2160,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos9soles/Solar reflex.png"
              alt="Solar reflex"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>4Solar Reflex</h3>
         <div class="precio">S/ 9</div>
         <span class="disponible">Disponible</span>
@@ -1916,7 +2174,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos9soles/classique 55 nomad.png"
              alt="classique 55 nomad"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Classique 55 Nomad</h3>
         <div class="precio">S/ 9</div>
         <span class="disponible">Disponible</span>
@@ -1931,7 +2189,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos9soles/vairstrike.png"
              alt="Vairstrike"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Vairstrike</h3>
         <div class="precio">S/ 9</div>
         <span class="disponible">Disponible</span>
@@ -1957,7 +2215,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181535.png"
              alt="Classic Tv Series Batmobile"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Classic Tv Series Batmobile</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -1970,7 +2228,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181553.png"
              alt="Corvette' C7 206"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Corvette' C7 206</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -1983,7 +2241,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181559.png"
              alt="59 Chevy Impala"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>59 Chevy Impala</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -1996,7 +2254,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181605.png"
              alt="2019 Audi R8 Spyder"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>2019 Audi R8 Spyder</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2009,7 +2267,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181613.png"
              alt="Pass N Go"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Pass N Go</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2022,7 +2280,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181620.png"
              alt="Ford Mustang GTD Azul"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Ford Mustang GTD</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2035,7 +2293,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181625.png"
              alt="Custom / Personnalisé 72 Chevy Luv"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Custom / Personnalisé 72 Chevy Luv</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2048,7 +2306,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181632.png"
              alt="Barbie Dream Camper / Roulotte"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Barbie Dream Camper / Roulotte</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2061,7 +2319,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181638.png"
              alt="Honda Odysesey"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Honda Odysesey</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2074,7 +2332,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181643.png"
              alt="95 Mazda RX-7 Drift/Déraper"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>95 Mazda RX-7 Drift/Déraper</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2087,7 +2345,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181648.png"
              alt="68 Dodge Dart"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>68 Dodge Dart</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2100,7 +2358,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181654.png"
              alt="Quick Chat Negro"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Quick Chat</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2113,7 +2371,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181659.png"
              alt="Mazda RX-3 Negro"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Mazda RX-3</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2126,7 +2384,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181704.png"
              alt="Maserati Shamal"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Maserati Shamal</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2139,7 +2397,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181710.png"
              alt="20 Jeep Gladiator"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>20 Jeep Gladiator</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2152,7 +2410,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181719.png"
              alt="Audi 90"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Audi 90</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2165,7 +2423,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181731.png"
              alt="Nissan Skyline 2000GT-R LBWK"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Nissan Skyline 2000GT-R LBWK</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2178,7 +2436,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181736.png"
              alt="Ford RS200"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Ford RS200</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2191,7 +2449,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181741.png"
              alt="2020 Ford Mustang Shelby GT500 Plomo"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>2020 Ford Mustang Shelby GT500</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2204,7 +2462,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181747.png"
              alt="Ford Mustang GTD celeste"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Ford Mustang GTD</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2217,7 +2475,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181758.png"
              alt="Mazda RX-3 Plomo"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Mazda RX-3</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2230,7 +2488,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181803.png"
              alt="2016 Ford GT Race / Course"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>2016 Ford GT Race / Course</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2243,7 +2501,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181808.png"
              alt="73 Honda Civic Custom/Personnalisé"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>73 Honda Civic Custom/Personnalisé</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2256,7 +2514,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181813.png"
              alt="64 Impala"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>64 Impala</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2269,7 +2527,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181818.png"
              alt="BWM 835 CSi"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>BWM 635 CSi</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2282,7 +2540,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181824.png"
              alt="90 Honda Civic EF"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>90 Honda Civic EF</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2295,7 +2553,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181829.png"
              alt="1985 Honda CR-X"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>1985 Honda CR-X</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2308,7 +2566,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181833.png"
              alt="98 Honda Prelude"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>98 Honda Prelude</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2321,7 +2579,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181837.png"
              alt="2018 Honda Civic Typer R"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>2018 Honda Civic Typer R</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2334,7 +2592,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181846.png"
              alt="Mazda RX-3 Azul"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Mazda RX-3</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2347,7 +2605,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181851.png"
              alt="68 Dodge Dart"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>68 Dodge Dart</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2360,7 +2618,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181900.png"
              alt="Custom / Personnalisé 66 Toronado"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Custom / Personnalisé 66 Toronado</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2373,7 +2631,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181905.png"
              alt="Ford F-150 Lightning Supertruck"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Ford F-150 Lightning Supertruck</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2386,7 +2644,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181910.png"
              alt="Nissan Skyline 2000 GT-R"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Nissan Skyline 2000 GT-R</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2399,7 +2657,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181913.png"
              alt="20 Dodge Charger Hellcat"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>20 Dodge Charger Hellcat</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2412,7 +2670,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181917.png"
              alt="16 Cadillac ATS- V R"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>16 Cadillac ATS- V R</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2425,7 +2683,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181923.png"
              alt="16 Lamborghini Centenario"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>16 Lamborghini Centenario</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2438,7 +2696,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181928.png"
              alt="Quick Chat Blanco"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Quick Chat</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2451,7 +2709,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181936.png"
              alt="96 Dodge Viper GTS"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>96 Dodge Viper GTS</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2464,7 +2722,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181941.png"
              alt="Ford Mustang GTD Azul"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Ford Mustang GTD</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2477,7 +2735,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181946.png"
              alt="Honda Civic Custom / Personnalizé"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Honda Civic Custom / Personnalizé</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2490,7 +2748,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 181951.png"
              alt="69 Mazda Savanna RX-7 FC3S"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>69 Mazda Savanna RX-7 FC3S</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2503,7 +2761,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 182000.png"
              alt="Feline Lucky"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Feline Lucky</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2516,7 +2774,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 182004.png"
              alt="96 Porsche Carrera"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>96 Porsche Carrera</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2529,7 +2787,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 182012.png"
              alt="2020 Ford Mustang Shelby GT500"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>2020 Ford Mustang Shelby GT500</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2542,7 +2800,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 182018.png"
              alt="Gordon Murray Automotive T.33"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Gordon Murray Automotive T.33</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2555,7 +2813,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 182022.png"
              alt="Pagani Huayra Roadster"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Pagani Huayra Roadster</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2568,7 +2826,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Captura de pantalla 2026-08-19 182026.png"
              alt="Aston Martin Vantage GT3"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Aston Martin Vantage GT3</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2581,7 +2839,7 @@ body {
         <article class="tarjeta">
         <img src="fotos/carritos15soles/16 Lamborghini Centenario.jpeg"
              alt="16 Lamborghini Centenario"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>16 Lamborghini Centenario</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2594,7 +2852,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/Custom Otto.jpeg"
              alt="Custom Otto"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Custom Otto</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2607,7 +2865,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/LB-Works Lamborghini Huracán Coupé.jpeg"
              alt="LB-Works Lamborghini Huracán Coupé"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>LB-Works Lamborghini Huracán Coupé</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2618,9 +2876,9 @@ body {
     </article>
 
     <article class="tarjeta">
-        <img src="fotos/carritos15soles/rodger dodger"
+        <img src="fotos/carritos15soles/rodger dodger.png"
              alt="rodger dodger"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Rodger Dodger</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2633,7 +2891,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/carritos15soles/mazda autozam.png"
              alt="mazda autozam"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Mazda Autozam</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2644,9 +2902,9 @@ body {
     </article>
 
     <article class="tarjeta">
-        <img src="fotos/carritos15soles/pagani zonda cinque"
+        <img src="fotos/carritos15soles/pagani zonda cinque.png"
              alt="pagani zonda cinque"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Pagani Zonda Cinque</h3>
         <div class="precio">S/ 15</div>
         <span class="disponible">Disponible</span>
@@ -2671,7 +2929,7 @@ body {
         <article class="tarjeta">
             <img src="fotos/carritos25y45soles/Captura de pantalla 2026-08-20 201244.png"
                  alt="The Dark Knight Batmobile"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>The Dark Knight Batmobile</h3>
             <div class="precio">S/ 20</div>
             <span class="disponible">Disponible</span>
@@ -2684,7 +2942,7 @@ body {
         <article class="tarjeta">
             <img src="fotos/carritos25y45soles/Captura de pantalla 2026-08-20 201252.png"
                  alt="Batmobile gris"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>Batmobile</h3>
             <div class="precio">S/ 20</div>
             <span class="disponible">Disponible</span>
@@ -2697,7 +2955,7 @@ body {
         <article class="tarjeta">
             <img src="fotos/carritos25y45soles/Captura de pantalla 2026-08-20 201258.png"
                  alt="Tv Series / Serie Tele Batmobile"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>Tv Series / Serie Tele Batmobile</h3>
             <div class="precio">S/ 20</div>
             <span class="disponible">Disponible</span>
@@ -2710,7 +2968,7 @@ body {
         <article class="tarjeta">
             <img src="fotos/carritos25y45soles/Captura de pantalla 2026-08-20 201306.png"
                  alt="1966 Bat Boat / Bateau"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>1966 Bat Boat / Bateau</h3>
             <div class="precio">S/20</div>
             <span class="disponible">Disponible</span>
@@ -2723,7 +2981,7 @@ body {
         <article class="tarjeta">
             <img src="fotos/carritos25y45soles/Captura de pantalla 2026-08-20 201314.png"
                  alt="Carrito 25-45 05Spider - Mobile"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>Spider - Mobile</h3>
             <div class="precio">S/ 20</div>
             <span class="disponible">Disponible</span>
@@ -2736,7 +2994,7 @@ body {
         <article class="tarjeta">
             <img src="fotos/carritos25y45soles/Captura de pantalla 2026-08-20 201319.png"
                  alt="Standard Kart"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>Standard Kart</h3>
             <div class="precio">S/20</div>
             <span class="disponible">Disponible</span>
@@ -2749,7 +3007,7 @@ body {
         <article class="tarjeta">
             <img src="fotos/carritos25y45soles/Captura de pantalla 2026-08-20 201329.png"
                  alt="Optimus Prime"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>Optimus Prime</h3>
             <div class="precio">S/ 25</div>
             <span class="disponible">Disponible</span>
@@ -2762,7 +3020,7 @@ body {
         <article class="tarjeta">
             <img src="fotos/carritos25y45soles/Captura de pantalla 2026-08-20 201352.png"
                  alt="Visa Cash App Racing Bulls Formula One"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>Visa Cash App Racing Bulls Formula One</h3>
             <div class="precio">S/25</div>
             <span class="disponible">Disponible</span>
@@ -2775,7 +3033,7 @@ body {
         <article class="tarjeta">
             <img src="fotos/carritos25y45soles/Captura de pantalla 2026-08-20 201411.png"
                  alt="Kick Sauber F1"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>Kick Sauber F1</h3>
             <div class="precio">S/ 30</div>
             <span class="disponible">Disponible</span>
@@ -2788,7 +3046,7 @@ body {
         <article class="tarjeta">
             <img src="fotos/carritos25y45soles/Captura de pantalla 2026-08-20 201420.png"
                  alt="Scuderia Ferrari HP"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>Scuderia Ferrari HP</h3>
             <div class="precio">S/30</div>
             <span class="disponible">Disponible</span>
@@ -2801,7 +3059,7 @@ body {
         <article class="tarjeta">
             <img src="fotos/carritos25y45soles/Captura de pantalla 2026-08-20 201430.png"
                  alt="Carrito 25-45 11Aston Martin Aramco Formula One"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>Aston Martin Aramco Formula One</h3>
             <div class="precio">S/ 35</div>
             <span class="disponible">Disponible</span>
@@ -2814,7 +3072,7 @@ body {
         <article class="tarjeta">
             <img src="fotos/carritos25y45soles/Captura de pantalla 2026-08-20 201439.png"
                  alt="Dino 206 Gt"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>Dino 206 Gt</h3>
             <div class="precio">S/ 20</div>
             <span class="disponible">Disponible</span>
@@ -2827,7 +3085,7 @@ body {
         <article class="tarjeta">
             <img src="fotos/carritos25y45soles/Captura de pantalla 2026-08-20 201446.png"
                  alt="Ferrari SF90 Stradale"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>Ferrari SF90 Stradale</h3>
             <div class="precio">S/ 20</div>
             <span class="disponible">Disponible</span>
@@ -2840,7 +3098,7 @@ body {
         <article class="tarjeta">
             <img src="fotos/carritos25y45soles/Captura de pantalla 2026-08-20 201450.png"
                  alt="Ferrari 365 GTB4 Competizone Blanco"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>Ferrari 365 GTB4 Competizone</h3>
             <div class="precio">S/20</div>
             <span class="disponible">Disponible</span>
@@ -2853,7 +3111,7 @@ body {
         <article class="tarjeta">
             <img src="fotos/carritos25y45soles/Captura de pantalla 2026-08-20 201456.png"
                  alt="Ferrari 12 Cilindri"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>Ferrari 12 Cilindri</h3>
             <div class="precio">S/ 20</div>
             <span class="disponible">Disponible</span>
@@ -2866,7 +3124,7 @@ body {
         <article class="tarjeta">
             <img src="fotos/carritos25y45soles/Captura de pantalla 2026-08-20 201504.png"
                  alt="Ferrari F40 Competizone"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>Ferrari F40 Competizone</h3>
             <div class="precio">S/20</div>
             <span class="disponible">Disponible</span>
@@ -2879,7 +3137,7 @@ body {
         <article class="tarjeta">
             <img src="fotos/carritos25y45soles/Captura de pantalla 2026-08-20 201517.png"
                  alt="Ferrari 365 GTB4 Competizione Amarillo"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>Ferrari 365 GTB4 Competizione</h3>
             <div class="precio">S/20</div>
             <span class="disponible">Disponible</span>
@@ -2892,7 +3150,7 @@ body {
         <article class="tarjeta">
             <img src="fotos/carritos25y45soles/Captura de pantalla 2026-08-20 201523.png"
                  alt="The Simpsons Family Car"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>The Simpsons Family Car</h3>
             <div class="precio">S/ 20</div>
             <span class="disponible">Disponible</span>
@@ -2905,7 +3163,7 @@ body {
         <article class="tarjeta">
             <img src="fotos/carritos25y45soles/Captura de pantalla 2026-08-20 201529.png"
                  alt="Subaru Impreza WRX"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>Subaru Impreza WRX</h3>
             <div class="precio">S/20 </div>
             <span class="disponible">Disponible</span>
@@ -2918,7 +3176,7 @@ body {
         <article class="tarjeta">
             <img src="fotos/carritos25y45soles/Captura de pantalla 2026-08-20 201534.png"
                  alt="20 Toyota GR Supra"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>20 Toyota GR Supra</h3>
             <div class="precio">S/20 </div>
             <span class="disponible">Disponible</span>
@@ -2931,7 +3189,7 @@ body {
         <article class="tarjeta">
             <img src="fotos/carritos25y45soles/Captura de pantalla 2026-08-20 201540.png"
                  alt="Nissan Skyline GT-R BNR34"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>Nissan Skyline GT-R BNR34</h3>
             <div class="precio">S/ 35</div>
             <span class="disponible">Disponible</span>
@@ -2944,7 +3202,7 @@ body {
         <article class="tarjeta">
             <img src="fotos/carritos25y45soles/1983 Porsche 928S.jpeg"
                  alt="1983 Porsche 928S"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>1983 Porsche 928S</h3>
             <div class="precio">S/ 20</div>
             <span class="disponible">Disponible</span>
@@ -2957,7 +3215,7 @@ body {
         <article class="tarjeta">
             <img src="fotos/carritos25y45soles/Ferrari SF90 Stradale.jpeg"
                  alt="Ferrari SF90 Stradale"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>Ferrari SF90 Stradale</h3>
             <div class="precio">S/ 20</div>
             <span class="disponible">Disponible</span>
@@ -2970,7 +3228,7 @@ body {
         <article class="tarjeta">
             <img src="fotos/carritos25y45soles/Nissan Skyline GT-R BCNR33.jpeg"
                  alt="Nissan Skyline GT-R BCNR33"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>Nissan Skyline GT-R BCNR33</h3>
             <div class="precio">S/ 20</div>
             <span class="disponible">Disponible</span>
@@ -2983,7 +3241,7 @@ body {
          <article class="tarjeta">
             <img src="fotos/carritos25y45soles/McLaren W1.jpeg"
                  alt="McLaren W1 Celeste"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>McLaren W1</h3>
             <div class="precio">S/ 20</div>
             <span class="disponible">Disponible</span>
@@ -2996,7 +3254,7 @@ body {
         <article class="tarjeta">
             <img src="fotos/carritos25y45soles/Porsche 911 Carrera T.jpeg"
                  alt="Porsche 911 Carrera T"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>Porsche 911 Carrera T</h3>
             <div class="precio">S/ 20</div>
             <span class="disponible">Disponible</span>
@@ -3009,7 +3267,7 @@ body {
         <article class="tarjeta">
             <img src="fotos/carritos25y45soles/Porsche Taycan Turbo S.jpeg"
                  alt="Porsche Taycan Turbo S"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>Porsche Taycan Turbo S</h3>
             <div class="precio">S/ 20</div>
             <span class="disponible">Disponible</span>
@@ -3022,7 +3280,7 @@ body {
         <article class="tarjeta">
             <img src="fotos/carritos25y45soles/17 ford F-150 Raptor.png"
                  alt="17 Ford F-150 Raptor"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>17 Ford F-150 Raptor</h3>
             <div class="precio">S/ 20</div>
             <span class="disponible">Disponible</span>
@@ -3035,7 +3293,7 @@ body {
          <article class="tarjeta">
             <img src="fotos/carritos25y45soles/Batman y Robin Batmobile.png"
                  alt="Batman y Robin Batmobile Negro"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>Batman & Robin Batmobile</h3>
             <div class="precio">S/ 20</div>
             <span class="disponible">Disponible</span>
@@ -3048,7 +3306,7 @@ body {
          <article class="tarjeta">
             <img src="fotos/carritos25y45soles/Batman ARKHAM Knight Batmobile.png"
                  alt="Batman ARKHAM Knight Batmobile"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>Batman ARKHAM Knight Batmobile</h3>
             <div class="precio">S/ 20</div>
             <span class="disponible">Disponible</span>
@@ -3061,7 +3319,7 @@ body {
          <article class="tarjeta">
             <img src="fotos/carritos25y45soles/Batman The Animated Series.png"
                  alt="Batman The Animated Series"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>Batman The Animated Series</h3>
             <div class="precio">S/ 20</div>
             <span class="disponible">Disponible</span>
@@ -3074,7 +3332,7 @@ body {
          <article class="tarjeta">
             <img src="fotos/carritos25y45soles/Ferrari F40 Competizone rojo.png"
                  alt="Ferrari F40 Competizone"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>Ferrari F40 Competizone</h3>
             <div class="precio">S/ 20</div>
             <span class="disponible">Disponible</span>
@@ -3087,7 +3345,7 @@ body {
          <article class="tarjeta">
             <img src="fotos/carritos25y45soles/Ferrari SF90 Stradale Gris.png"
                  alt="Ferrari SF90 Stradale"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>Ferrari SF90 Stradale</h3>
             <div class="precio">S/ 20</div>
             <span class="disponible">Disponible</span>
@@ -3100,7 +3358,7 @@ body {
          <article class="tarjeta">
             <img src="fotos/carritos25y45soles/Ferrari SF90 Stradale Rojo.png"
                  alt="Ferrari SF90 Stradale"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>Ferrari SF90 Stradale</h3>
             <div class="precio">S/ 20</div>
             <span class="disponible">Disponible</span>
@@ -3113,7 +3371,7 @@ body {
          <article class="tarjeta">
             <img src="fotos/carritos25y45soles/McLaren F1 Rojo.png"
                  alt="McLaren F1"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>McLaren F1 Rojo</h3>
             <div class="precio">S/ 20</div>
             <span class="disponible">Disponible</span>
@@ -3126,7 +3384,7 @@ body {
          <article class="tarjeta">
             <img src="fotos/carritos25y45soles/McLaren Speedtail.png"
                  alt="McLaren Speedtail"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>McLaren Speedtail</h3>
             <div class="precio">S/ 20</div>
             <span class="disponible">Disponible</span>
@@ -3139,7 +3397,7 @@ body {
          <article class="tarjeta">
             <img src="fotos/carritos25y45soles/McLaren W1 Naranja.png"
                  alt="McLaren W1 Naranja"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>McLaren W1</h3>
             <div class="precio">S/ 20</div>
             <span class="disponible">Disponible</span>
@@ -3152,7 +3410,7 @@ body {
          <article class="tarjeta">
             <img src="fotos/carritos25y45soles/Nissan Skyline GT-R BCNR33 Blanco.png"
                  alt="Nissan Skyline GT-R BCNR33 Blanco"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>Nissan Skyline GT-R BCNR33</h3>
             <div class="precio">S/ 20</div>
             <span class="disponible">Disponible</span>
@@ -3165,7 +3423,7 @@ body {
          <article class="tarjeta">
             <img src="fotos/carritos25y45soles/Toyota GR86 CUP.png"
                  alt="Toyota GR86 CUP"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>Toyota GR86 CUP</h3>
             <div class="precio">S/ 20</div>
             <span class="disponible">Disponible</span>
@@ -3178,7 +3436,7 @@ body {
         <article class="tarjeta">
             <img src="fotos/carritos25y45soles/94 toyota supra.png"
                  alt="94 toyota supra"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>94 Toyota Supra</h3>
             <div class="precio">S/ 20</div>
             <span class="disponible">Disponible</span>
@@ -3192,7 +3450,7 @@ body {
         <article class="tarjeta">
             <img src="fotos/carritos25y45soles/70 Dodge Charger.png"
                  alt="70 Dodge Charger"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>70 Dodge Charger</h3>
             <div class="precio">S/ 20</div>
             <span class="disponible">Disponible</span>
@@ -3206,7 +3464,7 @@ body {
         <article class="tarjeta">
             <img src="fotos/carritos25y45soles/chevy el camino.png"
                  alt="chevy el camino"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>Chevy El Camino</h3>
             <div class="precio">S/ 20</div>
             <span class="disponible">Disponible</span>
@@ -3220,7 +3478,7 @@ body {
         <article class="tarjeta">
             <img src="fotos/carritos25y45soles/1983 Porsche 928S.png"
                  alt="1983 Porsche 928S"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>1983 Porsche 928S</h3>
             <div class="precio">S/ 20</div>
             <span class="disponible">Disponible</span>
@@ -3234,7 +3492,7 @@ body {
         <article class="tarjeta">
             <img src="fotos/carritos25y45soles/Lotus Sport Elise.png"
                  alt="Lotus Sport Elise"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>Lotus Sport Elise</h3>
             <div class="precio">S/ 20</div>
             <span class="disponible">Disponible</span>
@@ -3248,7 +3506,7 @@ body {
         <article class="tarjeta">
             <img src="fotos/carritos25y45soles/La Liebre.png"
                  alt="La Liebre"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>La Liebre</h3>
             <div class="precio">S/ 20</div>
             <span class="disponible">Disponible</span>
@@ -3262,7 +3520,7 @@ body {
         <article class="tarjeta">
             <img src="fotos/carritos25y45soles/Cadillac Celestiq.png"
                  alt="Cadillac Celestiq"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>Cadillac Celestiq</h3>
             <div class="precio">S/ 20</div>
             <span class="disponible">Disponible</span>
@@ -3276,8 +3534,8 @@ body {
         <article class="tarjeta">
             <img src="fotos/carritos25y45soles/Batman y Robin Batmobile Azul.png"
                  alt="Batman y Robin Batmobile Azul"
-                 onclick="verImagen(this.src)">
-            <h3>Batman y Robin Batmobile Azul</h3>
+                 onclick="verImagen(this)">
+            <h3>Batman y Robin Batmobile</h3>
             <div class="precio">S/ 20</div>
             <span class="disponible">Disponible</span>
             <button class="btn-whatsapp"
@@ -3290,8 +3548,8 @@ body {
         <article class="tarjeta">
             <img src="fotos/carritos25y45soles/Batmobile Negro.png"
                  alt="Batmobile Negro"
-                 onclick="verImagen(this.src)">
-            <h3>Batmobile Negro</h3>
+                 onclick="verImagen(this)">
+            <h3>Batmobile</h3>
             <div class="precio">S/ 20</div>
             <span class="disponible">Disponible</span>
             <button class="btn-whatsapp"
@@ -3304,7 +3562,7 @@ body {
         <article class="tarjeta">
             <img src="fotos/carritos25y45soles/Porsche 911 Rallye.png"
                  alt="Porsche 911 Rallye"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>Porsche 911 Rallye</h3>
             <div class="precio">S/ 20</div>
             <span class="disponible">Disponible</span>
@@ -3318,7 +3576,7 @@ body {
         <article class="tarjeta">
             <img src="fotos/carritos25y45soles/17 Audi RS 6 Avant.png"
                  alt="17 Audi RS 6 Avant"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>17 Audi RS 6 Avant</h3>
             <div class="precio">S/ 20</div>
             <span class="disponible">Disponible</span>
@@ -3332,7 +3590,7 @@ body {
         <article class="tarjeta">
             <img src="fotos/carritos25y45soles/McLaren P1.png"
                  alt="McLaren P1"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>McLaren P1</h3>
             <div class="precio">S/ 20</div>
             <span class="disponible">Disponible</span>
@@ -3346,7 +3604,7 @@ body {
         <article class="tarjeta">
             <img src="fotos/carritos25y45soles/71 Lamborghini Miura SV Negro.png"
                  alt="71 Lamborghini Miura SV Negro"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>71 Lamborghini Miura SV</h3>
             <div class="precio">S/ 20</div>
             <span class="disponible">Disponible</span>
@@ -3360,7 +3618,7 @@ body {
         <article class="tarjeta">
             <img src="fotos/carritos25y45soles/71 Lamborghini Miura SV Rojo.png"
                  alt="71 Lamborghini Miura SV Rojo"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>71 Lamborghini Miura SV</h3>
             <div class="precio">S/ 20</div>
             <span class="disponible">Disponible</span>
@@ -3374,7 +3632,7 @@ body {
         <article class="tarjeta">
             <img src="fotos/carritos25y45soles/Chevy Blazer 4x4.png"
                  alt="Chevy Blazer 4x4"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>Chevy Blazer 4x4</h3>
             <div class="precio">S/ 20</div>
             <span class="disponible">Disponible</span>
@@ -3388,7 +3646,7 @@ body {
         <article class="tarjeta">
             <img src="fotos/carritos25y45soles/70 Dodge Power Wagon.png"
                  alt="70 Dodge Power Wagon"
-                 onclick="verImagen(this.src)">
+                 onclick="verImagen(this)">
             <h3>70 Dodge Power Wagon</h3>
             <div class="precio">S/ 20</div>
             <span class="disponible">Disponible</span>
@@ -3412,7 +3670,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/hotwheels/premium/mario kart rojo.png"
              alt="mario kart rojo"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Mario Kart</h3>
         <div class="precio">S/ 40</div>
         <span class="disponible">Disponible</span>
@@ -3425,7 +3683,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/hotwheels/premium/mario kart amarillo.png"
              alt="mario kart amarillo"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Mario Kart</h3>
         <div class="precio">S/ 40</div>
         <span class="disponible">Disponible</span>
@@ -3452,7 +3710,7 @@ body {
     <article class="tarjeta">
         <img src="fotos/funkos/funko 1.png"
              alt="Funko Pop"
-             onclick="verImagen(this.src)">
+             onclick="verImagen(this)">
         <h3>Funko Pop</h3>
         <div class="precio">Consultar</div>
         <span class="disponible">Disponible</span>
@@ -3470,9 +3728,14 @@ body {
      VISOR DE FOTOS
 ========================================== -->
 
-<div id="visor" onclick="cerrarImagen()">
-    <span class="cerrar">&times;</span>
-    <img id="imagenVisor" src="" alt="Imagen ampliada">
+<div id="visor" onclick="if (event.target === this) cerrarImagen()">
+    <button id="visorAnterior" class="visor-flecha visor-anterior" type="button" aria-label="Foto anterior" onclick="cambiarImagen(-1); event.stopPropagation()">‹</button>
+    <div class="visor-contenido" onclick="event.stopPropagation()">
+        <img id="imagenVisor" src="" alt="Imagen ampliada">
+        <div id="contadorVisor" class="contador-visor" aria-live="polite"></div>
+    </div>
+    <button id="visorSiguiente" class="visor-flecha visor-siguiente" type="button" aria-label="Foto siguiente" onclick="cambiarImagen(1); event.stopPropagation()">›</button>
+    <span class="cerrar" onclick="cerrarImagen(); event.stopPropagation()">&times;</span>
 </div>
 
 <!-- ==========================================
@@ -3519,26 +3782,55 @@ function consultar(producto, precio) {
    VISOR DE IMÁGENES
 ========================================= */
 
-function verImagen(src) {
+let imagenesVisor = [];
+let indiceVisor = 0;
 
+function verImagen(elemento) {
     const visor = document.getElementById("visor");
     const imagen = document.getElementById("imagenVisor");
-
     if (!visor || !imagen) return;
 
-    imagen.src = src;
+    const imagenOrigen = typeof elemento === "string" ? null : elemento;
+    const galeria = imagenOrigen && imagenOrigen.closest ? imagenOrigen.closest(".galeria-movil") : null;
+    const imagenesGaleria = galeria ? Array.from(galeria.querySelectorAll("img")) : [];
+
+    imagenesVisor = imagenesGaleria.length ? imagenesGaleria : [{ src: typeof elemento === "string" ? elemento : elemento.src, alt: elemento.alt || "Imagen ampliada" }];
+    indiceVisor = imagenesGaleria.length ? Math.max(0, imagenesGaleria.indexOf(imagenOrigen)) : 0;
+    mostrarImagenVisor();
     visor.style.display = "flex";
 }
 
-function cerrarImagen() {
+function mostrarImagenVisor() {
+    const imagen = document.getElementById("imagenVisor");
+    const contador = document.getElementById("contadorVisor");
+    const anterior = document.getElementById("visorAnterior");
+    const siguiente = document.getElementById("visorSiguiente");
+    const actual = imagenesVisor[indiceVisor];
+    if (!imagen || !actual) return;
 
+    imagen.src = actual.src;
+    imagen.alt = actual.alt || "Imagen ampliada";
+    const cantidad = imagenesVisor.length;
+    if (contador) contador.textContent = cantidad > 1 ? `${indiceVisor + 1} de ${cantidad}` : "";
+    if (anterior) anterior.hidden = cantidad < 2;
+    if (siguiente) siguiente.hidden = cantidad < 2;
+}
+
+function cambiarImagen(direccion) {
+    if (imagenesVisor.length < 2) return;
+    indiceVisor = (indiceVisor + direccion + imagenesVisor.length) % imagenesVisor.length;
+    mostrarImagenVisor();
+}
+
+function cerrarImagen() {
     const visor = document.getElementById("visor");
     const imagen = document.getElementById("imagenVisor");
-
     if (!visor || !imagen) return;
 
     visor.style.display = "none";
     imagen.src = "";
+    imagenesVisor = [];
+    indiceVisor = 0;
 }
 
 document.addEventListener("keydown", function(event) {
@@ -3546,6 +3838,8 @@ document.addEventListener("keydown", function(event) {
     if (event.key === "Escape") {
         cerrarImagen();
     }
+    if (event.key === "ArrowLeft") cambiarImagen(-1);
+    if (event.key === "ArrowRight") cambiarImagen(1);
 
 });
 
@@ -3969,7 +4263,11 @@ const OPCIONES_COLOR = {
         agotado: false
     },
     "Ducati escala 1:12": {
-        colores: ["Blanco", "Rojo", "Negro"],
+        colores: ["Negra", "Roja"],
+        agotado: false
+    },
+    "Susuki Escala 1:12": {
+        colores: ["Azul", "Blanca", "Negra"],
         agotado: false
     },
     "Kawasaki Escala 1:14": {
@@ -4019,7 +4317,9 @@ const MODELOS_AGOTADOS = [
     "Mazda RX-3 azul",
     "69 Mazda Savanna RX-7 FC3S",
     "LB-Works Lamborghini Huracán Coupé",
-    "McLaren W1 celeste"
+    "McLaren W1 celeste",
+    "1966 Triumph Tiger 100",
+    "Tred Shredder"
 ];
 
 /* Agotados por variante: solo afecta el color indicado. */
