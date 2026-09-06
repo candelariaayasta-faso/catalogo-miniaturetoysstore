@@ -4271,9 +4271,12 @@ const OPCIONES_COLOR = {
         agotado: false
     },
     "Kawasaki Escala 1:14": {
-        colores: ["Blanco", "Rojo", "Negro"],
+        colores: [
+            "Blanco",
+            "Verde",
+             { nombre: "Negro", agotado: true }
+        ],
         agotado: false
-    }
 };
 
 function activarDeslizamientoGalerias() {
@@ -4319,7 +4322,8 @@ const MODELOS_AGOTADOS = [
     "LB-Works Lamborghini Huracán Coupé",
     "McLaren W1 celeste",
     "1966 Triumph Tiger 100",
-    "Tred Shredder"
+    "Tred Shredder",
+    "Ford F-150 Lightning Supertruck"
 ];
 
 /* Agotados por variante: solo afecta el color indicado. */
@@ -4328,7 +4332,8 @@ const VARIANTES_AGOTADAS = [
     { modelo: "Ford Mustang GTD", color: "Celeste" },
     { modelo: "Mazda RX-3", color: "Azul" },
     { modelo: "Mazda RX-3", color: "Verde" },
-    { modelo: "McLaren W1", color: "Celeste" }
+    { modelo: "McLaren W1", color: "Celeste" },
+    { modelo: "Lamborghini Centenario", color: "Amarillo" }
 ];
 
 function marcarModelosAgotados() {
