@@ -1,7 +1,5 @@
 
 
-
-
 <!DOCTYPE html>
 
 <html lang="es">
@@ -1108,6 +1106,233 @@ body {
         gap: 8px !important;
     }
 }
+/* =========================================
+   UNIFICACIÓN VISUAL DE PRODUCTOS A ESCALA
+   Motos y carritos a escala usan la misma plantilla
+========================================= */
+#motos-escala .tarjetas,
+#carritos-escala .tarjetas {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+    align-items: stretch !important;
+}
+
+#motos-escala .tarjeta,
+#carritos-escala .tarjeta {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    grid-template-rows: 250px 54px 42px 38px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 384px !important;
+    height: 384px !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    align-content: start !important;
+    text-align: left !important;
+}
+
+/* Todas las fotos ocupan exactamente la misma ventana. */
+#motos-escala .tarjeta > img,
+#carritos-escala .tarjeta > img,
+#motos-escala .tarjeta > .galeria-movil,
+#carritos-escala .tarjeta > .galeria-movil,
+#motos-escala .tarjeta > .galeria-movil-wrap,
+#carritos-escala .tarjeta > .galeria-movil-wrap {
+    grid-column: 1 / -1 !important;
+    grid-row: 1 !important;
+    width: 100% !important;
+    height: 250px !important;
+    min-height: 250px !important;
+    max-height: 250px !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    background: linear-gradient(145deg, #f5f7ff, #eef8ff) !important;
+}
+
+#motos-escala .galeria-movil-wrap,
+#carritos-escala .galeria-movil-wrap {
+    position: relative !important;
+}
+
+#motos-escala .galeria-movil-wrap .galeria-movil,
+#carritos-escala .galeria-movil-wrap .galeria-movil {
+    width: 100% !important;
+    height: 250px !important;
+    min-height: 250px !important;
+    max-height: 250px !important;
+}
+
+#motos-escala .galeria-movil > img,
+#carritos-escala .galeria-movil > img,
+#motos-escala .galeria-movil-wrap img,
+#carritos-escala .galeria-movil-wrap img {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    height: 250px !important;
+    min-height: 250px !important;
+    max-height: 250px !important;
+    padding: 10px !important;
+    margin: 0 !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    transform: none !important;
+}
+
+/* Títulos y precios ocupan siempre la misma fila. */
+#motos-escala .tarjeta h3,
+#carritos-escala .tarjeta h3 {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+    width: 100% !important;
+    height: 54px !important;
+    min-height: 54px !important;
+    max-height: 54px !important;
+    margin: 0 !important;
+    padding: 8px !important;
+    overflow: hidden !important;
+    display: flex !important;
+    align-items: center !important;
+    font-size: 12px !important;
+    line-height: 1.2 !important;
+    text-align: left !important;
+}
+
+#motos-escala .tarjeta .precio,
+#carritos-escala .tarjeta .precio {
+    grid-column: 2 !important;
+    grid-row: 2 !important;
+    width: 100% !important;
+    height: 54px !important;
+    min-height: 54px !important;
+    margin: 0 !important;
+    padding: 8px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    font-size: 15px !important;
+    white-space: nowrap !important;
+}
+
+/* Fila central: selector de color o estado de disponibilidad. */
+#motos-escala .tarjeta .selector-color,
+#carritos-escala .tarjeta .selector-color {
+    grid-column: 1 / -1 !important;
+    grid-row: 3 !important;
+    width: 100% !important;
+    height: 42px !important;
+    min-height: 42px !important;
+    max-height: 42px !important;
+    margin: 0 !important;
+    padding: 4px 6px !important;
+    overflow: hidden !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 10px !important;
+}
+
+#motos-escala .tarjeta .selector-color strong,
+#carritos-escala .tarjeta .selector-color strong {
+    display: none !important;
+}
+
+#motos-escala .tarjeta .color-opcion,
+#carritos-escala .tarjeta .color-opcion {
+    height: 27px !important;
+    min-height: 27px !important;
+    padding: 3px 6px !important;
+    font-size: 10px !important;
+}
+
+#motos-escala .tarjeta .disponible,
+#carritos-escala .tarjeta .disponible {
+    grid-column: 1 / -1 !important;
+    grid-row: 3 !important;
+    justify-self: center !important;
+    align-self: center !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    height: 24px !important;
+    margin: 0 !important;
+    padding: 4px 8px !important;
+    font-size: 10px !important;
+}
+
+#motos-escala .tarjeta:has(.selector-color) .disponible,
+#carritos-escala .tarjeta:has(.selector-color) .disponible {
+    display: none !important;
+}
+
+/* Todos los botones quedan alineados en la cuarta fila. */
+#motos-escala .tarjeta .btn-whatsapp,
+#carritos-escala .tarjeta .btn-whatsapp,
+#motos-escala .tarjeta .btn-carrito,
+#carritos-escala .tarjeta .btn-carrito {
+    grid-row: 4 !important;
+    height: 38px !important;
+    min-height: 38px !important;
+    max-height: 38px !important;
+    align-self: stretch !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    font-size: 10px !important;
+}
+
+@media (max-width: 600px) {
+    #motos-escala .tarjetas,
+    #carritos-escala .tarjetas {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 8px !important;
+    }
+
+    #motos-escala .tarjeta,
+    #carritos-escala .tarjeta {
+        grid-template-rows: 205px 54px 42px 36px !important;
+        min-height: 337px !important;
+        height: 337px !important;
+    }
+
+    #motos-escala .tarjeta > img,
+    #carritos-escala .tarjeta > img,
+    #motos-escala .tarjeta > .galeria-movil,
+    #carritos-escala .tarjeta > .galeria-movil,
+    #motos-escala .tarjeta > .galeria-movil-wrap,
+    #carritos-escala .tarjeta > .galeria-movil-wrap,
+    #motos-escala .galeria-movil-wrap .galeria-movil,
+    #carritos-escala .galeria-movil-wrap .galeria-movil,
+    #motos-escala .galeria-movil > img,
+    #carritos-escala .galeria-movil > img,
+    #motos-escala .galeria-movil-wrap img,
+    #carritos-escala .galeria-movil-wrap img {
+        height: 205px !important;
+        min-height: 205px !important;
+        max-height: 205px !important;
+    }
+
+    #motos-escala .tarjeta h3,
+    #carritos-escala .tarjeta h3,
+    #motos-escala .tarjeta .precio,
+    #carritos-escala .tarjeta .precio {
+        height: 54px !important;
+        min-height: 54px !important;
+        max-height: 54px !important;
+        font-size: 11px !important;
+    }
+
+    #motos-escala .tarjeta .btn-whatsapp,
+    #carritos-escala .tarjeta .btn-whatsapp,
+    #motos-escala .tarjeta .btn-carrito,
+    #carritos-escala .tarjeta .btn-carrito {
+        height: 36px !important;
+        min-height: 36px !important;
+        max-height: 36px !important;
+        font-size: 9px !important;
+    }
+}
+
 </style>
 
 </head>
@@ -3668,7 +3893,7 @@ body {
 <div class="tarjetas">
 
     <article class="tarjeta">
-        <img src="fotos/hotwheels/premium/mario kart rojo.png"
+        <img src="fotos/premium/mario kart rojo.png"
              alt="mario kart rojo"
              onclick="verImagen(this)">
         <h3>Mario Kart</h3>
@@ -3681,7 +3906,7 @@ body {
     </article>
 
     <article class="tarjeta">
-        <img src="fotos/hotwheels/premium/mario kart amarillo.png"
+        <img src="fotos/premium/mario kart amarillo.png"
              alt="mario kart amarillo"
              onclick="verImagen(this)">
         <h3>Mario Kart</h3>
@@ -4274,9 +4499,10 @@ const OPCIONES_COLOR = {
         colores: [
             "Blanco",
             "Verde",
-             { nombre: "Negro", agotado: true }
+            { nombre: "Negro", agotado: true }
         ],
         agotado: false
+    }
 };
 
 function activarDeslizamientoGalerias() {
