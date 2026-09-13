@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 
 <html lang="es">
@@ -1333,6 +1334,103 @@ body {
     }
 }
 
+/* ===== AJUSTE FINAL: TARJETAS A ESCALA MÁS VISIBLES E IGUALES ===== */
+#motos-escala .tarjeta,
+#carritos-escala .tarjeta {
+    grid-template-rows: 285px 58px 46px 40px !important;
+    min-height: 429px !important;
+    height: 429px !important;
+}
+
+#motos-escala .tarjeta > img,
+#carritos-escala .tarjeta > img,
+#motos-escala .tarjeta > .galeria-movil,
+#carritos-escala .tarjeta > .galeria-movil,
+#motos-escala .tarjeta > .galeria-movil-wrap,
+#carritos-escala .tarjeta > .galeria-movil-wrap,
+#motos-escala .galeria-movil-wrap .galeria-movil,
+#carritos-escala .galeria-movil-wrap .galeria-movil,
+#motos-escala .galeria-movil > img,
+#carritos-escala .galeria-movil > img,
+#motos-escala .galeria-movil-wrap img,
+#carritos-escala .galeria-movil-wrap img {
+    height: 285px !important;
+    min-height: 285px !important;
+    max-height: 285px !important;
+}
+
+#motos-escala .tarjeta h3,
+#carritos-escala .tarjeta h3,
+#motos-escala .tarjeta .precio,
+#carritos-escala .tarjeta .precio {
+    height: 58px !important;
+    min-height: 58px !important;
+    max-height: 58px !important;
+}
+
+#motos-escala .tarjeta .selector-color,
+#carritos-escala .tarjeta .selector-color,
+#motos-escala .tarjeta .disponible,
+#carritos-escala .tarjeta .disponible {
+    min-height: 46px !important;
+    height: 46px !important;
+    max-height: 46px !important;
+}
+
+#motos-escala .tarjeta .btn-whatsapp,
+#carritos-escala .tarjeta .btn-whatsapp,
+#motos-escala .tarjeta .btn-carrito,
+#carritos-escala .tarjeta .btn-carrito {
+    height: 40px !important;
+    min-height: 40px !important;
+    max-height: 40px !important;
+}
+
+.selector-color.selector-color-alerta {
+    outline: 3px solid #e53935 !important;
+    outline-offset: -3px;
+    animation: parpadeoColor .55s ease-in-out 2;
+}
+
+@keyframes parpadeoColor {
+    50% { background: #ffe1e1 !important; }
+}
+
+@media (max-width: 600px) {
+    #motos-escala .tarjeta,
+    #carritos-escala .tarjeta {
+        grid-template-rows: 230px 58px 46px 38px !important;
+        min-height: 372px !important;
+        height: 372px !important;
+    }
+
+    #motos-escala .tarjeta > img,
+    #carritos-escala .tarjeta > img,
+    #motos-escala .tarjeta > .galeria-movil,
+    #carritos-escala .tarjeta > .galeria-movil,
+    #motos-escala .tarjeta > .galeria-movil-wrap,
+    #carritos-escala .tarjeta > .galeria-movil-wrap,
+    #motos-escala .galeria-movil-wrap .galeria-movil,
+    #carritos-escala .galeria-movil-wrap .galeria-movil,
+    #motos-escala .galeria-movil > img,
+    #carritos-escala .galeria-movil > img,
+    #motos-escala .galeria-movil-wrap img,
+    #carritos-escala .galeria-movil-wrap img {
+        height: 230px !important;
+        min-height: 230px !important;
+        max-height: 230px !important;
+    }
+
+    #motos-escala .tarjeta .btn-whatsapp,
+    #carritos-escala .tarjeta .btn-whatsapp,
+    #motos-escala .tarjeta .btn-carrito,
+    #carritos-escala .tarjeta .btn-carrito {
+        height: 38px !important;
+        min-height: 38px !important;
+        max-height: 38px !important;
+    }
+}
+
 </style>
 
 </head>
@@ -1554,11 +1652,11 @@ body {
         </div>
 
         <h3>Moto simulación Kawasaki con muñeco Biker</h3>
-        <div class="precio">S/ 45</div>
+        <div class="precio">S/50</div>
         <span class="disponible">Disponible</span>
 
         <button class="btn-whatsapp"
-                onclick="consultar('Biker',45)">
+                onclick="consultar('Biker',50)">
             Consultar por WhatsApp
         </button>
     </article>
@@ -1573,11 +1671,11 @@ body {
         </div>
 
         <h3>Ducati Escala 1:14</h3>
-        <div class="precio">S/ 35</div>
+        <div class="precio">S/40</div>
         <span class="disponible">Disponible</span>
 
         <button class="btn-whatsapp"
-                onclick="consultar('Ducati',35)">
+                onclick="consultar('Ducati',40)">
             Consultar por WhatsApp
         </button>
     </article>
@@ -1621,11 +1719,11 @@ body {
 <p class="indicador-fotos">Desliza para ver las fotos ➜</p>
 
 <h3>Kawasaki Escala 1:14</h3>
-<div class="precio">S/ 35</div>
+<div class="precio">S/45</div>
 <span class="disponible">Disponible</span>
 
 <button class="btn-whatsapp"
-        onclick="consultar('Kawasaki',35)">
+        onclick="consultar('Kawasaki',45)">
     Consultar por WhatsApp
 </button>
 
@@ -1654,7 +1752,7 @@ body {
 <p class="indicador-fotos">Desliza para ver las fotos ➜</p>
 
 <h3>Kawasaki H2R escala 1:9</h3>
-<div class="precio">S/110</div>
+<div class="precio">S/120</div>
 <span class="disponible">Disponible</span>
 
 <button class="btn-whatsapp"
@@ -3975,7 +4073,7 @@ const NUMERO_WHATSAPP = "51921797846";
    WHATSAPP
 ========================================= */
 
-function consultar(producto, precio) {
+function consultar(producto, precio, color = "") {
 
     let mensaje;
 
@@ -3983,6 +4081,7 @@ function consultar(producto, precio) {
         mensaje =
             "Hola 😊, estoy interesado(a) en el producto: " +
             producto +
+            (color ? " - Color: " + color : "") +
             " - S/ " +
             precio +
             ". ¿Sigue disponible?";
@@ -3990,6 +4089,7 @@ function consultar(producto, precio) {
         mensaje =
             "Hola 😊, estoy interesado(a) en el producto: " +
             producto +
+            (color ? " - Color: " + color : "") +
             ". ¿Me pueden indicar el precio y disponibilidad?";
     }
 
@@ -4549,7 +4649,6 @@ const MODELOS_AGOTADOS = [
     "McLaren W1 celeste",
     "1966 Triumph Tiger 100",
     "Tred Shredder",
-    "2016 Ford GT Race / Course",
     "Ford F-150 Lightning Supertruck"
 ];
 
@@ -4618,11 +4717,38 @@ function crearSelectoresColor() {
             boton.textContent = color.nombre + (color.agotado ? " · Agotado" : "");
             boton.disabled = !!color.agotado;
             boton.dataset.color = color.nombre;
-            if (!color.agotado && !selector.querySelector(".activo")) boton.classList.add("activo");
+            /* Ningún color queda preseleccionado: el cliente debe elegirlo. */
             boton.addEventListener("click", function() { selector.querySelectorAll(".color-opcion").forEach(b => b.classList.remove("activo")); boton.classList.add("activo"); });
             selector.appendChild(boton);
         });
         titulo.insertAdjacentElement("afterend", selector);
+    });
+}
+
+function activarColorObligatorioWhatsApp() {
+    document.querySelectorAll("#motos-escala .tarjeta, #carritos-escala .tarjeta").forEach(function(tarjeta) {
+        const selector = tarjeta.querySelector(".selector-color");
+        const boton = tarjeta.querySelector(".btn-whatsapp");
+        const titulo = tarjeta.querySelector("h3");
+        const precioElemento = tarjeta.querySelector(".precio");
+        if (!selector || !boton || !titulo || !precioElemento) return;
+
+        boton.onclick = function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            const opcion = selector.querySelector(".color-opcion.activo:not(:disabled)");
+            if (!opcion) {
+                alert("Por favor, selecciona un color antes de enviar el mensaje por WhatsApp.");
+                selector.classList.add("selector-color-alerta");
+                setTimeout(function() { selector.classList.remove("selector-color-alerta"); }, 1400);
+                selector.scrollIntoView({behavior:"smooth", block:"center"});
+                return false;
+            }
+
+            const precio = parseFloat(precioElemento.textContent.replace(/S\/\s*/gi, "").replace(",", ".").trim());
+            consultar(titulo.textContent.trim(), precio, opcion.dataset.color);
+            return false;
+        };
     });
 }
 
@@ -4746,6 +4872,7 @@ document.addEventListener(
         activarDeslizamientoGalerias();
         marcarModelosAgotados();
         crearSelectoresColor();
+        activarColorObligatorioWhatsApp();
         crearBotonesCarrito();
         actualizarCarrito();
 
