@@ -1,7 +1,6 @@
 
 
 
-
 <!DOCTYPE html>
 
 <html lang="es">
@@ -1434,6 +1433,82 @@ body {
     }
 }
 
+/* ===== DESCRIPCIONES Y FILAS FIJAS PARA MOTOS A ESCALA ===== */
+#motos-escala .tarjeta > .indicador-fotos,
+#carritos-escala .tarjeta > .indicador-fotos {
+    display: none !important;
+}
+#motos-escala .tarjeta,
+#carritos-escala .tarjeta {
+    grid-template-rows: 285px 58px 45px 46px 40px !important;
+    min-height: 474px !important;
+    height: 474px !important;
+}
+#motos-escala .tarjeta .descripcion,
+#carritos-escala .tarjeta .descripcion {
+    grid-column: 1 / -1 !important;
+    grid-row: 3 !important;
+    width: 100% !important;
+    height: 45px !important;
+    min-height: 45px !important;
+    max-height: 45px !important;
+    margin: 0 !important;
+    padding: 5px 8px !important;
+    overflow: hidden !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #555b78 !important;
+    font-size: 10px !important;
+    line-height: 1.2 !important;
+    text-align: center !important;
+}
+#motos-escala .tarjeta .selector-color,
+#carritos-escala .tarjeta .selector-color,
+#motos-escala .tarjeta .disponible,
+#carritos-escala .tarjeta .disponible,
+#motos-escala .tarjeta .agotado,
+#carritos-escala .tarjeta .agotado {
+    grid-row: 4 !important;
+}
+#motos-escala .tarjeta .btn-whatsapp,
+#carritos-escala .tarjeta .btn-whatsapp,
+#motos-escala .tarjeta .btn-carrito,
+#carritos-escala .tarjeta .btn-carrito {
+    grid-row: 5 !important;
+}
+@media (max-width: 600px) {
+    #motos-escala .tarjeta,
+    #carritos-escala .tarjeta {
+        grid-template-rows: 230px 58px 44px 46px 38px !important;
+        min-height: 416px !important;
+        height: 416px !important;
+    }
+    #motos-escala .tarjeta > img,
+    #carritos-escala .tarjeta > img,
+    #motos-escala .tarjeta > .galeria-movil,
+    #carritos-escala .tarjeta > .galeria-movil,
+    #motos-escala .tarjeta > .galeria-movil-wrap,
+    #carritos-escala .tarjeta > .galeria-movil-wrap,
+    #motos-escala .galeria-movil-wrap .galeria-movil,
+    #carritos-escala .galeria-movil-wrap .galeria-movil,
+    #motos-escala .galeria-movil > img,
+    #carritos-escala .galeria-movil > img,
+    #motos-escala .galeria-movil-wrap img,
+    #carritos-escala .galeria-movil-wrap img {
+        height: 230px !important;
+        min-height: 230px !important;
+        max-height: 230px !important;
+    }
+    #motos-escala .tarjeta .descripcion,
+    #carritos-escala .tarjeta .descripcion {
+        height: 44px !important;
+        min-height: 44px !important;
+        max-height: 44px !important;
+        font-size: 9px !important;
+    }
+}
+
 </style>
 
 </head>
@@ -1637,6 +1712,7 @@ body {
 
         <h3>BMW Escala 1:14</h3>
         <div class="precio">S/ 40</div>
+        <p class="descripcion">Moto BMW a escala 1:14, tiene boton de encendido o apagado, acelera, emite sonido, prende luces.</p>
         <span class="disponible">Disponible</span>
 
         <button class="btn-whatsapp"
@@ -1655,11 +1731,12 @@ body {
         </div>
 
         <h3>Moto simulación Kawasaki con muñeco Biker</h3>
-        <div class="precio">S/ 55</div>
+        <div class="precio">S/ 50</div>
+        <p class="descripcion">Emite sonido y luces.</p>
         <span class="disponible">Disponible</span>
 
         <button class="btn-whatsapp"
-                onclick="consultar('Biker',55)">
+                onclick="consultar('Biker',50)">
             Consultar por WhatsApp
         </button>
     </article>
@@ -1675,6 +1752,7 @@ body {
 
         <h3>Ducati Escala 1:14</h3>
         <div class="precio">S/ 35</div>
+        <p class="descripcion">Ducati deportiva a escala 1:14, tiene boton de encendido o apagado, acelera, emite sonido, prende luces.</p>
         <span class="disponible">Disponible</span>
 
         <button class="btn-whatsapp"
@@ -1694,6 +1772,7 @@ body {
 
         <h3>Ducati escala 1:12</h3>
         <div class="precio">S/ 25</div>
+        <p class="descripcion">Ducati a escala 1:12, tiene boton de encendido o apagado, acelera, emite sonido, prende luces.</p>
         <span class="disponible">Disponible</span>
 
         <button class="btn-whatsapp"
@@ -1723,6 +1802,7 @@ body {
 
 <h3>Kawasaki Escala 1:14</h3>
 <div class="precio">S/ 45</div>
+        <p class="descripcion">Kawasaki a escala 1:14, tiene boton de encendido o apagado, acelera, emite sonido, prende luces.</p>
 <span class="disponible">Disponible</span>
 
 <button class="btn-whatsapp"
@@ -1756,6 +1836,7 @@ body {
 
 <h3>Kawasaki H2R escala 1:9</h3>
 <div class="precio">S/120</div>
+        <p class="descripcion">Kawasaki H2R a escala 1:9, Prende luces y sonido.</p>
 <span class="disponible">Disponible</span>
 
 <button class="btn-whatsapp"
@@ -1784,7 +1865,8 @@ body {
 <p class="indicador-fotos">Desliza para ver las fotos ➜</p>
 
 <h3>Yamaha R1 escala 1:9</h3>
-<div class="precio">S/120</div>
+<div class="precio">S/110</div>
+        <p class="descripcion">Yamaha R1 a escala 1:9, Prende luces y sonido.</p>
 <span class="disponible">Disponible</span>
 
 <button class="btn-whatsapp"
@@ -1823,6 +1905,7 @@ body {
 
 <h3>Kawasaki Ninja Escala 1:12</h3>
 <div class="precio">S/ 75</div>
+        <p class="descripcion">Kawasaki Ninja a escala 1:12, Prende luces y sonido.</p>
 <span class="disponible">Disponible</span>
 
 <button class="btn-whatsapp"
@@ -1832,7 +1915,7 @@ body {
 
 </article>
 
-      <!-- DUCATI ESCALA 1:12 - 8 FOTOS -->
+      <!-- DUCATI NEGRA ESCALA 1:12 - 8 FOTOS -->
 
 <article class="tarjeta">
 
@@ -1853,6 +1936,30 @@ body {
     <img src="fotos/escala/ducati negra 1 12 lado 4.jpeg"
          alt="Ducati negra - vista 4"
          onclick="verImagen(this)">
+
+    
+</div>
+
+<p class="indicador-fotos">Desliza para ver las fotos ➜</p>
+
+<h3>Ducati Negra Escala 1:12</h3>
+<div class="precio">S/ 75</div>
+        <p class="descripcion">Ducati Negra a escala 1:12, Prende luces y sonido.</p>
+<span class="disponible">Disponible</span>
+
+<button class="btn-whatsapp"
+        onclick="consultar('Ducati Negra Escala 1:12',75)">
+    Consultar por WhatsApp
+</button>
+
+</article>
+
+
+    <!-- DUCATI ROJA ESCALA 1:12 - 8 FOTOS -->
+
+<article class="tarjeta">
+
+<div class="galeria-movil">
 
     <img src="fotos/escala/ducati roja 1 12 lado 1.jpeg"
          alt="Ducati roja - vista 1"
@@ -1875,18 +1982,19 @@ body {
 
 <p class="indicador-fotos">Desliza para ver las fotos ➜</p>
 
-<h3>Ducati Escala 1:12</h3>
+<h3>Ducati Roja Escala 1:12</h3>
 <div class="precio">S/ 75</div>
+        <p class="descripcion">Ducati Roja a escala 1:12, Prende luces y sonido.</p>
 <span class="disponible">Disponible</span>
 
 <button class="btn-whatsapp"
-        onclick="consultar('Ducati Escala 1:12',75)">
+        onclick="consultar('Ducati Roja Escala 1:12',75)">
     Consultar por WhatsApp
 </button>
 
 </article>
-
-         <!-- SUSUKI AZUL ESCALA 1:12 - 5 FOTOS -->
+    
+         <!-- SUSUKI AZUL ESCALA 1:12 - 15 FOTOS -->
 
 <article class="tarjeta">
 
@@ -1918,6 +2026,7 @@ body {
 
 <h3>Susuki Azul Escala 1:12</h3>
 <div class="precio">S/ 75</div>
+        <p class="descripcion">Susuki a escala 1:12, Prende luces y sonido.</p>
 <span class="disponible">Disponible</span>
 
 <button class="btn-whatsapp"
@@ -1926,8 +2035,8 @@ body {
 </button>
 
 </article>
-    
-    <!-- SUSUKI BLANCA ESCALA 1:12 - 5 FOTOS -->
+
+    <!-- SUSUKI BLANCA ESCALA 1:12 - 15 FOTOS -->
 
 <article class="tarjeta">
 
@@ -1952,28 +2061,29 @@ body {
     <img src="fotos/escala/susuki blanca 1 12 lado 5.jpeg"
          alt="Susuki blanca - vista 5"
          onclick="verImagen(this)">
-
+    
 </div>
 
 <p class="indicador-fotos">Desliza para ver las fotos ➜</p>
 
-<h3>Susuki Blanco Escala 1:12</h3>
+<h3>Susuki Blanca Escala 1:12</h3>
 <div class="precio">S/ 75</div>
+        <p class="descripcion">Susuki Blanca a escala 1:12, Prende luces y sonido.</p>
 <span class="disponible">Disponible</span>
 
 <button class="btn-whatsapp"
-        onclick="consultar('Susuki Blanco Escala 1:12',75)">
+        onclick="consultar('Susuki Blanca Escala 1:12',75)">
     Consultar por WhatsApp
 </button>
 
 </article>
 
-    <!-- SUSUKI NEGRA ESCALA 1:12 - 5 FOTOS -->
+<!-- SUSUKI NEGRA ESCALA 1:12 - 15 FOTOS -->
 
 <article class="tarjeta">
 
 <div class="galeria-movil">
-    
+
     <img src="fotos/escala/susuki negra 1 12 lado 1.jpeg"
          alt="Susuki negra - vista 1"
          onclick="verImagen(this)">
@@ -2000,15 +2110,16 @@ body {
 
 <h3>Susuki Negra Escala 1:12</h3>
 <div class="precio">S/ 75</div>
+        <p class="descripcion">Susuki Blanca a escala 1:12, Prende luces y sonido.</p>
 <span class="disponible">Disponible</span>
 
 <button class="btn-whatsapp"
-        onclick="consultar('Susuki Negra Escala 1:12',75)">
+        onclick="consultar('Susuki Blanca Escala 1:12',75)">
     Consultar por WhatsApp
 </button>
 
 </article>
-
+    
         <!-- KAWASAKI NINJA ZX - 10 R VERDE ESCALA 1:12 - 4 FOTOS -->
 
 <article class="tarjeta">
@@ -2041,6 +2152,7 @@ body {
 
 <h3>KAWASAKI NINJA ZX - 10 R VERDE Escala 1:12</h3>
 <div class="precio">S/ 75</div>
+        <p class="descripcion">Kawasaki Ninja ZX-10R verde a escala 1:12.</p>
 <span class="disponible">Disponible</span>
 
 <button class="btn-whatsapp"
@@ -2078,11 +2190,12 @@ body {
 <p class="indicador-fotos">Desliza para ver las fotos ➜</p>
 
 <h3>Kawasaki Ninja Escala 1:9 Bota Humo</h3>
-<div class="precio">S/220</div>
+<div class="precio">S/200</div>
+        <p class="descripcion">Kawasaki Ninja a escala 1:9 con efecto Bota Humo.</p>
 <span class="disponible">Disponible</span>
 
 <button class="btn-whatsapp"
-        onclick="consultar('Kawasaki Ninja Escala 1:9 Bota Humo',220)">
+        onclick="consultar('Kawasaki Ninja Escala 1:9 Bota Humo',200)">
     Consultar por WhatsApp
 </button>
 
@@ -2097,7 +2210,8 @@ body {
         </div>
 
         <h3>Casquito Muñequito Biker</h3>
-        <div class="precio">S/30</div>
+        <div class="precio">S/28</div>
+        <p class="descripcion">Casquito de muñequito Biker para complementar tu colección.</p>
         <span class="disponible">Disponible</span>
 
         <button class="btn-whatsapp"
@@ -2106,38 +2220,40 @@ body {
         </button>
     </article>
 
-     <!-- CF MOTO NEGRA ESCALA 1:12 - 5 FOTOS -->
+
+
+    <!-- CF MOTO NEGRA ESCALA 1:12 - 7 FOTOS -->
 
 <article class="tarjeta">
 
 <div class="galeria-movil">
     
-    <img src="fotos/escala/sf moto negro lado 1.jpeg"
-         alt="Susuki negra - vista 1"
+    <img src="fotos/escala/sfmoto negro lado 1.jpeg"
+         alt="CF Moto Negro - vista 1"
          onclick="verImagen(this)">
 
-    <img src="fotos/escala/sf moto negro lado 2.jpeg"
-         alt="Susuki negra - vista 2"
+    <img src="fotos/escala/sfmoto negro lado 2.jpeg"
+         alt="CF Moto Negro - vista 2"
          onclick="verImagen(this)">
     
-    <img src="fotos/escala/sf moto negro lado 3.jpeg"
-         alt="Susuki negra - vista 3"
+    <img src="fotos/escala/sfmoto negro lado 3.jpeg"
+         alt="CF Moto Negro - vista 3"
          onclick="verImagen(this)">
 
-    <img src="fotos/escala/sf moto negro lado 4.jpeg"
-         alt="Susuki negra - vista 4"
+    <img src="fotos/escala/sfmoto negro lado 4.jpeg"
+         alt="CF Moto Negro - vista 4"
          onclick="verImagen(this)">
 
-    <img src="fotos/escala/sf moto negro lado 5.jpeg"
-         alt="Susuki negra - vista 5"
+    <img src="fotos/escala/sfmoto negro lado 5.jpeg"
+         alt="CF Moto Negro - vista 5"
          onclick="verImagen(this)">
 
-    <img src="fotos/escala/sf moto negro lado 6.jpeg"
-         alt="Susuki negra - vista 6"
+    <img src="fotos/escala/sfmoto negro lado 6.jpeg"
+         alt="CF Moto Negro - vista 6"
          onclick="verImagen(this)">
 
-    <img src="fotos/escala/sf moto negro lado 7.jpeg"
-         alt="Susuki negra - vista 7"
+    <img src="fotos/escala/sfmoto negro lado 7.jpeg"
+         alt="CF Moto Negro - vista 7"
          onclick="verImagen(this)">
 </div>
 
@@ -2145,6 +2261,7 @@ body {
 
 <h3>CF Moto Negro Escala 1:12</h3>
 <div class="precio">S/ 80</div>
+<p class="descripcion">CF Moto negra a escala 1:12, con galería de vistas detalladas.</p>
 <span class="disponible">Disponible</span>
 
 <button class="btn-whatsapp"
@@ -2154,37 +2271,37 @@ body {
 
 </article>
 
-    <!-- CF MOTO BLANCA ESCALA 1:12 - 5 FOTOS -->
+    <!-- CF MOTO BLANCA ESCALA 1:12 - 7 FOTOS -->
 
 <article class="tarjeta">
 
 <div class="galeria-movil">
     
-    <img src="fotos/escala/sf moto blanco lado 1.jpeg"
-         alt="Susuki negra - vista 1"
+    <img src="fotos/escala/sfmoto blanco lado 1.jpeg"
+         alt="CF Moto Blanca - vista 1"
          onclick="verImagen(this)">
 
-    <img src="fotos/escala/sf moto blanco lado 2.jpeg"
-         alt="Susuki negra - vista 2"
+    <img src="fotos/escala/sfmoto blanco lado 2.jpeg"
+         alt="CF Moto Blanca - vista 2"
          onclick="verImagen(this)">
     
-    <img src="fotos/escala/sf moto blanco lado 3.jpeg"
-         alt="Susuki negra - vista 3"
+    <img src="fotos/escala/sfmoto blanco lado 3.jpeg"
+         alt="CF Moto Blanca - vista 3"
          onclick="verImagen(this)">
 
-    <img src="fotos/escala/sf moto blanco lado 4.jpeg"
-         alt="Susuki negra - vista 4"
+    <img src="fotos/escala/sfmoto blanco lado 4.jpeg"
+         alt="CF Moto Blanca - vista 4"
          onclick="verImagen(this)">
 
-    <img src="fotos/escala/sf moto blanco lado 5.jpeg"
-         alt="Susuki negra - vista 5"
+    <img src="fotos/escala/sfmoto blanco lado 5.jpeg"
+         alt="CF Moto Blanca - vista 5"
          onclick="verImagen(this)">
 
-    <img src="fotos/escala/sf moto blanco lado 6.jpeg"
+    <img src="fotos/escala/sfmoto blanco lado 6.jpeg"
          alt="CF Moto Blanca - vista 6"
          onclick="verImagen(this)">
 
-    <img src="fotos/escala/sf moto blanco lado 7.jpeg"
+    <img src="fotos/escala/sfmoto blanco lado 7.jpeg"
          alt="CF Moto Blanca - vista 7"
          onclick="verImagen(this)">
 </div>
@@ -2193,6 +2310,7 @@ body {
 
 <h3>CF Moto Blanca Escala 1:12</h3>
 <div class="precio">S/ 80</div>
+<p class="descripcion">CF Moto blanca a escala 1:12, con galería de vistas detalladas.</p>
 <span class="disponible">Disponible</span>
 
 <button class="btn-whatsapp"
@@ -2202,38 +2320,38 @@ body {
 
 </article>
 
-     <!-- QMOTOR BLANCA ESCALA 1:12 - 5 FOTOS -->
+     <!-- QMOTOR BLANCA ESCALA 1:12 - 7 FOTOS -->
 
 <article class="tarjeta">
 
 <div class="galeria-movil">
     
     <img src="fotos/escala/qmoto blanco lado 1.jpeg"
-         alt="Susuki negra - vista 1"
+         alt="QMOTOR Blanca - vista 1"
          onclick="verImagen(this)">
 
     <img src="fotos/escala/qmoto blanco lado 2.jpeg"
-         alt="Susuki negra - vista 2"
+         alt="QMOTOR Blanca - vista 2"
          onclick="verImagen(this)">
     
     <img src="fotos/escala/qmoto blanco lado 3.jpeg"
-         alt="Susuki negra - vista 3"
+         alt="QMOTOR Blanca - vista 3"
          onclick="verImagen(this)">
 
     <img src="fotos/escala/qmoto blanco lado 4.jpeg"
-         alt="Susuki negra - vista 4"
+         alt="QMOTOR Blanca - vista 4"
          onclick="verImagen(this)">
 
     <img src="fotos/escala/qmoto blanco lado 5.jpeg"
-         alt="Susuki negra - vista 5"
+         alt="QMOTOR Blanca - vista 5"
          onclick="verImagen(this)">
 
     <img src="fotos/escala/qmoto blanco lado 6.jpeg"
-         alt="CF Moto Blanca - vista 6"
+         alt="QMOTOR Blanca - vista 6"
          onclick="verImagen(this)">
 
     <img src="fotos/escala/qmoto blanco lado 7.jpeg"
-         alt="CF Moto Blanca - vista 7"
+         alt="QMOTOR Blanca - vista 7"
          onclick="verImagen(this)">
 </div>
 
@@ -2241,6 +2359,7 @@ body {
 
 <h3>QMOTOR Blanca Escala 1:12</h3>
 <div class="precio">S/ 80</div>
+<p class="descripcion">QMOTOR blanca a escala 1:12, ideal para colección.</p>
 <span class="disponible">Disponible</span>
 
 <button class="btn-whatsapp"
@@ -2250,38 +2369,38 @@ body {
 
 </article>
 
-     <!-- QMOTOR NEGRA ESCALA 1:12 - 5 FOTOS -->
+     <!-- QMOTOR NEGRA ESCALA 1:12 - 7 FOTOS -->
 
 <article class="tarjeta">
 
 <div class="galeria-movil">
     
     <img src="fotos/escala/qmoto negro lado 1.jpeg"
-         alt="Susuki negra - vista 1"
+         alt="QMOTOR Negro - vista 1"
          onclick="verImagen(this)">
 
     <img src="fotos/escala/qmoto negro lado 2.jpeg"
-         alt="Susuki negra - vista 2"
+         alt="QMOTOR Negro - vista 2"
          onclick="verImagen(this)">
     
     <img src="fotos/escala/qmoto negro lado 3.jpeg"
-         alt="Susuki negra - vista 3"
+         alt="QMOTOR Negro - vista 3"
          onclick="verImagen(this)">
 
     <img src="fotos/escala/qmoto negro lado 4.jpeg"
-         alt="Susuki negra - vista 4"
+         alt="QMOTOR Negro - vista 4"
          onclick="verImagen(this)">
 
     <img src="fotos/escala/qmoto negro lado 5.jpeg"
-         alt="Susuki negra - vista 5"
+         alt="QMOTOR Negro - vista 5"
          onclick="verImagen(this)">
 
     <img src="fotos/escala/qmoto negro lado 6.jpeg"
-         alt="Susuki negra - vista 6"
+         alt="QMOTOR Negro - vista 6"
          onclick="verImagen(this)">
 
     <img src="fotos/escala/qmoto negro lado 7.jpeg"
-         alt="Susuki negra - vista 7"
+         alt="QMOTOR Negro - vista 7"
          onclick="verImagen(this)">
 </div>
 
@@ -2289,6 +2408,7 @@ body {
 
 <h3>QMOTOR Negro Escala 1:12</h3>
 <div class="precio">S/ 80</div>
+<p class="descripcion">QMOTOR negra a escala 1:12, ideal para colección.</p>
 <span class="disponible">Disponible</span>
 
 <button class="btn-whatsapp"
@@ -2298,34 +2418,34 @@ body {
 
 </article>
 
-      <!--YAMAHA R1M PETRONAS ESCALA 1:12 - 5 FOTOS -->
+      <!--YAMAHA R1M PETRONAS ESCALA 1:12 - 6 FOTOS -->
 
 <article class="tarjeta">
 
 <div class="galeria-movil">
     
     <img src="fotos/escala/yamaha r1m petronas 1 12 lado 1.jpeg"
-         alt="Susuki negra - vista 1"
+         alt="Yamaha R1M Petronas - vista 1"
          onclick="verImagen(this)">
 
     <img src="fotos/escala/yamaha r1m petronas 1 12 lado 2.jpeg"
-         alt="Susuki negra - vista 2"
+         alt="Yamaha R1M Petronas - vista 2"
          onclick="verImagen(this)">
     
     <img src="fotos/escala/yamaha r1m petronas 1 12 lado 3.jpeg"
-         alt="Susuki negra - vista 3"
+         alt="Yamaha R1M Petronas - vista 3"
          onclick="verImagen(this)">
 
     <img src="fotos/escala/yamaha r1m petronas 1 12 lado 4.jpeg"
-         alt="Susuki negra - vista 4"
+         alt="Yamaha R1M Petronas - vista 4"
          onclick="verImagen(this)">
 
     <img src="fotos/escala/yamaha r1m petronas 1 12 lado 5.jpeg"
-         alt="Susuki negra - vista 5"
+         alt="Yamaha R1M Petronas - vista 5"
          onclick="verImagen(this)">
 
     <img src="fotos/escala/yamaha r1m petronas 1 12 lado 7.jpeg"
-         alt="Susuki negra - vista 6"
+         alt="Yamaha R1M Petronas - vista 7"
          onclick="verImagen(this)">
 
 </div>
@@ -2334,6 +2454,7 @@ body {
 
 <h3>Yamaha R1M Petronas Escala 1:12</h3>
 <div class="precio">S/ 80</div>
+<p class="descripcion">Yamaha R1M Petronas a escala 1:12, con diseño deportivo.</p>
 <span class="disponible">Disponible</span>
 
 <button class="btn-whatsapp"
@@ -2343,34 +2464,34 @@ body {
 
 </article>
 
-     <!--BMW S1000 ESCALA 1:12 - 5 FOTOS -->
+     <!--BMW S1000 ESCALA 1:12 - 6 FOTOS -->
 
 <article class="tarjeta">
 
 <div class="galeria-movil">
     
-    <img src="fotos/escala/bmw s1000 1 12 lado 1.jpeg"
-         alt="Susuki negra - vista 1"
+    <img src="fotos/escala/bmw s1000 1 12 lado 1 .jpeg"
+         alt="BMW S1000 - vista 1"
          onclick="verImagen(this)">
 
     <img src="fotos/escala/bmw s1000 1 12 lado 2.jpeg"
-         alt="Susuki negra - vista 2"
+         alt="BMW S1000 - vista 2"
          onclick="verImagen(this)">
     
     <img src="fotos/escala/bmw s1000 1 12 lado 3.jpeg"
-         alt="Susuki negra - vista 3"
+         alt="BMW S1000 - vista 3"
          onclick="verImagen(this)">
 
-    <img src="fotos/escala/bmw s1000s 1 12 lado 4.jpeg"
-         alt="Susuki negra - vista 4"
+    <img src="fotos/escala/bmw s1000 1 12 lado 4.jpeg"
+         alt="BMW S1000 - vista 4"
          onclick="verImagen(this)">
 
     <img src="fotos/escala/bmw s1000 1 12 lado 5.jpeg"
-         alt="Susuki negra - vista 5"
+         alt="BMW S1000 - vista 5"
          onclick="verImagen(this)">
 
     <img src="fotos/escala/bmw s1000 1 12 lado 6.jpeg"
-         alt="Susuki negra - vista 6"
+         alt="BMW S1000 - vista 6"
          onclick="verImagen(this)">
 
 </div>
@@ -2379,6 +2500,7 @@ body {
 
 <h3>BMW S1000 Escala 1:12</h3>
 <div class="precio">S/ 80</div>
+<p class="descripcion">BMW S1000 a escala 1:12, con acabado deportivo y detallado.</p>
 <span class="disponible">Disponible</span>
 
 <button class="btn-whatsapp"
@@ -2389,34 +2511,34 @@ body {
 </article>
 
 
-    <!--BMW S1000 BOTA HUMO ESCALA 1:9 - 5 FOTOS -->
+    <!--BMW S1000 BOTA HUMO ESCALA 1:9 - 6 FOTOS -->
 
 <article class="tarjeta">
 
 <div class="galeria-movil">
     
     <img src="fotos/escala/bmw s1000 1 9 bota humo lado 1.jpeg"
-         alt="Susuki negra - vista 1"
+         alt="BMW S1000 Bota Humo - vista 1"
          onclick="verImagen(this)">
 
     <img src="fotos/escala/bmw s1000 1 9 bota humo lado 2.jpeg"
-         alt="Susuki negra - vista 2"
+         alt="BMW S1000 Bota Humo - vista 2"
          onclick="verImagen(this)">
     
     <img src="fotos/escala/bmw s1000 1 9 bota humo lado 3.jpeg"
-         alt="Susuki negra - vista 3"
+         alt="BMW S1000 Bota Humo - vista 3"
          onclick="verImagen(this)">
 
     <img src="fotos/escala/bmw s1000s 1 9 bota humo lado 4.jpeg"
-         alt="Susuki negra - vista 4"
+         alt="BMW S1000 Bota Humo - vista 4"
          onclick="verImagen(this)">
 
     <img src="fotos/escala/bmw s1000 1 9 bota humo lado 5.jpeg"
-         alt="Susuki negra - vista 5"
+         alt="BMW S1000 Bota Humo - vista 5"
          onclick="verImagen(this)">
 
     <img src="fotos/escala/bmw s1000 1 9 bota humo lado 6.jpeg"
-         alt="Susuki negra - vista 6"
+         alt="BMW S1000 Bota Humo - vista 6"
          onclick="verImagen(this)">
 
 </div>
@@ -2425,6 +2547,7 @@ body {
 
 <h3>BMW S1000 Bota Humo Escala 1:9</h3>
 <div class="precio">S/ 220</div>
+<p class="descripcion">BMW S1000 a escala 1:9 con efecto Bota Humo.</p>
 <span class="disponible">Disponible</span>
 
 <button class="btn-whatsapp"
@@ -2433,7 +2556,6 @@ body {
 </button>
 
 </article>
-    
 </section>
 
 <!-- ==========================================
@@ -5099,12 +5221,23 @@ const OPCIONES_COLOR = {
         agotado: false
     },
     "Ducati Escala 1:12": {
-        colores: ["Negro", "Roja"],
+        colores: ["Negra", "Roja"],
         agotado: false
-
+    },
+    "Susuki Escala 1:12": {
+        colores: [
+            { nombre: "Azul", agotado: true },
+            "Blanca",
+            { nombre: "Negra", agotado: true }
+        ],
+        agotado: false
     },
     "Kawasaki Escala 1:14": {
-       colores: ["Verde", "Blanca", "Negro"],
+        colores: [
+            "Blanco",
+            "Verde",
+            { nombre: "Negro", agotado: true }
+        ],
         agotado: false
     }
 };
